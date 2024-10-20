@@ -1,0 +1,47 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Create Post
+{% endblock %}
+
+{% block css %}
+<script>
+    function previewImages(input){
+        const previewContainer = document.getElementById('image-preview');
+        previewContainer.innerHTML = "";
+
+        const files = input.files;
+        if (files) {
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e){
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.width = '100px';
+                    img.style.height = 'auto';
+                    img.style.margin = '5px';
+                    previewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+    }
+</script>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <form action="{% url 'createpost' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1 style="text-align: center;">Create Post</h1>
+        <textarea name="text" id="" class="textinputfield" placeholder="Write here..." required></textarea>
+        <div id="image-preview"></div>
+        <label for="images">-: Select up to 3 images :-</label>
+        <input type="file" name="images" id="images" class="fileinput" accept="image/*" multiple onchange="previewImages(this)">
+        <input type="submit" class="submit-btn" value="Post">
+    </form>
+</div>
+
+{% endblock %}

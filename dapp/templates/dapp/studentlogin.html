@@ -1,0 +1,35 @@
+{% extends 'dapp/base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Login
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script>
+   
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="studentsignin">
+        {% if message %}
+        <p style="text-align: center;margin: 10px 0px;">{{ message }}</p>
+        <form action="{% url 'reportlogin' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="report" placeholder="Explain your problem (provide contact no)">
+            <input type="submit" value="Report" class="submit-btn">
+        </form>
+        {% endif %}
+        <form action="{% url 'studentlogin' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="username" placeholder="Enter username" required>
+            <input type="password" class="inputfield" name="password" id="" placeholder="Enter password" required>
+            <input type="submit" value="Submit" class="submit-btn">
+            <a href="{% url 'studentreset' %}">Forgot password?</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

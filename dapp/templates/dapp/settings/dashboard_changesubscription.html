@@ -1,0 +1,67 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="subscription">
+        <div class="status">
+            <p>
+                Your current subscription pack is set to : <strong>{{ subscription.subscription_type }}</strong> <br>
+                Subscription expiry date : <strong>{{ subscription.expiry_date }}</strong> <br>
+            </p>
+        </div>
+        <form action="{% url 'checkout' %}" method="POST">
+            {% csrf_token %}
+            <div>
+                <input type="radio" name="stype" id="" value="monthly" required>
+                {% if is_student %}
+                <label for="">Monthly (50 BDT)</label>
+                {% else %}
+                <label for="">Monthly (200 BDT)</label>
+                {% endif %}
+            </div>
+            <div>
+                <input type="radio" name="stype" id="" value="quarterly" required>
+                {% if is_student %}
+                <label for="">Quarterly (3 months) (150 BDT)</label>
+                {% else %}
+                <label for="">Quarterly (3 months) (550 BDT)</label>
+                {% endif %}
+            </div>
+            <div>
+                <input type="radio" name="stype" id="" value="half-yearly" required>
+                {% if is_student %}
+                <label for="">Half-yearly (300 BDT)</label>
+                {% else %}
+                <label for="">Half-yearly (1100 BDT)</label>
+                {% endif %}
+            </div>
+            <div>
+                <input type="radio" name="stype" id="" value="yearly" required>
+                {% if is_student %}
+                <label for="">Yearly (500 BDT)</label>
+                {% else %}
+                <label for="">Yearly (2000 BDT)</label>
+                {% endif %}
+            </div>
+            <div>
+                <input type="radio" name="stype" id="" value="five-yearly" required>
+                {% if is_student %}
+                <label for="">Five-yearly (2500 BDT)</label>
+                {% else %}
+                <label for="">Five-yearly (10000 BDT)</label>
+                {% endif %}
+            </div>
+            <input type="submit" value="Go to checkout" class="submit-btn">
+        </form>
+    </div>
+</div>
+{% endblock %}

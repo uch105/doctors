@@ -1,0 +1,75 @@
+{% extends 'dapp/base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Login
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script>
+    
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="login-container">
+        {% if message %}
+        <p style="text-align: center;margin: 10px 0px;">{{ message }}</p>
+        <form action="{% url 'reportlogin' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="report" placeholder="Explain your problem (provide contact no)">
+            <input type="submit" value="Report" class="submit-btn">
+        </form>
+        {% endif %}
+        <form action="{% url 'signin' %}" method="POST" id="signin" class="hide">
+            {% csrf_token %}
+            <img src="https://verify.bmdc.org.bd/cpt/1724448874.8833.jpg" alt="">
+            <input type="text" class="inputfield" name="bmdc" placeholder="Enter your BM&DC Licence No." required>
+            <select name="category" id="" class="inputfield" required>
+                <option value="mbbs">MBBS</option>
+                <option value="bds">BDS</option>
+            </select>
+            <select name="subcategory" id="" class="inputfield" required>
+                {% for cat in cats %}
+                {% for subcat in cat.subcategories.all %}
+                <option value="{{ subcat.name }}">{{ subcat.name }}</option>
+                {% endfor %}
+                {% endfor %}
+            </select>
+            <p style="max-width: 300px; text-align: center;">
+                Verify your identity from here. Then copy & paste profile link below. <br>
+                <a href="https://verify.bmdc.org.bd/" target="_blank" style="text-decoration: none;color: var(--primary-color);font-weight: 700;">Go to website &#x2197;</a><br>
+                <span style="opacity: 0.5;word-wrap: break-word;">Example : https://verify.bmdc.org.bd/regdata/5FYMtkwhHFFF6SYj03onS3PTnphJgq5AweJOU31Q1u0GPRsxBcbn8dn~nT41EZ7DlL94p5og1eElc9eO3P3PUA--</span>
+            </p>
+            <input type="text" class="inputfield" name="link" placeholder="Enter your profile link" required>
+            <input type="submit" value="Submit" class="submit-btn">
+            <a onclick="ShowLogin()">Already a member? <span class="green" style="cursor: pointer;">Login here</span></a>
+            <a href="{% url 'studentsignin' %}">Students and Intern Doctors <span class="green" style="cursor: pointer;">Click here!</span></a>
+        </form>
+
+        <form action="{% url 'login' %}" method="POST" id="login">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="bmdc" placeholder="Enter username" required>
+            <input type="password" class="inputfield" name="password" id="" placeholder="Enter password" required>
+            <input type="submit" value="Submit" class="submit-btn">
+            <a onclick="ShowForgetPassword()" class="green" style="cursor: pointer;">Forgot Password?</a>
+            <a onclick="ShowSignin()">Not a member? <span class="green" style="cursor: pointer;">Sign in here</span></a>
+        </form>
+
+        <form action="{% url 'reset' %}" method="POST" id="reset" class="hide">
+            {% csrf_token %}
+            <img src="{% static 'images/icons/bmdc.png' %}" alt="">
+            <input type="text" class="inputfield" name="bmdc" placeholder="Enter your BM&DC Licence No." required>
+            <select name="category" id="" class="inputfield">
+                <option value="mbbs">MBBS</option>
+                <option value="bds">BDS</option>
+            </select>
+            <input type="submit" value="Submit" class="submit-btn">
+            <a onclick="ShowSignin()">Not a member? <span class="green" style="cursor: pointer;">Sign in here</span></a>
+            <a href="{% url 'studentreset' %}">Student or Intern doctors? <span class="green" style="cursor: pointer;">Reset here</span></a>
+        </form>
+    </div>
+</div>
+{% endblock %}

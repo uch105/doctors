@@ -1,0 +1,32 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="enableai">
+        <h3>What comes with AI?</h3>
+        <p>
+            <ul type="square">
+                <li>Helping to find possible diseases.</li>
+                <li>Suggestion of best suitable drugs for given symptoms.</li>
+                <li>Faster problem finding.</li>
+                <li>Cross-checking your assumption</li>
+                <li>and many more...</li>
+            </ul>
+        </p>
+        <p style="font-size: 12px;color: red;">
+            * Can't enable until we reach at least 5000 doctors in our community. <br>
+            Please help us grow!
+        </p>
+        <a href="">Enable</a>
+    </div>
+</div>
+{% endblock %}

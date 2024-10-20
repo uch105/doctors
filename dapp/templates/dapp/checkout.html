@@ -1,0 +1,27 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Checkout
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="checkout">
+        <a href="{% url 'settings' %}">Go to settings</a>
+        <p>
+            Hello, {{ customer.name }} <br>
+            You are about to subscribe for a {{ subscription_type }} plan! <br>
+            This plan will expire on <strong>{{ expiry_date }}</strong> statring from <strong>{{ start_date }}</strong> <br>
+        </p>
+        <p>
+            When you proceed you will be redirected to this product's parent company SiUch technologies. <br> After successful payment you will be redirected to your profile again! Good luck in advance!
+        </p>
+        <a href="https://siuchtechnologies.com/checkout/?pid={{ customer_id }}&amount={{ amount }}">Proceed to payment</a>
+    </div>
+</div>
+{% endblock %}

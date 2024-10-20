@@ -1,0 +1,31 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="history">
+        <div class="hs">
+            <h4 style="text-align: center;">History</h4>
+            {% for h in hs %}
+            <div class="h">
+                <a href="{{ h.link }}">{{ h.text }}</a>
+                <p class="blur7">{{ h.time_since }}</p>
+            </div>
+            {% empty %}
+            <div class="h">
+                <a href="{% url 'createpost' %}">Empty history. No activities yet! Create a post</a>
+                <p class="blur7">0s</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

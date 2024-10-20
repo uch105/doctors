@@ -1,0 +1,52 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Drugs
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/drugs.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="forms">
+        <form action="{% url 'drugs' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="search" name="text" placeholder="Enter name">
+            <input type="hidden" name="query" value="brand">
+            <input type="submit" class="search searchbtn" value="Search">
+        </form>
+        <form action="{% url 'drugs' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="search" name="text" placeholder="Enter generic">
+            <input type="hidden" name="query" value="generic">
+            <input type="submit" class="search searchbtn" value="Search">
+        </form>
+        <form action="{% url 'drugs' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="search" name="text" placeholder="Enter ID">
+            <input type="hidden" name="query" value="id">
+            <input type="submit" class="search searchbtn" value="Search">
+        </form>
+    </div>
+    <div class="drugs">
+        <table border="0.1px" cellspacing="1">
+            <tr>
+                <th style="border-radius: 10px 0px 0px 0px;">Name</th>
+                <th style="border-radius: 0px 0px 0px 0px;">Generic Name</th>
+                <th style="border-radius: 0px 10px 0px 0px;">Identification no.</th>
+            </tr>
+            {% for drug in drugs %}
+            <tr>
+                <td><a href="{% url 'drug' pk=drug.drug_id %}">{{ drug.brand }}</a></td>
+                <td>{{ drug.generic }}</td>
+                <td>{{ drug.drug_id }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{% url 'drugs' %}?query=all">See all</a>
+    </div>
+</div>
+{% endblock %}

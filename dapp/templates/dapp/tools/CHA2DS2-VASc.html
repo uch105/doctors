@@ -1,0 +1,100 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+CHA<sub>2</sub>DS<sub>2</sub>-VASc Score
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label class="inputfield">
+        <input type="checkbox" id="congestive-heart-failure">
+        Congestive Heart Failure
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="hypertension">
+        Hypertension
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="age-75">
+        Age ≥ 75 years
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="diabetes">
+        Diabetes Mellitus
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="stroke-tia-thromboembolism">
+        Stroke/TIA/Thromboembolism
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="vascular-disease">
+        Vascular Disease
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="age-65-74">
+        Age 65-74 years
+    </label>
+
+    <label class="inputfield">
+        <input type="checkbox" id="female">
+        Female
+    </label>
+
+    <button onclick="calculateCHA2DS2VASc()" class="submit-btn">Calculate Score</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>
+        The CHA<sub>2</sub>DS<sub>2</sub>-VASc score is used to estimate the risk of stroke in patients with atrial fibrillation. <br> 
+        It accounts for various risk factors like heart failure, age, hypertension, and diabetes.
+    </p>
+    <p>
+        <strong>CHA<sub>2</sub>DS<sub>2</sub>-VASc Components:</strong><br>
+        Congestive Heart Failure: 1 point<br>
+        Hypertension: 1 point<br>
+        Age ≥ 75 years: 2 points<br>
+        Diabetes Mellitus: 1 point<br>
+        Stroke/TIA/Thromboembolism: 2 points<br>
+        Vascular Disease: 1 point<br>
+        Age 65-74 years: 1 point<br>
+        Female: 1 point
+    </p>
+    <p>
+        A score of 0 indicates a low stroke risk, while higher scores (up to 9) indicate increasing risk. <br> This score 
+        helps in determining whether anticoagulation therapy is needed.
+    </p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateCHA2DS2VASc() {
+            let score = 0;
+
+            if (document.getElementById('congestive-heart-failure').checked) score += 1;
+            if (document.getElementById('hypertension').checked) score += 1;
+            if (document.getElementById('age-75').checked) score += 2;
+            if (document.getElementById('diabetes').checked) score += 1;
+            if (document.getElementById('stroke-tia-thromboembolism').checked) score += 2;
+            if (document.getElementById('vascular-disease').checked) score += 1;
+            if (document.getElementById('age-65-74').checked) score += 1;
+            if (document.getElementById('female').checked) score += 1;
+
+            document.getElementById('result').innerHTML = `Your CHA₂DS₂-VASc score is ${score}`;
+        }
+</script>
+{% endblock %}

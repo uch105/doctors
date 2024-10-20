@@ -1,0 +1,73 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+{% if s %}
+<div class="container">
+    <div class="profile">
+        <div class="image">
+            <img src="{{ student.image.url }}" alt="Profile picture">
+        </div>
+        <div class="info">
+            <h1>{{ student.name }}</h1>
+            <div>
+                <p class="blur5">
+                    Blood group : {{ student.blood_group }}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>Contact</strong> <br>
+                    Phone : {{ student.phone }} <br>
+                    E-mail : {{ student.email }}<br>
+                    Institute : {{ student.institute }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="profile">
+        <div class="image">
+            <img src="{{ doctor.image.url }}" alt="Profile picture">
+        </div>
+        <div class="info">
+            <h1>{{ doctor.name }}</h1>
+            <div>
+                <h3 class="blur7">{{ doctor.category.name }}</h3>
+                <h3 class="blur7">|</h3>
+                <h3 class="blur7">{{ doctor.sub_category.name }}</h3>
+            </div>
+            <div>
+                <p class="blur5">
+                    {{ doctor.qualification }}
+                </p>
+            </div>
+            <div>
+                <p class="blur5">
+                    Blood group : {{ doctor.blood_group }}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>Contact</strong> <br>
+                    Phone : {{ doctor.phone }} <br>
+                    E-mail : {{ doctor.email }}<br>
+                    Current Job : {{ doctor.job }}<br>
+                    Chamber : {{ doctor.chamber }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

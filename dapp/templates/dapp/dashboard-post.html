@@ -1,0 +1,80 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+{{ post.owner_name }}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard-forum.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="posts">
+        <div class="post">
+            <div class="post-head">
+                <img src="{{ post.owner_image.url }}" alt="">
+                <div class="name-date">
+                    <div class="name">{{ post.owner_name }}</div>
+                    <div class="date">{{ post.date_time }}</div>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="post-body-text">
+                    {{ post.body|safe }}
+                </div>
+                <div class="post-body-images">
+                    {% for img in post.images.all %}
+                    <img src="{{ img.image.url }}" alt="">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-insights">
+                <a onclick="ShowLikes()" class="likes" id="like-count-{{ post.id }}">{{ post.total_likes }} likes</a>
+                <a href="" class="comments">{{ post.total_comments }} comments</a>
+                <a href="{% url 'savepost' pk=post.id %}" class="comments">{% if saved %}Saved{% else %}Save{% endif %}</a>
+            </div>
+            <div class="post-like-comment">
+                <a onclick="likepost('{{ post.id }}')"><img src="{% static 'images/icons/like.png' %}" alt="">Like</a>
+                <a onclick="OpenCommentBox('{{ post.id }}')"><img src="{% static 'images/icons/comment.png' %}" alt="">Comment</a>
+                <a onclick="CopyPostLink('{{ post.id }}')"><img src="{% static 'images/icons/share.png' %}" alt="">Share</a>
+            </div>
+            <div class="post-likelist hide" id="post-likelist">
+                <p>
+                    Liked by : 
+                {% for l in postlikes %}
+                    <a href="{% url 'profile' pk=l.owner_id %}">{{ l.owner_name }}</a> , 
+                {% empty %}
+                    No likes
+                {% endfor %}
+                </p>
+            </div>
+            <div class="post-comment-box hide" id="comment-box-{{ post.id }}">
+                <form action="{% url 'postcomment' pk=post.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <textarea name="comment_text" rows="3" placeholder="Leave a comment..." class="inputfield"></textarea>
+                    <input type="file" name="comment_image" id="" class="inputfield">
+                    <input type="submit" value="Submit" class="submit-btn">
+                </form>
+            </div>
+            <div id="commentSection-{{ post.id }}" class="comments">
+                <hr style="width: 80%;height: 0.1px;color: #3c3c3b;text-align: center;">
+                {% for comment in comments %}
+                <div class="comment">
+                    <div class="info">
+                        <img src="{{ comment.owner_image.url }}" alt="">
+                        <p><a href="{% url 'profile' pk=comment.owner_id %}">{{ comment.owner_name }}</a> <br> <span class="blur5">{{ comment.created }}</span></p>
+                    </div>
+                    <p>{{ comment.text }}</p>
+                    {% if comment.image %}
+                    <img src="{{ comment.image.url }}" alt="">
+                    {% endif %}
+                </div>
+                <hr style="width: 80%;height: 0.1px;color: #3c3c3b;text-align: center;">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

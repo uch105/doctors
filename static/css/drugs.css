@@ -1,0 +1,106 @@
+.forms{
+    margin: 30px 0px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: 300px 300px 300px;
+    justify-content: center;
+    align-items: center;
+}
+form{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.search{
+    width: 90%;
+    padding: 5px;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.25);
+}
+.searchbtn{
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+.drugs{
+    margin: 35px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+table{
+    width: 750px;
+    background-color: var(--light-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.25);
+    padding: 0px;
+}
+@media screen and (max-width:820px){
+    table{
+        width: 550px;
+    }
+    .forms{
+        grid-template-columns: 200px 200px 200px;
+    }
+}
+@media screen and (max-width:600px){
+    table{
+        width: 320px;
+    }
+    .forms{
+        grid-template-columns: 100px 100px 100px;
+    }
+}
+tr{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0px;
+    justify-content: center;
+}
+th{
+    background-color: var(--primary-color);
+    color: var(--light-color);
+}
+tr > td{
+    color: var(--dark-color);
+    text-align: center;
+}
+tr > td > a{
+    text-decoration: none;
+    color: var(--dark-color);
+    cursor: pointer;
+}
+.drugs > a{
+    text-decoration: none;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.drug{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px 0px rgba(0,0,0,0.25);
+}
+.drug > p{
+    max-width: 600px;
+    text-align: left;
+    line-height: 1.0;
+}

@@ -1,0 +1,145 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+{% if is_student %}
+<div class="container">
+    <div class="selfprofile">
+        <div class="image">
+            <img src="{{ student.image.url }}" alt="Profile Picture">
+            <h5 class="i">Points : {{ student.points }}</h5>
+        </div>
+        <div class="info">
+            <h1>{{ student.name }}</h1>
+            <div>
+                <p class="blur5">
+                    Blood Group : {{ student.blood_group }}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>Contact</strong> <br>
+                    Phone : {{ student.phone }} <br>
+                    E-mail : {{ student.email }}<br>
+                    Institute : {{ student.institute }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="profileforms">
+        <form action="{% url 'changepassword' %}" method="POST">
+            {% csrf_token %}
+            <h5>Change password</h5>
+            <input type="text" name="password" placeholder="New password" required>
+            <input type="text" name="confirmpassword" placeholder="Confirm new password" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updatecontact' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update contact details</h5>
+            <input type="text" name="phone" placeholder="Enter phone no" required>
+            <input type="text" name="email" placeholder="Enter email" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updateimage' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>Update image</h5>
+            <label for="image">Upload a 1:1 sized photo : <input type="file" name="image" required></label>
+            <input type="submit" value="Update" class="submit">
+        </form>
+    </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="selfprofile">
+        <div class="image">
+            <img src="{{ doctor.image.url }}" alt="Profile Picture">
+            <h5 class="i">Points : {{ doctor.points }}</h5>
+            <h5 class="i">Status : {% if doctor.status %}Active{% else %}Licence Expired{% endif %}</h5>
+        </div>
+        <div class="info">
+            <h1>{{ doctor.name }}</h1>
+            <div>
+                <h3 class="blur7">{{ doctor.category.name }}</h3>
+                <h3 class="blur7">|</h3>
+                <h3 class="blur7">{{ doctor.sub_category.name }}</h3>
+            </div>
+            <div>
+                <p class="blur7">
+                    <strong>Qualifications : </strong>{{ doctor.qualification }}
+                </p>
+            </div>
+            <div>
+                <p class="blur5">
+                    Blood Group : {{ doctor.blood_group }}
+                </p>
+            </div>
+            <div>
+                <p>
+                    <strong>Contact</strong> <br>
+                    Phone : {{ doctor.phone }} <br>
+                    E-mail : {{ doctor.email }}<br>
+                    Current Job : {{ doctor.job }}<br>
+                    Chamber : {{ doctor.chamber }}<br>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="profileforms">
+        <form action="{% url 'updatejobs' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update job places</h5>
+            <input type="text" name="job" placeholder="Enter current job" required>
+            <input type="text" name="chamber" placeholder="Enter additional job" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'changepassword' %}" method="POST">
+            {% csrf_token %}
+            <h5>Change password</h5>
+            <input type="text" name="password" placeholder="New password" required>
+            <input type="text" name="confirmpassword" placeholder="Confirm new password" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updatecontact' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update contact details</h5>
+            <input type="text" name="phone" placeholder="Enter phone no" required>
+            <input type="text" name="email" placeholder="Enter email" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updateimage' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h5>Update image</h5>
+            <label for="image">Upload a 1:1 sized photo : <input type="file" name="image" required></label>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updatequalification' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update qualifications</h5>
+            <input type="text" name="qualification" placeholder="Enter degrees for display" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
+        <form action="{% url 'updateidentity' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update identity</h5>
+            <select name="subcategory" id="" required>
+                {% for cat in cats %}
+                {% for subcat in cat.subcategories.all %}
+                <option value="{{ subcat.name }}">{{ subcat.name }}</option>
+                {% endfor %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Update" class="submit">
+        </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

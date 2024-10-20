@@ -1,0 +1,60 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+MELD score
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label for="bilirubin">Bilirubin (mg/dL):</label>
+    <input type="number" id="bilirubin" class="inputfield" step="0.1" placeholder="Enter Bilirubin">
+
+    <label for="inr">INR:</label>
+    <input type="number" id="inr" class="inputfield" step="0.01" placeholder="Enter INR">
+
+    <label for="creatinine">Creatinine (mg/dL):</label>
+    <input type="number" id="creatinine" class="inputfield" step="0.1" placeholder="Enter Creatinine">
+
+    <button onclick="calculateMeld()" class="submit-btn">Calculate MELD</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>
+        The MELD score is used to estimate the survival rate in patients with end-stage liver disease. <br> The score is based on the following lab values: serum bilirubin, serum creatinine, and INR (International Normalized Ratio).
+    </p>
+    <p><strong>Formula:</strong></p>
+    <p>
+        MELD = 3.78 × ln(bilirubin) + 11.2 × ln(INR) + 9.57 × ln(creatinine) + 6.43.
+    </p>
+    <p>
+        If any value is less than 1, use 1 for calculation purposes. <br> If the patient has been on dialysis twice within the last 7 days, set creatinine to 4.
+    </p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateMeld() {
+            let bilirubin = parseFloat(document.getElementById('bilirubin').value);
+            let inr = parseFloat(document.getElementById('inr').value);
+            let creatinine = parseFloat(document.getElementById('creatinine').value);
+
+            if (bilirubin < 1) bilirubin = 1;
+            if (creatinine < 1) creatinine = 1;
+            if (inr < 1) inr = 1;
+
+            // MELD formula
+            const meldScore = 3.78 * Math.log(bilirubin) + 11.2 * Math.log(inr) + 9.57 * Math.log(creatinine) + 6.43;
+
+            document.getElementById('result').innerText = `MELD Score: ${meldScore.toFixed(2)}`;
+        }
+</script>
+{% endblock %}

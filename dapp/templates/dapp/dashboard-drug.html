@@ -1,0 +1,31 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+{{ drug.brand }}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/drugs.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="drug">
+        <h2 style="text-align: center;">Drug's Details Information</h2>
+        <p>
+            <strong>Govt. Issued ID :</strong>     {{ drug.drug_id }} <br><br>
+            <strong>Brand name :</strong>     {{ drug.brand }} <br><br>
+            <strong>Generic name :</strong>     {{ drug.generic }} <br><br>
+            <strong>Class / Type :</strong>     Will soon be updated.<br><br>
+            <strong>Manufacturing company :</strong>     {{ drug.manufacturer }} <br><br>
+            <strong>Drugs type :</strong>     {{ drug.drugs_type }} <br><br>
+            <strong>Applicable for :</strong>      {{ drug.drugs_for }} <br><br>
+            <strong>Contains :</strong>     {{ drug.drugs_dose }} <br><br>
+            <strong>Indication(s) :</strong>     Not available now. Will soon be updated.<br><br>
+            <strong>Contra-Indication(s) :</strong>     Not available now. Will soon be updated.<br><br>
+            <strong>Side effect(s) :</strong>     Not available now. Will soon be updated.
+        </p>
+    </div>
+</div>
+{% endblock %}

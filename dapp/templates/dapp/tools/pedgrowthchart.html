@@ -1,0 +1,59 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+Pediatric Growth Charts
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label for="age">Age (Months):</label>
+    <input type="number" id="age" class="inputfield" placeholder="Enter age in months">
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" class="inputfield" step="0.1" placeholder="Enter weight in kg">
+
+    <label for="height">Height (cm):</label>
+    <input type="number" id="height" class="inputfield" step="0.1" placeholder="Enter height in cm">
+
+    <button onclick="calculateGrowth()" class="submit-btn">Calculate Growth Percentile</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>
+        Pediatric growth charts are used by pediatricians to track the growth of children over time. <br> They are based on age, weight, and height, and compare a child's measurements with a large sample of other children.
+    </p>
+    <p><strong>Percentiles:</strong></p>
+    <p>
+        Growth percentiles are a tool to show how a child's height, weight, and head circumference compare to other children. <br> If a child is in the 70th percentile for height, for example, it means they are taller than 70% of children the same age.
+    </p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateGrowth() {
+            const age = parseFloat(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+
+            if (!age || !weight || !height) {
+                document.getElementById('result').innerText = "Please fill in all fields.";
+                return;
+            }
+
+            // Placeholder logic for growth percentile calculation (to be replaced with a real formula)
+            const weightPercentile = (weight / age * 2).toFixed(2);
+            const heightPercentile = (height / age * 2.5).toFixed(2);
+
+            document.getElementById('result').innerText = `Weight Percentile: ${weightPercentile}%\nHeight Percentile: ${heightPercentile}%`;
+        }
+</script>
+{% endblock %}

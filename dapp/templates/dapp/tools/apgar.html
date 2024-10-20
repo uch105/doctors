@@ -1,0 +1,85 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+APGAR score
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+        <label for="appearance">Appearance (Skin Color):</label>
+        <select id="appearance" class="inputfield">
+            <option value="0">0 - Blue, pale</option>
+            <option value="1">1 - Body pink, extremities blue</option>
+            <option value="2">2 - Completely pink</option>
+        </select>
+
+        <label for="pulse">Pulse (Heart Rate):</label>
+        <select id="pulse" class="inputfield">
+            <option value="0">0 - Absent</option>
+            <option value="1">1 - Below 100 bpm</option>
+            <option value="2">2 - Over 100 bpm</option>
+        </select>
+
+        <label for="grimace">Grimace (Reflex Irritability):</label>
+        <select id="grimace" class="inputfield">
+            <option value="0">0 - No response</option>
+            <option value="1">1 - Grimace</option>
+            <option value="2">2 - Cough, sneeze, cry</option>
+        </select>
+
+        <label for="activity">Activity (Muscle Tone):</label>
+        <select id="activity" class="inputfield">
+            <option value="0">0 - Limp</option>
+            <option value="1">1 - Some flexion</option>
+            <option value="2">2 - Active motion</option>
+        </select>
+
+        <label for="respiration">Respiration (Breathing Effort):</label>
+        <select id="respiration" class="inputfield">
+            <option value="0">0 - Absent</option>
+            <option value="1">1 - Slow, irregular</option>
+            <option value="2">2 - Good, crying</option>
+        </select>
+
+        <button onclick="calculateAPGAR()" class="submit-btn">Calculate APGAR Score</button>
+
+        <div id="result"></div>
+    </div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>The APGAR score is a quick test performed on a newborn baby at 1 minute and 5 minutes after birth.</p>
+        <p>
+            It evaluates five criteria:
+            <ul>
+                <li><strong>Appearance (skin color)</strong></li>
+                <li><strong>Pulse (heart rate)</strong></li>
+                <li><strong>Grimace (reflex irritability)</strong></li>
+                <li><strong>Activity (muscle tone)</strong></li>
+                <li><strong>Respiration (breathing effort)</strong></li>
+            </ul>
+        </p>
+        <p>Each criterion is scored on a scale of 0 to 2, with a maximum score of 10. A higher score indicates better condition.</p>
+    </div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateAPGAR() {
+            const appearance = parseInt(document.getElementById('appearance').value);
+            const pulse = parseInt(document.getElementById('pulse').value);
+            const grimace = parseInt(document.getElementById('grimace').value);
+            const activity = parseInt(document.getElementById('activity').value);
+            const respiration = parseInt(document.getElementById('respiration').value);
+
+            const totalScore = appearance + pulse + grimace + activity + respiration;
+
+            document.getElementById('result').innerHTML = `APGAR Score: ${totalScore}`;
+        }
+</script>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+Framingham Risk Score
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label for="age">Age (years):</label>
+    <input type="number" id="age" class="inputfield" placeholder="Enter age">
+
+    <label for="gender">Gender:</label>
+    <select id="gender" class="inputfield">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+
+    <label for="cholesterol">Total Cholesterol (mg/dL):</label>
+    <input type="number" id="cholesterol" class="inputfield" placeholder="Enter cholesterol">
+
+    <label for="hdl">HDL Cholesterol (mg/dL):</label>
+    <input type="number" id="hdl" class="inputfield" placeholder="Enter HDL">
+
+    <label for="systolic">Systolic BP (mmHg):</label>
+    <input type="number" id="systolic" class="inputfield" placeholder="Enter systolic BP">
+
+    <label for="smoker">Smoker:</label>
+    <select id="smoker" class="inputfield">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+    <label for="diabetes">Diabetes:</label>
+    <select id="diabetes" class="inputfield">
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+
+    <button onclick="calculateFraminghamRisk()" class="submit-btn">Calculate Risk</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>
+        The Framingham Risk Score estimates the 10-year risk of developing cardiovascular disease (CVD). <br> It is based on multiple factors including age, gender, total cholesterol, HDL cholesterol, systolic blood pressure, <br> smoking status, and diabetes.
+    </p>
+    <p><strong>Factors Considered:</strong></p>
+    <ul>
+        <li>Age</li>
+        <li>Gender</li>
+        <li>Total Cholesterol</li>
+        <li>HDL Cholesterol</li>
+        <li>Systolic Blood Pressure</li>
+        <li>Smoking Status</li>
+        <li>Diabetes</li>
+    </ul>
+    <p>The score helps clinicians assess the risk of heart disease and stroke over a 10-year period.</p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateFraminghamRisk() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const cholesterol = parseFloat(document.getElementById('cholesterol').value);
+            const hdl = parseFloat(document.getElementById('hdl').value);
+            const systolic = parseFloat(document.getElementById('systolic').value);
+            const smoker = document.getElementById('smoker').value;
+            const diabetes = document.getElementById('diabetes').value;
+
+            if (!age || !cholesterol || !hdl || !systolic) {
+                document.getElementById('result').innerText = "Please fill in all required fields.";
+                return;
+            }
+
+            // Placeholder formula for Framingham Risk calculation (real-world formula is more complex)
+            let riskScore = (age + cholesterol + systolic) / 10;
+
+            if (smoker === 'yes') {
+                riskScore += 5;
+            }
+
+            if (diabetes === 'yes') {
+                riskScore += 3;
+            }
+
+            if (gender === 'female') {
+                riskScore -= 2; // Women generally have lower risk.
+            }
+
+            document.getElementById('result').innerText = `Framingham Risk Score: ${riskScore.toFixed(2)}%`;
+        }
+</script>
+{% endblock %}

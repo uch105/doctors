@@ -1,0 +1,37 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Dashboard - Calculator
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}">
+
+{% block fstyle %}
+{% endblock %}
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div style="display: flex;justify-content: center;">
+        <div class="name-container">
+            <a href="{% url 'tools' %}"><img src="{% static 'images/icons/goback.png' %}" alt="" style="width: 30px;height: 30px;"></a>
+            <h2>{% block toolname %}{% endblock %}</h2>
+        </div>
+    </div>
+    <div class="feature-container">
+        <a id="c-feature" onclick="ShowCalculator()" class="active">Calculator</a>
+        <a id="i-feature" onclick="ShowInformation()" class="">Information</a>
+    </div>
+    <div id="c-section">
+        {% block c-section %}{% endblock %}
+    </div>
+    <div id="i-section" style="display: none;">{% block i-section %}{% endblock %}</div>
+</div>
+
+{% block fscript %}
+{% endblock %}
+
+{% endblock %}

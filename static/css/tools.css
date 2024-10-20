@@ -1,0 +1,103 @@
+form{
+    margin: 20px 0px;
+}
+.toolform{
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.subform{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+#searchinput{
+    width: 250px;
+    height: 30px;
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 7px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    background-color: var(--light-color);
+    padding: 0px 10px;
+    text-align: left;
+    align-content: center;
+}
+.subform button{
+    padding: 0;
+    border: none;
+    background-color: none;
+}
+.twoinput{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.twoinputfield{
+    width: 140px;
+    padding: 15px;
+    background-color: var(--light-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    font-family: 'BanglaMedium',sans-serif;
+    font-size: 16px;
+}
+.tools-list{
+    margin: 20px 0px;
+    display: grid;
+    grid-template-columns: 300px 300px;
+    row-gap: 20px;
+    column-gap: 60px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+@media screen and (max-width:700px){
+    .tools-list{
+        grid-template-columns: 300px;
+        column-gap: 0px;
+    }
+}
+.tools-list a{
+    text-decoration: none;
+    cursor: pointer;
+    width: 300px;
+    height: auto;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 7px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+}
+.name-container{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+}
+.feature-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.feature-container a{
+    text-decoration: none;
+    color: var(--dark-color);
+    background-color: var(--light-color);
+    padding: 10px 20px;
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 7px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+.feature-container .active{
+    color: var(--light-color);
+    background-color: var(--primary-color);
+}

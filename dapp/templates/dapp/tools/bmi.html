@@ -1,0 +1,71 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+Body Mass Index (BMI)
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label for="weight">Weight (kg): </label>
+    <input type="number" id="weight" class="inputfield" placeholder="Enter weight">
+
+    <label for="height">Height (ft,inch)</label>
+    <div class="twoinput">
+        <input type="number" class="twoinputfield" id="heightft" placeholder="ft">
+        <input type="number" class="twoinputfield" id="heightinch" placeholder="inch">
+    </div>
+
+    <button class="submit-btn" onclick="calculateBMI()">Calculate BMI</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>Body Mass Index (BMI) is a measure of body fat based on your weight in relation to your height. 
+    <br>It applies to most adult men and women aged 20 and over.</p>
+    <p>
+        BMI Categories:
+        <ul>
+            <li>Underweight: BMI is less than 18.5</li>
+            <li>Normal weight: BMI is 18.5 to 24.9</li>
+            <li>Overweight: BMI is 25 to 29.9</li>
+            <li>Obesity: BMI is 30 or more</li>
+        </ul>
+    </p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = ((parseFloat(document.getElementById('heightft').value)*12) + parseFloat(document.getElementById('heightinch').value)) * 0.0254; // convert cm to meters
+
+            if (isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0) {
+                alert("Please enter valid numbers for both height and weight.");
+                return;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(2);
+            let category = "";
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+            } else if (bmi >= 18.5 && bmi < 24.9) {
+                category = "Normal weight";
+            } else if (bmi >= 25 && bmi < 29.9) {
+                category = "Overweight";
+            } else {
+                category = "Obesity";
+            }
+
+            document.getElementById('result').innerHTML = `Your BMI is ${bmi} (${category})`;
+        }
+</script>
+{% endblock %}

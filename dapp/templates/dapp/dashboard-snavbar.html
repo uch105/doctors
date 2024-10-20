@@ -1,0 +1,11 @@
+{% load static %}
+<nav>
+    <div class="navbar-container">
+        <ul>
+            <li><a href="{% url 'forum' %}"><img {% if "forum" in request.path %} src="{% static 'images/icons/homeactive.png' %}" class="imgactive" {% else %} src="{% static 'images/icons/home.png' %}" {% endif %} alt=""><span {% if "forum" in request.path %} class="active"{% endif %}>Forum</span></a></li>
+            <li><a href="{% url 'tools' %}"><img {% if "tools" in request.path %} src="{% static 'images/icons/toolsactive.png' %}" class="imgactive" {% else %} src="{% static 'images/icons/tools.png' %}" {% endif %} alt=""><span {% if "tools" in request.path %} class="active"{% endif %}>Tools</span></a></li>
+            <li><a href="{% url 'drugs' %}"><img {% if "drugs" in request.path %} src="{% static 'images/icons/drugsactive.png' %}" class="imgactive" {% else %} src="{% static 'images/icons/drugs.png' %}" {% endif %} alt=""><span {% if "drugs" in request.path %} class="active"{% endif %}>Drugs</span></a></li>
+            <li><a href="{% url 'settings' %}"><img {% if "settings" in request.path %} src="{% static 'images/icons/settingsactive.png' %}" class="imgactive" {% else %} src="{% static 'images/icons/settings.png' %}" {% endif %} alt=""><span {% if "settings" in request.path %} class="active"{% endif %}>Settings</span></a></li>
+        </ul>
+    </div>
+</nav>

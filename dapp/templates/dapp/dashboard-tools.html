@@ -1,0 +1,46 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Tools
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="tools">
+        <h2 style="text-align: center;">Tools</h2>
+        <form action="" style="display: none;">
+            {% csrf_token %}
+            <div class="subform">
+                <input type="text" id="searchinput" name="toolname" placeholder="Search tool name" required>
+                <button type="submit">
+                    <img src="{% static 'images/icons/search.png' %}" alt="" style="width: 30px;height: 30px;cursor: pointer;">
+                </button>
+            </div>
+        </form>
+        <form action="{% url 'rqsttool' %}" method="POST">
+            {% csrf_token %}
+            <div class="subform">
+                <input type="text" id="searchinput" name="toolname" placeholder="Request a new tool" required>
+                <button type="submit">
+                    <span style="background-color: var(--primary-color);color: var(--light-color);height: 30px;padding: 7px;border-radius: 7px;cursor: pointer;">Request</span>
+                </button>
+            </div>
+        </form>
+        <div class="tools-list">
+            <a href="{% url 'bmi' %}">BMI</a>
+            <a href="{% url 'crcl' %}">Creatinin Clearance</a>
+            <a href="{% url 'CHA2DS2-VASc' %}">CHA2DS2-VASc</a>
+            <a href="{% url 'apgar' %}">APGAR score</a>
+            <a href="{% url 'gfr' %}">GFR Score</a>
+            <a href="{% url 'meld' %}">MELD Score</a>
+            <a href="{% url 'pedgrowthchart' %}">Pediatrics Growth Chart</a>
+            <a href="{% url 'framinghamrisk' %}">Framingham Risk Score</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

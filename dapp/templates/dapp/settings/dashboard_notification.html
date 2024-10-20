@@ -1,0 +1,34 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="notifications">
+        <div class="noti-btns">
+            <a href="{% url 'settings' %}">Go back</a>
+            <a href="{% url 'clearnotification' %}" style="color: var(--light-color);background-color: red;">Clear all</a>
+        </div>
+        <div class="notis">
+            {% for noti in notis %}
+            <div class="noti">
+                <a href="{{ noti.link }}">{{ noti.text }}</a>
+                <p class="blur7">{{ noti.time_since }}</p>
+            </div>
+            {% empty %}
+            <div class="noti">
+                <a href="#">No new notifications!</a>
+                <p class="blur7">Just Now</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

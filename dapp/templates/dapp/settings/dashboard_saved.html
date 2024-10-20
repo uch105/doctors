@@ -1,0 +1,25 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="saved">
+        <div class="posts">
+            <h4 style="text-align: center;">Saved posts</h4>
+            {% for s in ss %}
+            <a href="{% url 'post' pk=s.post.id %}">You saved <strong>{{ s.post.owner_name }}</strong>'s post</a>
+            {% empty %}
+            <a href="{% url 'forum' %}">No saved post. Explore the community!</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

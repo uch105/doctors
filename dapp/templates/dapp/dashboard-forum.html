@@ -1,0 +1,64 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Forum
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard-forum.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="self-post">
+        {% if is_student %}
+        <img src="{{ student.image.url }}" alt="">
+        {% else %}
+        <img src="{{ doctor.image.url }}" alt="">
+        {% endif %}
+        <a href="{% url 'createpost' %}">Share your thoughts or questions</a>
+    </div>
+    <div class="posts">
+        {% for post in posts %}
+        <div class="post">
+            <div class="post-head">
+                <img src="{{ post.owner_image.url }}" alt="">
+                <div class="name-date">
+                    <div class="name">{{ post.owner_name }}</div>
+                    <div class="date">{{ post.date_time }}</div>
+                </div>
+            </div>
+            <div class="post-body">
+                <div class="post-body-text">
+                    {{ post.body|safe }}
+                </div>
+                <div class="post-body-images">
+                    {% for img in post.images.all %}
+                    <img src="{{ img.image.url }}" alt="">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="post-insights">
+                <a href="{% url 'post' pk=post.id %}" class="likes" id="like-count-{{ post.id }}">{{ post.total_likes }} likes</a>
+                <a href="{% url 'post' pk=post.id %}" class="comments">{{ post.total_comments }} comments</a>
+                <a href="{% url 'post' pk=post.id %}">See Post</a>
+            </div>
+            <div class="post-like-comment">
+                <a onclick="likepost('{{ post.id }}')"><img src="{% static 'images/icons/like.png' %}" alt="">Like</a>
+                <a onclick="OpenCommentBox('{{ post.id }}')"><img src="{% static 'images/icons/comment.png' %}" alt="">Comment</a>
+                <a onclick="CopyPostLink('{{ post.id }}')"><img src="{% static 'images/icons/share.png' %}" alt="">Share</a>
+            </div>
+            <div class="post-comment-box hide" id="comment-box-{{ post.id }}">
+                <form action="{% url 'postcomment' pk=post.id %}" method="POST" enctype="multipart/form-data">
+                     {% csrf_token %}
+                     <textarea name="comment_text" rows="3" placeholder="Leave a comment..."></textarea>
+                     <input type="file" name="comment_image" id="" class="inputfield">
+                     <input type="submit" value="Submit" class="submit-btn">
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

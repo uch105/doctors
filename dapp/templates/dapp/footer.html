@@ -1,0 +1,24 @@
+{% load static %}
+<footer>
+    <div class="container">
+        <hr>
+        <div class="foos">
+            <div class="foo">
+                <a href=""><img src="{% static 'images/icons/fb.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'images/icons/insta.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'images/icons/youtube.png' %}" alt=""></a>
+                <a href=""><img src="{% static 'images/icons/linkedin.png' %}" alt=""></a>
+            </div>
+            <div class="foo">
+                <a href="{% url 'about' %}">About Us</a>
+                <a href="">|</a>
+                <a href="https://siuchtechnologies.com/about-us/">About Company</a>
+            </div>
+            <div class="foo">
+                <a href="{% url 'terms' %}">Terms & Conditions</a>
+                <a href="">|</a>
+                <a href="{% url 'privacy' %}">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>

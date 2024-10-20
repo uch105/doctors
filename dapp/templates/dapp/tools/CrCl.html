@@ -1,0 +1,74 @@
+{% extends 'dapp/tools/test.html' %}
+{% load static %}
+
+{% block fstyle %}
+{% endblock %}
+
+{% block toolname %}
+Creatinine Clearance Calculator(Cockcroft-gault equation)
+{% endblock %}
+
+{% block c-section %}
+<div class="toolform">
+    <label for="weight">Weight (kg):</label>
+    <input type="number" class="inputfield" id="weight" placeholder="Enter your weight">
+
+    <label for="age">Age (years):</label>
+    <input type="number" class="inputfield" id="age" placeholder="Enter your age">
+
+    <label for="serum-creatinine">Serum Creatinine (mg/dL):</label>
+    <input type="number" class="inputfield" id="serum-creatinine" placeholder="Enter your serum creatinine">
+
+    <label for="gender">Gender:</label>
+    <select id="gender" class="inputfield">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    
+    <button class="submit-btn" onclick="calculateCrCl()">Calculate CrCl</button>
+
+    <div id="result"></div>
+</div>
+{% endblock %}
+
+{% block i-section %}
+<div class="toolform">
+    <p>
+        The Cockcroft-Gault equation is used to estimate creatinine clearance (CrCl), 
+        which helps in assessing kidney function. It considers a person's age, weight, 
+        gender, and serum creatinine levels.
+    </p>
+    <p>
+        **Cockcroft-Gault Formula:**  <br>
+        CrCl (mL/min) = \[\frac{(140 - age) \times weight (kg)}{72 \times serum creatinine (mg/dL)}\]  
+        For women, multiply the result by 0.85.
+    </p>
+    <p>This formula helps in adjusting medication doses for patients with impaired kidney function.</p>
+</div>
+{% endblock %}
+
+{% block fscript %}
+<script>
+    function calculateCrCl() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const age = parseFloat(document.getElementById('age').value);
+            const serumCreatinine = parseFloat(document.getElementById('serum-creatinine').value);
+            const gender = document.getElementById('gender').value;
+
+            if (isNaN(weight) || isNaN(age) || isNaN(serumCreatinine) || age <= 0 || weight <= 0 || serumCreatinine <= 0) {
+                alert("Please enter valid numbers for all inputs.");
+                return;
+            }
+
+            // Cockcroft-Gault formula for men
+            let crCl = ((140 - age) * weight) / (72 * serumCreatinine);
+
+            // If the user is female, multiply the result by 0.85
+            if (gender === 'female') {
+                crCl *= 0.85;
+            }
+
+            document.getElementById('result').innerHTML = `Your CrCl is ${crCl.toFixed(2)} mL/min`;
+        }
+</script>
+{% endblock %}

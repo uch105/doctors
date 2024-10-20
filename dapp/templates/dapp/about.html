@@ -1,0 +1,28 @@
+{% extends 'dapp/base.html' %}
+{% load static %}
+
+{% block title %}
+About Us
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<script>
+    
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="aboutus">
+        <div class="a">
+            <h1>What is it?</h1>
+            <p>This is a all-in-one software for the doctors in Bangladesh. The main goal is to provide a software package so that doctors don't have to use multiple softwares. We have a sophiscated library of Govt. issued drugs, a wide collection of calculators to calculate various calculations, a automated prescription software. Moreover, there is a mini-social platform for doctors where they can ask/discuss about anything. This platform is open for only authorized doctors, interns and students.</p>
+        </div>
+        <div class="a">
+            <h1>What is its parent company?</h1>
+            <p>M/S SiUch Technologies, one of the digital solutions providers operating in Bangladesh, maintains and owns this application. Any inquiry related to this product or legal authority is associated with this company.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

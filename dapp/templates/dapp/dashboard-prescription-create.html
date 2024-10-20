@@ -1,0 +1,805 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Create Prescription
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/prescription.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form action="" id="prescription" autocomplete="off">
+        <div class="person-details">
+            <input type="text" class="textinput" name="fullname" placeholder="Enter patient name" required>
+            <input type="text" class="textinput" name="age" placeholder="Enter age" required>
+            <select name="sex" class="textinput">
+                <option value="Male">Male</option required>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+            <input type="text" class="textinput" name="occupation" placeholder="Enter occupation">
+            <input type="text" class="textinput" name="address" placeholder="Enter address">
+            <input type="text" class="textinput" name="contact" placeholder="Enter contact no" required>
+            <input type="submit" value="Create" class="submit-btn">
+        </div>
+        <div class="symptoms-prescription">
+            <div class="symptoms">
+                <div class="symptom-general">
+                    <div class="buttons">
+                        <a onclick="showSG('1')" id="sgb1"  class="agreen">C/C</a>
+                        <a onclick="showSG('2')" id="sgb2">Present Condition</a>
+                        <a onclick="showSG('3')" id="sgb3">History</a>
+                        <a onclick="showSG('4')" id="sgb4">Review of system</a>
+                    </div>
+                    <div id="sgf1">
+                        <div class="sgf">
+                            <textarea name="primary_complaint" placeholder="Primary complaints"></textarea>
+                            <input type="text" name="duration" placeholder="Duration">
+                            <textarea name="additional_complaint" placeholder="Additional complaints"></textarea>
+                        </div>
+                    </div>
+                    <div id="sgf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="onset" placeholder="Onset">
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="onset_duration" placeholder="Duration">
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="onset_frequency" placeholder="Frequency">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="aggravating_factors" placeholder="Aggravating Factors">
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="relieving_factors" placeholder="Relieving Factors">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="jaundice">
+                                    <label for="jaundice">Jaundice</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="abdominal_pain">
+                                    <label for="abdominal_pain">Abdominal Pain</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="nausea">
+                                    <label for="nausea">Nausea</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="change_stool_color">
+                                    <label for="change_stool_color">Change in stool color</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="change_urine_color">
+                                    <label for="change_urine_color">Change in urine color</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="itching">
+                                    <label for="itching">Prurities (itching)</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="loss_of_appetite">
+                                    <label for="loss_of_appetite">Loss of appetite</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="weight_loss">
+                                    <label for="weight_loss">Weight loss</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="fever">
+                                    <label for="fever">Fever</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sgf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="hepatobiliary_conditions" placeholder="Hepatobiliary Conditions">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="chronic_illness">
+                                    <label for="chronic_illness">Chronic Illness</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="diabetes">
+                                    <label for="diabetes">Diabetes</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="cardiovascular_disease">
+                                    <label for="cardiovascular_disease">Cardiovascular Disease</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="past_medications" placeholder="Drug history">
+                                    <input type="text" name="past_surgeries" placeholder="Past Surgeries">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="allergies">
+                                    <label for="allergies">Allergies</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="genetic_disorders">
+                                    <label for="genetic_disorders">Genetic Disorders</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="kidney_disease">
+                                    <label for="kidney_disease">Kidney Diseases</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="hypertension">
+                                    <label for="hypertension">Hypertension</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="heart_disease">
+                                    <label for="heart_disease">Heart Disease</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="arthritis">
+                                    <label for="arthritis">Arthritis</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="osteoporesis">
+                                    <label for="osteoporesis">Osteoporesis</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="leukemia">
+                                    <label for="leukemia">Leukemia</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="lymphoma">
+                                    <label for="lymphoma">Lymphoma</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="epilepsy">
+                                    <label for="epilepsy">Epilepsy</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="asthma">
+                                    <label for="asthma">Asthma</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="lung_disease">
+                                    <label for="lung_disease">Lung Disease</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="colorectal_disease">
+                                    <label for="colorectal_disease">Colorectal Disease</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="acne">
+                                    <label for="acne">Acne</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="psoriasis">
+                                    <label for="psoriasis">Psoriasis</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="eczema">
+                                    <label for="eczema">Eczema</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="polyps">
+                                    <label for="polyps">Polyps</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="migraines">
+                                    <label for="migraines">Migraines</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="smoking">
+                                    <label for="smoking">Smoking</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="alcohol">
+                                    <label for="alcohol">Alcohol</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="sleep_disorder">
+                                    <label for="sleep_disorder">Sleep Disorder</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="recreational_drugs" placeholder="Recreational Drugs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="sgf4" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="weight_gain">
+                                    <label for="weight_gain">Weight gain</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="fatigue">
+                                    <label for="fatigue">Fatigue</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="chest_pain">
+                                    <label for="chest_pain">Chest Pain</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="edema_location" placeholder="Edema Location">
+                                    <input type="text" name="edema_timing" placeholder="Edema timing">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="general_appearance" placeholder="General Appearance">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="overall_health" placeholder="Overall health status">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="vital_signs" placeholder="Vital Signs">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="general_appearance" placeholder="General Appearance">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="blood_pressure" placeholder="BP">
+                                    <input type="text" name="pulse" placeholder="Pulse">
+                                    <input type="text" name="respiratory_rate" placeholder="R/R">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="spo2" placeholder="SPO2">
+                                    <input type="text" name="body_temp" placeholder="Temperature">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="bmi" placeholder="Body Mass Index (BMI)">
+                                    <a href="{% url 'bmi' %}" target="_blank">Calculate</a>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <textarea name="other_sg" placeholder="Any other symptoms or findings..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if "Burn & Plastic" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Findings (Burn)</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Findings (Plastic)</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="burn_location_extent" placeholder="Location and extent of burns">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="burn_depth" placeholder="Depth of burns">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="blisters">
+                                    <label for="blisters">Blisters?</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="eschar">
+                                    <label for="eschar">Eschar?</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="necrosis">
+                                    <label for="necrosis">Necrosis?</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="redness">
+                                    <label for="redness">Redness?</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="swelling">
+                                    <label for="swelling">Swelling?</label>
+                                </div>
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="discharge">
+                                    <label for="discharge">Discharge?</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="tenderness" placeholder="Tenderness">
+                                    <input type="text" name="texture" placeholder="Texture">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="surgical_scars" placeholder="Surgical scars">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="symmetry_contour" placeholder="Symmetry and contour">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sign_of_infection" placeholder="Sign of infections">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_tenderness" placeholder="Palpation : Tenderness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_masses" placeholder="Palpation : Masses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_abnormalities" placeholder="Palpation : Abnormalities">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3"  class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cbc">Complete Blood Count (CBC)</label>
+                                    <input type="file" name="cbc">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="wound_cultures" placeholder="Wound cultures (if infection)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="coagulation_profile" placeholder="Coagulation profile">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="x-ray">X-ray (if underlying injury is suspected)</label>
+                                    <input type="file" name="x-ray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound (if vascular involvement is suspected)</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri/ctscan">MRI/CT Scan (for complex cases)</label>
+                                    <input type="file" name="mri/ctscan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Hepatology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Hepatobiliary examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="checkbox" name="abdominal_distension">
+                                    <label for="abdominal_distension">Abdominal Distension?</label>
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="tenderness" placeholder="Tenderness">
+                                    <input type="text" name="liver_size" placeholder="Liver size">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="gallbladder_tenderness" placeholder="Gallbladder Tenderness">
+                                    <input type="text" name="spleen_size" placeholder="Spleen size">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="border_liver_dullness" placeholder="Upper border liver dullness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="serum_albumin" placeholder="Serum Albumin">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="prothrombin" placeholder="Prothrombin time">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="ascites" placeholder="Ascites">
+                                    <input type="text" name="bowel_sounds" placeholder="Bowel sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cbc">Complete Blood Count (CBC)</label>
+                                    <input type="file" name="cbc">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="hepatitis_panel">Hepatitis panel</label>
+                                    <input type="file" name="hepatitis_panel">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound_abdomen">Ultrasound of Abdomen</label>
+                                    <input type="file" name="ultrasound_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
+                                    <input type="file" name="ctscan_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri_abdomen">MRI of Abdomen</label>
+                                    <input type="file" name="mri_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ercp">ERCP (Endoscopic Retrograde Cholangiopancreatography)</label>
+                                    <input type="file" name="ercp">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="liver_biopsy">Liver biopsy</label>
+                                    <input type="file" name="liver_biopsy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="fibroscan">FibroScan (Liver Fibrosis Assessment)</label>
+                                    <input type="file" name="fibroscan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Nephrology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Renal examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Systemic examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="edema_extent" placeholder="Edema extent">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="skin_change" placeholder="Skin change">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_tenderness" placeholder="Palpation : Tenderness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_masses" placeholder="Palpation : Masses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="bruits" placeholder="Bruits (Renal Arteries)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="heart_sounds" placeholder="Heart sounds">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="peripheral_pulses" placeholder="Peripheral pulses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="abdominal_examinations" placeholder="Abdominal examinations">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="serum_creatinine" placeholder="Serum Creatinine">
+                                    <input type="text" name="bun" placeholder="BUN (Renal function test)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cbc">Complete Blood Count (CBC)</label>
+                                    <input type="file" name="cbc">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
+                                    <input type="file" name="ctscan_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri_abdomen">MRI of Abdomen</label>
+                                    <input type="file" name="mri_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="protein-creatinine" placeholder="Urine protein/creatinine ratio">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="renal_biopsy">Renal biopsy</label>
+                                    <input type="file" name="renal_biopsy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="gfr_score" placeholder="GFR score">
+                                    <a href="{% url 'gfr' %}" target="_blank">Estimate GFR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Cardiology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Cardiovascular examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="apex_beat" placeholder="Apex beat">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpablep2" placeholder="Palpable P2">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="peripheral_pulse_quality" placeholder="Peripheral Pulse Quality">
+                                    <input type="text" name="peripheral_pulse_symmetry" placeholder="Peripheral Pulse Symmetry">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="heart_sound_s1" placeholder="Heart sound (s1)">
+                                    <input type="text" name="heart_sound_s2" placeholder="Heart sound (s2)">
+                                    <input type="text" name="heart_sound_additional" placeholder="(Additional)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="murmurs_type" placeholder="Murmurs type">
+                                    <input type="text" name="murmurs_location" placeholder="Murmurs location">
+                                    <input type="text" name="murmurs_intensity" placeholder="Murmurs intensity">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="serum_creatinine" placeholder="Serum Creatinine">
+                                    <input type="text" name="bun" placeholder="BUN (Renal function test)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cbc">Complete Blood Count (CBC)</label>
+                                    <input type="file" name="cbc">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
+                                    <input type="file" name="ctscan_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri_abdomen">MRI of Abdomen</label>
+                                    <input type="file" name="mri_abdomen">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="protein-creatinine" placeholder="Urine protein/creatinine ratio">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="renal_biopsy">Renal biopsy</label>
+                                    <input type="file" name="renal_biopsy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="gfr_score" placeholder="GFR score">
+                                    <a href="{% url 'gfr' %}" target="_blank">Estimate GFR</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="prescription">
+                <div class="buttons">
+                    <div>
+                        <input type="text" class="textinput" id="drug" name="drug" autocomplete="off" placeholder="Type drug name..." style="width: 130px;"><br>
+                        <div id="suggestions" class="autocomplete-suggestions"></div>
+                    </div>
+                    
+                    <select class="textinput" id="dosage" onchange="insertDoseText()">
+                        <option value="None">--- Dose ---</option>
+                        <option value="1 + 1 + 1">1 + 1 + 1</option>
+                        <option value="1 + 0 + 0">1 + 0 + 0</option>
+                        <option value="1 + 0 + 1">1 + 0 + 1</option>
+                        <option value="0 + 1 + 0">0 + 1 + 0</option>
+                        <option value="0 + 0 + 1">0 + 0 + 1</option>
+                        <option value="1/2 + 0 + 0">1/2 + 0 + 0</option>
+                        <option value="1/2 + 0 + 1/2">1/2 + 0 + 1/2</option>
+                        <option value="2 + 2 + 2">2 + 2 + 2</option>
+                        <option value="3 + 0 + 0">3 + 0 + 0</option>
+                        <option value="4 + 0 + 0">4 + 0 + 0</option>
+                        <option value="1 + 1 + 1 + 1">1 + 1 + 1 + 1</option>
+                        <option value="1 + 0 + 1 + 0">1 + 0 + 1 + 0</option>
+                        <option value="2 + 2 + 2 + 2 + 2">2 + 2 + 2 + 2 + 2</option>
+                    </select>
+                    
+                    
+                    <select class="textinput" id="dosage2" onchange="insertDoseText2()">
+                        <option value="None">Before/After</option>
+                        <option value="Before meal">Before meal</option>
+                        <option value="After meal">After meal</option>
+                    </select>
+
+                    <select class="textinput" id="dosage3" onchange="insertDoseText3()">
+                        <option value="None">--Duration--</option>
+                        <option value="1 Day">1 Day</option>
+                        <option value="3 Days">3 Days</option>
+                        <option value="5 Days">5 Days</option>
+                        <option value="7 Days">7 Days</option>
+                        <option value="10 Days">10 Days</option>
+                        <option value="15 Days">15 Days</option>
+                        <option value="21 Days">21 Days</option>
+                        <option value="1 month">1 month</option>
+                        <option value="Before sleep">Before sleep</option>
+                        <option value="All time">All time</option>
+                        <option value="Until further notice">Until further notice</option>
+                    </select>
+                    
+                </div>
+                <div class="prestext">
+                    <textarea name="prestext" id="prestext" class="textareainput" rows="15"></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

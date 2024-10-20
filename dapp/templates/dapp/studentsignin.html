@@ -1,0 +1,60 @@
+{% extends 'dapp/base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Login
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script>
+   
+</script>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="studentsignin">
+        {% if message %}
+        <p style="text-align: center;margin: 10px 0px;">{{ message }}</p>
+        <form action="{% url 'reportlogin' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="report" placeholder="Explain your problem (provide contact no)">
+            <input type="submit" value="Report" class="submit-btn">
+        </form>
+        {% endif %}
+        <form action="{% url 'studentsignin' %}" method="POST" enctype="multipart/form-data" required autocomplete="off">
+            {% csrf_token %}
+            <a href="{% url 'login' %}">Already have an account? <span class="green" style="cursor: pointer;">Click here!</span></a>
+            <input type="text" class="inputfield" name="name" placeholder="Enter full name" required>
+            <input type="text" class="inputfield" name="phone" placeholder="Enter phone no" required>
+            <input type="text" class="inputfield" name="email" placeholder="Enter email" required>
+            <input type="text" class="inputfield" name="dob" placeholder="Enter date of birth" required>
+            <select name="gender" class="inputfield" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Others">Others</option>
+            </select>
+            <select name="blood_group" class="inputfield" required>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
+            <select name="institute" class="inputfield" required>
+                {% for clg in clgs %}
+                <option value="{{ clg.name }}">{{ clg.name }}</option>
+                {% endfor %}
+            </select>
+            <label for="image" class="blur5">Set profile image <br>Square ( 1:1 ) shaped image is recommeneded</label>
+            <input type="file" name="image" id="" class="fileinput">
+            <input type="text" name="password" id="password" class="inputfield" placeholder="Enter password">
+            <input type="submit" class="submit-btn" value="Submit">
+        </form>
+    </div>
+</div>
+{% endblock %}

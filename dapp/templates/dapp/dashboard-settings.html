@@ -1,0 +1,28 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Doctors - Settings
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="settings">
+        <a href="{% url 'profile-self' %}">Go to profile</a>
+        <a href="{% url 'notification' %}">Notification</a>
+        {% if is_student %}
+        {% else %}
+        <a href="{% url 'enableai' %}">Enable AI</a>
+        <a href="{% url 'customtheme' %}">Choose theme</a>
+        {% endif %}
+        <a href="{% url 'changesubscription' %}">Subscription</a>
+        <a href="{% url 'history' %}">History</a>
+        <a href="{% url 'saved' %}">Saved</a>
+        <a href="{% url 'logout' %}" style="background-color: red;color: var(--light-color);">Logout</a>
+    </div>
+</div>
+{% endblock %}

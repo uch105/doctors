@@ -1,0 +1,40 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="customtheme">
+        <form action="{% url 'customthemerequest' %}" method="POST">
+            {% csrf_token %}
+            <div class="subform">
+                <input type="text" id="searchinput" name="themename" placeholder="Request for theme" required>
+                <button type="submit">
+                    <img src="{% static 'images/icons/search.png' %}" alt="" style="width: 30px;height: 30px;cursor: pointer;">
+                </button>
+            </div>
+        </form>
+        <div class="themes">
+            {% for theme in doctor.selectedthemes.all %}
+            <div class="theme">
+                <img src="{{ theme.theme.image.url }}" alt="{{ theme.theme.name }}">
+                <a href="#">{{ theme.theme.name }} &nbsp; &#x2713;</a>
+            </div>
+            {% endfor %}
+            {% for theme in themes %}
+            <div class="theme">
+                <img src="{{ theme.image.url }}" alt="{{ theme.name }}">
+                <a href="{% url 'selecttheme' pk=theme.name %}">{{ theme.name }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

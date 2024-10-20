@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    {% block css %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/icons/favicon.ico' %}">
+</head>
+<body>
+    {% if is_student %}
+    {% include 'dapp/dashboard-snavbar.html' %}
+    {% else %}
+    {% include 'dapp/dashboard-navbar.html' %}
+    {% endif %}
+
+    {% block body %}
+    {% endblock %}
+
+    <script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

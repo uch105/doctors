@@ -1,0 +1,181 @@
+:root{
+    --primary-color: #066f00;
+    --dark-color: #3C3C3B;
+    --light-color: #ffffff;
+}
+@font-face {
+    font-family: 'BanglaBold';
+    src: url(AnekBangla-Bold.ttf) format('truetype');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'BanglaLight';
+    src: url(AnekBangla-Light.ttf) format('truetype');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'BanglaMedium';
+    src: url(AnekBangla-Medium.ttf) format('truetype');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'BanglaRegular';
+    src: url(AnekBangla-Regular.ttf) format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'BanglaSemiBold';
+    src: url(AnekBangla-SemiBold.ttf) format('truetype');
+    font-weight: 600;
+}
+html,body{
+    margin: 0px;
+    padding: 0px;
+    font-family: "BanglaMedium",sans-serif;
+}
+.container{
+    padding: 0px 100px;
+}
+h1,h2,h3,h4,h5,h6,p,ul{
+    margin: 0px;
+    color: var(--dark-color);
+}
+@media screen and (max-width:1400px){
+    .container{
+        padding: 0px 80px;
+    }
+}
+@media screen and (max-width:1200px){
+    .container{
+        padding: 0px 70px;
+    }
+}
+@media screen and (max-width:1024px){
+    .container{
+        padding: 0px 60px;
+    }
+}
+@media screen and (max-width:820px){
+    .container{
+        padding: 0px 50px;
+    }
+}
+@media screen and (max-width:768px){
+    .container{
+        padding: 0px 40px;
+    }
+}
+@media screen and (max-width:600px){
+    .container{
+        padding: 0px 30px;
+    }
+}
+form{
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.inputfield{
+    width: 300px;
+    padding: 15px;
+    background-color: var(--light-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    font-family: 'BanglaMedium',sans-serif;
+    font-size: 16px;
+}
+.textinputfield{
+    width: 300px;
+    height: 150px;
+    padding: 15px;
+    background-color: var(--light-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    font-family: 'BanglaMedium',sans-serif;
+    font-size: 16px;
+}
+.submit-btn{
+    width: 300px;
+    padding: 15px;
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    border: 0.5px solid rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    font-family: 'BanglaMedium',sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+}
+.fileinput{
+    background-color: var(--light-color);
+    outline: none;
+}
+::-webkit-file-upload-button{
+    color: var(--light-color);
+    background-color: var(--primary-color);
+    padding: 7px 15px;
+    outline: none;
+    border-radius: 10px;
+    border:none;
+    font-family: 'BanglaBold',sans-serif;
+}
+nav{
+    top: 10px;
+    left: 0;
+    position: sticky;
+    margin-bottom: 15px;
+    z-index: 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111;
+}
+.navbar-container{
+    display: flex;
+    justify-content: center;
+}
+.navbar-container ul{
+    list-style: none;
+    background-color: var(--light-color);
+    padding: 10px 30px;
+    border-radius: 7px;
+    box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-container a{
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.navbar-container a img{
+    width: 20px;
+    height: auto;
+}
+.navbar-container a .imgactive{
+    width: 40px;
+    height: auto;
+}
+.navbar-container a span{
+    color: var(--dark-color);
+    font-family: 'BanglaBold', sans-serif;
+    font-size: 12px;
+}
+.navbar-container a .active{
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+@media screen and (max-width:768px){
+    .navbar-container a span{
+        display: none;
+    }
+}
+@media screen and (max-width:430px){
+    .navbar-container ul{
+        gap: 25px;
+    }
+}
