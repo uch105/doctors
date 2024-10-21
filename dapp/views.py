@@ -1144,7 +1144,7 @@ def check_tran_id(s):
 def add_subscription(request,pk,pk2,pk3):
     try:
         doctor = Doctor.objects.get(bmdc=pk)
-        if check_tran_id(pk3):
+        if check_tran_id(pk3) == "True":
             subscription = Subscription.objects.get(doctor=doctor)
             if pk2 == "200":
                 subscription.subscription_type = "monthly"
@@ -1176,7 +1176,7 @@ def add_subscription(request,pk,pk2,pk3):
             return JsonResponse({'status':'Failed'})
     except:
         student = Student.objects.get(sid=pk)
-        if check_tran_id(pk3):
+        if check_tran_id(pk3) == "True":
             subscription = StudentSubscription.objects.get(student=student)
             if pk2 == "50":
                 subscription.subscription_type = "monthly"
