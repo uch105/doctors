@@ -1139,7 +1139,7 @@ def api_doctor(request,pk):
 
 def check_tran_id(s):
     response = requests.get("https://siuchtechnologies.com/api/check_tran_id/"+str(s)+"/")
-    return response["status"]
+    return response.json()["status"]
 
 def add_subscription(request,pk,pk2,pk3):
     try:
