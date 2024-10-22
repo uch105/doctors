@@ -3,7 +3,8 @@ from django.conf import settings
 from dapp.models import Drug
 from openpyxl import load_workbook
 
-path = 'C:\\Users\\uch\\Downloads\\projects\\doctors\\dapp\\drugs.xlsx'
+#path = 'C:\\Users\\uch\\Downloads\\projects\\doctors\\dapp\\drugs.xlsx'
+path = '/var/www/doctors/dapp/drugs.xlsx'
 
 workbook = load_workbook(path)
 sheet = workbook.active
