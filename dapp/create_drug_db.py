@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-from dapp.models import Drug
+from .models import Drug
 from openpyxl import load_workbook
 
 #path = 'C:\\Users\\uch\\Downloads\\projects\\doctors\\dapp\\drugs.xlsx'
