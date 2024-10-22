@@ -155,7 +155,7 @@ def additional(request,pk):
             doctor.image = request.FILES["image"]
             doctor.password = request.POST.get("password")
             doctor.save()
-            send_automail(to_email=doctor.email,subject="no-reply[Account Creation Successful!]",body=f"This email is sent to inform you that your prescribemate account has successfully been created. You can now login with \nYour username : {pk}\nand Your password : {doctor.password}\n\nThank you for choosing us! We will do our best for your smooth user exprience!\n\n\n\n\n-At your service\n Team Prescribemate")
+            send_automail(to_email=doctor.email,subject="Welcome to Prescribemate - Your Account is Ready!",body=f"Hi {doctor.name},\n\n We're excited to inform you that your Prescribemate account has been successfully created! You can now log in and begin exploring.\n\nUsername : {pk}\nPassword : {doctor.password}\n\nThank you for choosing Prescribemate. We're here to ensure you have the best experience possible. If you need any assistance, don't hesitate to reach out.\n\n\nBest regards,\nTeam Prescribemate")
             user = User.objects.create(username=pk,password=doctor.password,email=doctor.email)
             auth_login(request,user)
             return redirect("forum")
@@ -227,7 +227,7 @@ def studentsignin(request):
             student.save()
             user = User.objects.create(username=student.sid,password=student.password)
             user.save()
-            send_automail(to_email=student.email,subject="no-reply[Account Creation Successful!]",body=f"This email is sent to inform you that your prescribemate account has successfully been created. You can now login with \nYour username : {student.sid}\nand Your password : {student.password}\n\nThank you for choosing us! We will do our best for your smooth user exprience!\n\n\n\n\n-At your service\n Team Prescribemate")
+            send_automail(to_email=student.email,subject="Welcome to Prescribemate - Your Account is Ready!",body=f"Hi {student.name},\n\n We're excited to inform you that your Prescribemate account has been successfully created! You can now log in and begin exploring.\n\nUsername : {student.sid}\nPassword : {student.password}\n\nThank you for choosing Prescribemate. We're here to ensure you have the best experience possible. If you need any assistance, don't hesitate to reach out.\n\nBest regards,\nTeam Prescribemate")
             instance1 = StudentSubscription.objects.create(student=student,is_active=True)
             instance2 = StudentNotification.objects.create(student=student,text="Welcome to prescribemate! Thank you for choosing us.",link="#")
             instance1.save()
@@ -255,7 +255,7 @@ def studentreset(request):
             try:
                 email = request.POST.get("email")
                 student = Student.objects.get(email=email)
-                send_automail(to_email=student.email,subject="Do not reply [Account Recovery!]",body=f"This email is sent to inform you that we restored your password. You can now login with \nYour username : {student.sid}\nand Your password : {student.password}\n\nThank you for choosing us! We will do our best for your smooth user exprience!\n\n\n\n\n-At your service\n Team Prescribemate")
+                send_automail(to_email=student.email,subject="Prescribemate - Account Recovery Request",body=f"Hi {student.name},\n\nWe have successfully restored your account password. You can now log in using the details provided below:\n\nUsername: {student.sid}\nPassword: {student.password}\n\nPlease make sure to keep your login details secure, and don't hesitate to contact us if you need any further assistance.\n\nThank you for choosing Prescribemate! We're committed to providing you with a seamless user experience.\n\nBest regards,\nTeam Prescribemate")
                 context = {
                     'message': f"An email has been sent to {email}. Please check and login again.",
                 }
@@ -269,7 +269,7 @@ def studentreset(request):
             try:
                 phone = request.POST.get("phone")
                 student = Student.objects.get(phone=phone)
-                send_automail(to_email=student.email,subject="Do not reply [Account Recovery!]",body=f"This email is sent to inform you that we restored your password. You can now login with \nYour username : {student.sid}\nand Your password : {student.password}\n\nThank you for choosing us! We will do our best for your smooth user exprience!\n\n\n\n\n-At your service\n Team Prescribemate")
+                send_automail(to_email=student.email,subject="Prescribemate - Account Recovery Request",body=f"Hi {student.name},\n\nWe have successfully restored your account password. You can now log in using the details provided below:\n\nUsername: {student.sid}\nPassword: {student.password}\n\nPlease make sure to keep your login details secure, and don't hesitate to contact us if you need any further assistance.\n\nThank you for choosing Prescribemate! We're committed to providing you with a seamless user experience.\n\nBest regards,\nTeam Prescribemate")
                 context = {
                     'message': f"An email has been sent to {email}. Please check and login again.",
                 }
@@ -291,7 +291,7 @@ def reset(request):
     bmdc = request.POST.get("bmdc")
     c = request.POST.get("category")
     doctor = Doctor.objects.get(bmdc=c+bmdc)
-    send_automail(to_email=doctor.email,subject="Do not reply [Account Recovery!]",body=f"This email is sent to inform you that we restored your password. You can now login with \nYour username : {c+bmdc}\nand Your password : {doctor.password}\n\nThank you for choosing us! We will do our best for your smooth user exprience!\n\n\n\n\n-At your service\n Team Prescribemate")
+    send_automail(to_email=doctor.email,subject="Prescribemate - Account Recovery Request",body=f"Hi {doctor.name},\n\nWe have successfully restored your account password. You can now log in using the details provided below:\n\nUsername: {doctor.bmdc}\nPassword: {doctor.password}\n\nPlease make sure to keep your login details secure, and don't hesitate to contact us if you need any further assistance.\n\nThank you for choosing Prescribemate! We're committed to providing you with a seamless user experience.\n\nBest regards,\nTeam Prescribemate")
     context = {
         'message': f'An email has been sent to {doctor.email}. Please check spam folder also!'
     }
