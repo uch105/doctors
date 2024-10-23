@@ -1,10 +1,18 @@
 import os
-from django.conf import settings
-from .models import Drug
+import sys
+import django
+
+project_root = 'C:\\Users\\uch\\Downloads\\projects\\doctors'  # Replace this with the absolute path to your project root (where manage.py is)
+sys.path.append(project_root)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
+django.setup()
+
+from dapp.models import Drug
 from openpyxl import load_workbook
 
-#path = 'C:\\Users\\uch\\Downloads\\projects\\doctors\\dapp\\drugs.xlsx'
-path = '/var/www/doctors/dapp/drugs.xlsx'
+path = 'C:\\Users\\uch\\Downloads\\projects\\doctors\\dapp\\drugs.xlsx'
+#path = '/var/www/doctors/dapp/drugs.xlsx'
 
 workbook = load_workbook(path)
 sheet = workbook.active
