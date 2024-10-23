@@ -322,7 +322,7 @@ class Drug(models.Model):
     class_name = models.CharField(max_length=255,null=True,blank=True)
     drugs_type = models.CharField(max_length=255,null=True,blank=True)
     drugs_for = models.CharField(max_length=255,null=True,blank=True)
-    drugs_dose = models.CharField(max_length=255,null=True,blank=True)
+    drugs_dose = models.CharField(max_length=1000,null=True,blank=True)
     indication = models.TextField(null=True,blank=True)
     contraindication = models.TextField(null=True,blank=True)
     side_effect = models.TextField(null=True,blank=True)
