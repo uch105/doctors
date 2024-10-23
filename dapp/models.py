@@ -316,7 +316,7 @@ class StudentComment2(models.Model):
 class Drug(models.Model):
     drug_id = models.CharField(max_length=100,null=True)
     brand = models.CharField(max_length=255,null=True,blank=True)
-    generic = models.CharField(max_length=255,null=True,blank=True)
+    generic = models.CharField(max_length=1000,null=True,blank=True)
     manufacturer = models.CharField(max_length=255,null=True,blank=True)
     price = models.CharField(max_length=255,null=True,blank=True)
     class_name = models.CharField(max_length=255,null=True,blank=True)
