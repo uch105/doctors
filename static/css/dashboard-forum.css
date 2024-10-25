@@ -67,8 +67,10 @@
 }
 .name-date .name{
     font-size: 18px;
+    text-decoration: none;
     color: var(--primary-color);
     font-weight: 600;
+    cursor: pointer;
 }
 .name-date .date{
     font-size: 14px;

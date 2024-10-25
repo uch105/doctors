@@ -48,6 +48,16 @@ def is_student(request):
     else:
         return False
 
+def sub_validity_check(request):
+    username = get_username(username)
+    try:
+        doctor = Doctor.objects.get(bmdc=username)
+        s = Subscription.objects.get(doctor=doctor)
+    except:
+        student = Student.objects.get(sid=username)
+        s = StudentSubscription.objects.get(student=student)
+    return s.is_active
+
 def generate_id(s,n):
     return str(str(s)+''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase+string.digits,k=int(n))))
 
@@ -321,6 +331,7 @@ def dashboard_prescription(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
     context={
         'doctor': doctor,
+        'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
     }
     return render(request,"dapp/dashboard-prescription.html",context)
 
@@ -329,6 +340,7 @@ def dashboard_createprescription(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
     context={
         'doctor': doctor,
+        'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
     }
     return render(request,"dapp/dashboard-prescription-create.html",context)
 
@@ -353,10 +365,12 @@ def dashboard_tools(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/dashboard-tools.html",context)
 
@@ -372,10 +386,12 @@ def bmi(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/bmi.html",context)
 
@@ -384,10 +400,12 @@ def crcl(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/CrCl.html",context)
 
@@ -396,10 +414,12 @@ def cha2ds2_vasc(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/CHA2DS2-VASc.html",context)
 
@@ -408,10 +428,12 @@ def apgar(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/apgar.html",context)
 
@@ -420,10 +442,12 @@ def gfr(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/gfr.html",context)
 
@@ -432,10 +456,12 @@ def meld(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/meld.html",context)
 
@@ -444,10 +470,12 @@ def pedgrowthchart(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/pedgrowthchart.html",context)
 
@@ -456,10 +484,12 @@ def framinghamrisk(request):
     if is_student(request):
         context={
             'is_student':True,
+            'sub_valid': StudentSubscription.objects.get(student=Student.objects.get(sid=get_username(request))).is_active
         }
     else:
         context={
             'is_student':False,
+            'sub_valid': Subscription.objects.get(doctor=Doctor.objects.get(bmdc=get_username(request))).is_active,
         }
     return render(request,"dapp/tools/framinghamrisk.html",context)
 
@@ -490,6 +520,7 @@ def dashboard_drugs(request):
             context = {
                 'drugs': drugs,
                 'is_student': is_student(request),
+                'sub_valid': sub_validity_check(request),
             }
             return render(request,"dapp/dashboard-drugs.html",context)
     if request.method == "POST":
@@ -500,6 +531,7 @@ def dashboard_drugs(request):
             context = {
                 'drugs':drugs,
                 'is_student': is_student(request),
+                'sub_valid': sub_validity_check(request),
             }
             return render(request,"dapp/dashboard-drugs.html",context)
         if pk == "generic":
@@ -507,6 +539,7 @@ def dashboard_drugs(request):
             context = {
                 'drugs':drugs,
                 'is_student': is_student(request),
+                'sub_valid': sub_validity_check(request),
             }
             return render(request,"dapp/dashboard-drugs.html",context)
         if pk == "id":
@@ -514,12 +547,14 @@ def dashboard_drugs(request):
             context = {
                 'drugs':drugs,
                 'is_student': is_student(request),
+                'sub_valid': sub_validity_check(request),
             }
             return render(request,"dapp/dashboard-drugs.html",context)
     drugs = Drug.objects.all()
     context={
         'drugs':drugs[:20],
         'is_student': is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/dashboard-drugs.html",context)
 
@@ -529,6 +564,7 @@ def dashboard_drug(request,pk):
     context = {
         'drug':drugs[0],
         'is_student': is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/dashboard-drug.html",context)
 
@@ -567,6 +603,7 @@ def dashboard_forum(request):
             'posts': posts,
             'student': student,
             'is_student': is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     else:
         doctor = Doctor.objects.get(bmdc=get_username(request))
@@ -574,6 +611,7 @@ def dashboard_forum(request):
             'posts': posts,
             'doctor': doctor,
             'is_student': is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     return render(request,"dapp/dashboard-forum.html",context)
 
@@ -596,7 +634,9 @@ def createpost(request):
         
         return redirect('post',pk=post.id)
     
-    context = {}
+    context = {
+        'sub_valid': sub_validity_check(request),
+    }
     return render(request,"dapp/dashboard-createpost.html",context)
 
 @login_required(login_url="/log-in/")
@@ -640,6 +680,7 @@ def post(request,pk):
         'comments': total_comments,
         'saved': saved,
         'is_student': is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/dashboard-post.html",context)
 
@@ -839,6 +880,7 @@ def postcomment(request,pk):
 def dashboard_settings(request):
     context={
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/dashboard-settings.html",context)
 
@@ -850,6 +892,7 @@ def profile(request,pk):
             'student': student,
             's': True,
             'is_student':is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     except:
         doctor = Doctor.objects.get(bmdc=pk)
@@ -857,6 +900,7 @@ def profile(request,pk):
             'doctor': doctor,
             's': False,
             'is_student':is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     return render(request,"dapp/settings/profile.html",context)
 
@@ -867,6 +911,7 @@ def dashboard_profileself(request):
         context={
             'student': student,
             'is_student':is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     else:
         doctor = Doctor.objects.get(bmdc=get_username(request))
@@ -875,6 +920,7 @@ def dashboard_profileself(request):
             'doctor': doctor,
             'cats': cats,
             'is_student':is_student(request),
+            'sub_valid': sub_validity_check(request),
         }
     return render(request,"dapp/settings/dashboard_profileself.html",context)
 
@@ -971,7 +1017,9 @@ def dashboard_notification(request):
         notis = notifications
     context={
         'notis': notis,
+        'notis_len': len(notis),
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_notification.html",context)
 
@@ -992,6 +1040,7 @@ def dashboard_clearnotification(request):
     context={
         'notis': notis,
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_notification.html",context)
 
@@ -999,6 +1048,7 @@ def dashboard_clearnotification(request):
 def dashboard_enableai(request):
     context={
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_enableai.html",context)
 
@@ -1013,6 +1063,7 @@ def dashboard_customtheme(request):
     context={
         'doctor': doctor,
         'themes': themes,
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_customtheme.html",context)
 
@@ -1036,12 +1087,16 @@ def dashboard_customthemerequest(request):
 
 @login_required(login_url="/log-in/")
 def dashboard_customtoolbar(request):
-    context={}
+    context={
+        'sub_valid': sub_validity_check(request),
+    }
     return render(request,"dapp/settings/dashboard_customtoolbar.html",context)
 
 @login_required(login_url="/log-in/")
 def dashboard_customfeed(request):
-    context={}
+    context={
+        'sub_valid': sub_validity_check(request),
+    }
     return render(request,"dapp/settings/dashboard_customfeed.html",context)
 
 @login_required(login_url="/log-in/")
@@ -1055,12 +1110,15 @@ def dashboard_changesubscription(request):
     context={
         'subscription':subscription,
         'is_student':is_student(request),
+        'sub_valid': True,
     }
     return render(request,"dapp/settings/dashboard_changesubscription.html",context)
 
 @login_required(login_url="/log-in/")
 def dashboard_changecategory(request):
-    context={}
+    context={
+        'sub_valid': sub_validity_check(request),
+    }
     return render(request,"dapp/settings/dashboard_changecategory.html",context)
 
 @login_required(login_url="/log-in/")
@@ -1074,6 +1132,7 @@ def dashboard_history(request):
     context={
         'hs': hs,
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_history.html",context)
 
@@ -1092,6 +1151,7 @@ def dashboard_saved(request):
     context={
         'ss': t_ss,
         'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
     }
     return render(request,"dapp/settings/dashboard_saved.html",context)
 
@@ -1154,23 +1214,25 @@ def add_subscription(request,pk,pk2,pk3):
             elif pk2 == "550":
                 subscription.subscription_type = "quarterly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=90)
                 subscription.save()
             elif pk2 == "1100":
                 subscription.subscription_type = "half-yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=180)
                 subscription.save()
             elif pk2 == "2000":
                 subscription.subscription_type = "yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=365)
                 subscription.save()
             elif pk2 == "10000":
                 subscription.subscription_type = "five-yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=1825)
                 subscription.save()
+            n = Notification.objects.create(doctor=doctor,text="Your subscription has been extended. Check now!",link="https://prescribemate.com/dashboard/settings/notification/")
+            n.save()
             return JsonResponse({'status':'Success'})
         else:
             return JsonResponse({'status':'Failed'})
@@ -1186,23 +1248,25 @@ def add_subscription(request,pk,pk2,pk3):
             elif pk2 == "150":
                 subscription.subscription_type = "quarterly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=90)
                 subscription.save()
             elif pk2 == "300":
                 subscription.subscription_type = "half-yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=180)
                 subscription.save()
             elif pk2 == "500":
                 subscription.subscription_type = "yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=365)
                 subscription.save()
             elif pk2 == "2500":
                 subscription.subscription_type = "five-yearly"
                 subscription.is_active = True
-                subscription.expiry_date += timezone.timedelta(days=30)
+                subscription.expiry_date += timezone.timedelta(days=1825)
                 subscription.save()
+            n = StudentNotification.objects.create(student=student,text="Your subscription has been extended. Check now!",link="https://prescribemate.com/dashboard/settings/notification/")
+            n.save()
             return JsonResponse({'status':'Success'})
         else:
             return JsonResponse({'status':'Failed'})

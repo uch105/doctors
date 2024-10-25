@@ -20,8 +20,16 @@
     {% include 'dapp/dashboard-navbar.html' %}
     {% endif %}
 
+    {% if sub_valid %}
     {% block body %}
     {% endblock %}
+    {% else %}
+    <div class="container">
+        <p>
+            You have expired your subscription validity. Please renew it <br> <a href="{% url 'changesubscription' %}">Follow Link</a>
+        </p>
+    </div>
+    {% endif %}
 
     <script src="{% static 'js/dashboard.js' %}"></script>
 </body>

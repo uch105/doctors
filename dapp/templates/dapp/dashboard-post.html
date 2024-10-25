@@ -16,7 +16,7 @@
             <div class="post-head">
                 <img src="{{ post.owner_image.url }}" alt="">
                 <div class="name-date">
-                    <div class="name">{{ post.owner_name }}</div>
+                    <a href="{% url 'profile' pk=post.owner_id %}" class="name">{{ post.owner_name }}</a>
                     <div class="date">{{ post.date_time }}</div>
                 </div>
             </div>
