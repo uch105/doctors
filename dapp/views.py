@@ -49,7 +49,7 @@ def is_student(request):
         return False
 
 def sub_validity_check(request):
-    username = get_username(username)
+    username = get_username(request)
     try:
         doctor = Doctor.objects.get(bmdc=username)
         s = Subscription.objects.get(doctor=doctor)
