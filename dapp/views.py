@@ -1324,6 +1324,7 @@ def checkout(request):
                 'amount': amount,
                 'expiry_date': expiry_date,
                 'start_date': timezone.now(),
+                'sub_valid': True,
             }
         else:
             doctor = Doctor.objects.get(bmdc = get_username(request))
@@ -1358,16 +1359,19 @@ def checkout(request):
                 'amount': amount,
                 'expiry_date': expiry_date,
                 'start_date': timezone.now(),
+                'sub_valid': True,
             }
         return render(request,"dapp/checkout.html",context)
     if is_student(request):
         student = Student.objects.get(get_username(request))
         context={
             'customer': student,
+            'sub_valid': True,
         }
     else:
         doctor = Doctor.objects.get(get_username(request))
         context={
             'customer': doctor,
+            'sub_valid': True,
         }
     return render(request,"dapp/checkout.html",context)
