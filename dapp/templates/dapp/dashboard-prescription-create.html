@@ -698,14 +698,14 @@ Create Prescription
                         <div class="sgf">
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <input type="text" name="serum_creatinine" placeholder="Serum Creatinine">
+                                    <input type="text" name="lipid_profile" placeholder="Lipid profile">
                                     <input type="text" name="bun" placeholder="BUN (Renal function test)">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
                                     <input type="text" name="electrolytes" placeholder="Electrolytes">
-                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                    <input type="text" name="cardiac_biomarker" placeholder="Cardiac Biomarkers (Troponins)">
                                 </div>
                             </div>
                             <div class="sgf-child">
@@ -716,31 +716,1744 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
-                                    <input type="file" name="ctscan_abdomen">
+                                    <label for="ecg">ECG</label>
+                                    <input type="file" name="ecg">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="mri_abdomen">MRI of Abdomen</label>
-                                    <input type="file" name="mri_abdomen">
+                                    <label for="chest_x_ray">Chest X-Ray</label>
+                                    <input type="file" name="chest_x_ray">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <input type="text" name="protein-creatinine" placeholder="Urine protein/creatinine ratio">
+                                    <input type="text" name="holter_monitor" placeholder="Holter Monitor (24h ECG)">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="renal_biopsy">Renal biopsy</label>
-                                    <input type="file" name="renal_biopsy">
+                                    <label for="ecocardiogram">Ecocardiogram</label>
+                                    <input type="file" name="ecocardiogram">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Endocrynology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Endocrine examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thyroid_size" placeholder="Thyroid size">
+                                    <input type="text" name="thyroid_consistency" placeholder="Consistency">
+                                    <input type="text" name="thyroid_nodules" placeholder="Nodules">
+                                    <input type="text" name="thyroid_tenderness" placeholder="Tenderness">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <input type="text" name="gfr_score" placeholder="GFR score">
-                                    <a href="{% url 'gfr' %}" target="_blank">Estimate GFR</a>
+                                    <input type="text" name="skin_texture" placeholder="Skin Texture">
+                                    <input type="text" name="skin_pigmentation" placeholder="Pigmentation">
+                                    <input type="text" name="skin_sweating" placeholder="Sweating">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="eyes_exophthalmos" placeholder="Eyes (Exophthalmos)">
+                                    <input type="text" name="eyes_visual_field_defects" placeholder="Visual Field Defects">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="hands_tremors" placeholder="Hands (Tremors)">
+                                    <input type="text" name="hands_palmar_erythema" placeholder="(Palmar Erythema)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="neck_jugular_venous_pressure" placeholder="Jugular venous pressure">
+                                    <input type="text" name="neck_lymphadenopathy" placeholder="Lymphadenopathy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="abdomen_organomegaly" placeholder="Organomegaly">
+                                    <input type="text" name="abdomen_striae" placeholder="Striae">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="lower_limbs_edema" placeholder="Edema">
+                                    <input type="text" name="lower_limbs_reflexes" placeholder="Reflexes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="blood_glucose_levels" placeholder="Blood glucose levels">
+                                    <input type="text" name="hba1c" placeholder="HbA1c">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thyroid_t3" placeholder="Thyroid (T3)">
+                                    <input type="text" name="thyroid_t4" placeholder="Thyroid (T4)">
+                                    <input type="text" name="thyroid_tsh" placeholder="Thyroid (TSH)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cortisol_levels" placeholder="Cortisol levels">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan/MRI</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Neuro Medicine" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Neurological examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="mental_memory" placeholder="Short/Long term memory">
+                                    <input type="text" name="mental_attention" placeholder="Attention">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cranial_nerves" placeholder="Function & Sensory Assessment">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="motor_system_1" placeholder="Muscle strength">
+                                    <input type="text" name="motor_system_2" placeholder="Tone">
+                                    <input type="text" name="motor_system_3" placeholder="Co-ordination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_1" placeholder="Light touch">
+                                    <input type="text" name="sensory_2" placeholder="Pain touch">
+                                    <input type="text" name="sensory_3" placeholder="Temperature sense">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_4" placeholder="Vibration sense">
+                                    <input type="text" name="sensory_5" placeholder="Proprioception sense">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="reflexes_1" placeholder="Deep tendon reflexes">
+                                    <input type="text" name="reflexes_2" placeholder="Pathological reflexes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="gait_balance_1" placeholder="Walking pattern">
+                                    <input type="text" name="gait_balance_2" placeholder="Balance tests">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thyroid_t3" placeholder="Thyroid (T3)">
+                                    <input type="text" name="thyroid_t4" placeholder="Thyroid (T4)">
+                                    <input type="text" name="thyroid_tsh" placeholder="Thyroid (TSH)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan (Head)</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI (Brain)</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="eeg">EEG</label>
+                                    <input type="file" name="eeg">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="lumbar_puncture">Lumbar puncture</label>
+                                    <input type="file" name="lumbar_puncture">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="evoked">Evoked potentials</label>
+                                    <input type="file" name="evoked">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="genetictest">Genetic testing</label>
+                                    <input type="file" name="genetictest">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Physical Medicine" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Musculoskeletal examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Neurological examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Joint deformities">
+                                    <input type="text" name="inspection_2" placeholder="Muscle atrophy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Swelling">
+                                    <input type="text" name="palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="palpation_2" placeholder="Temp. Cahnge">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="rom_1" placeholder="Active range of motion">
+                                    <input type="text" name="rom_2" placeholder="Passive range of motion">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="strength" placeholder="Muscle groups (grade strength)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="motor_system_1" placeholder="Muscle strength">
+                                    <input type="text" name="motor_system_2" placeholder="Tone">
+                                    <input type="text" name="motor_system_3" placeholder="Co-ordination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_1" placeholder="Light touch">
+                                    <input type="text" name="sensory_2" placeholder="Pain touch">
+                                    <input type="text" name="sensory_3" placeholder="Temperature sense">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_4" placeholder="Vibration sense">
+                                    <input type="text" name="sensory_5" placeholder="Proprioception sense">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="reflexes_1" placeholder="Deep tendon reflexes">
+                                    <input type="text" name="reflexes_2" placeholder="Pathological reflexes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thyroid_t3" placeholder="Thyroid (T3)">
+                                    <input type="text" name="thyroid_t4" placeholder="Thyroid (T4)">
+                                    <input type="text" name="thyroid_tsh" placeholder="Thyroid (TSH)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="emg">EMG</label>
+                                    <input type="file" name="emg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Urology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Urological examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Abdominal distension">
+                                    <input type="text" name="inspection_2" placeholder="External genitalia">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_1" placeholder="Abdominal Tenderness">
+                                    <input type="text" name="palpation_2" placeholder="Testicular examination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="percussion" placeholder="Kidney tenderness">
+                                    <input type="text" name="auscultation" placeholder="Bowel sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="serum_creatinine" placeholder="Serum creatinine">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="urinalysis" placeholder="Urine RME">
+                                    <input type="text" name="urine_culture" placeholder="Urine culture">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan (Abdomen)</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI (Pelvis)</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cystoscopy">Cystoscopy</label>
+                                    <input type="file" name="cystoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="urodynamics">Urodynamics</label>
+                                    <input type="file" name="urodynamics">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound of pelvis/abdomen</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Hematology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Hematologic examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Pallor">
+                                    <input type="text" name="inspection_2" placeholder="Bruises or Petechiae">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Swollen lymph nodes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_1" placeholder="Tenderness in bone area">
+                                    <input type="text" name="palpation_2" placeholder="Splenomegaly or Hepatomegaly">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="auscultation_1" placeholder="Heart sounds">
+                                    <input type="text" name="auscultation_2" placeholder="Lung sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="reticulocyte" placeholder="Reticulocyte counts">
+                                    <input type="text" name="coagulation" placeholder="Coagulation profile">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="vitamin" placeholder="Vitamin B12 & Folate levels">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="bone_marrow" placeholder="Bone marrow biopsy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="serum_iron" placeholder="Serum Iron Studies">
+                                    <input type="text" name="ldh" placeholder="LDH">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="pbf" placeholder="Peripheral blood semar">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound (Abdomen)</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Gastroenterology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Abdominal examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Distension">
+                                    <input type="text" name="inspection_2" placeholder="Scars">
+                                    <input type="text" name="inspection_3" placeholder="Skin changes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="palpation_2" placeholder="Masses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_3" placeholder="Liver size">
+                                    <input type="text" name="palpation_4" placeholder="Spleen size">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="percussion_1" placeholder="Upper border dullness">
+                                    <input type="text" name="percussion_2" placeholder="Ascites">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="auscultation_1" placeholder="Bowel sounds">
+                                    <input type="text" name="auscultation_2" placeholder="Bruits">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="lft" placeholder="Liver function test">
+                                    <input type="text" name="rft" placeholder="Renal function test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="stool" placeholder="Stool analysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan (Abdomen)</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound (Abdomen)</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI (Abdomen)</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="upper_endoscopy">Upper endoscopy</label>
+                                    <input type="file" name="upper_endoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="colonoscopy">Colonoscopy</label>
+                                    <input type="file" name="colonoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="flexible_sigmoidoscopy">Flexible sigmoidoscopy</label>
+                                    <input type="file" name="flexible_sigmoidoscopy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "ENT" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">ENT examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="ear_inspection_1" placeholder="External ear">
+                                    <input type="text" name="ear_inspection_2" placeholder="Ear canal">
+                                    <input type="text" name="ear_inspection_3" placeholder="Tympanic membrane">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="ear_palpation_1" placeholder="Ear tenderness (Auricle)">
+                                    <input type="text" name="ear_palpation_2" placeholder="Ear tenderness (Mastoid)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="nose_inspection_1" placeholder="External nose">
+                                    <input type="text" name="nose_inspection_2" placeholder="Nasal cavity">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="nose_palpation_1" placeholder="Sinus tenderness (frontal)">
+                                    <input type="text" name="nose_palpation_2" placeholder="Sinus tenderness (maxillary)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="throat_inspection_1" placeholder="Oral cavity">
+                                    <input type="text" name="throat_inspection_2" placeholder="Pharynx">
+                                    <input type="text" name="throat_inspection_3" placeholder="Tonsils">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="throat_palpation_1" placeholder="Lymph nodes (cervical)">
+                                    <input type="text" name="throat_palpation_2" placeholder="Lymph nodes (submandibular)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="alergy" placeholder="Alergy testing">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan (Sinuses)</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="x-ray">X-Ray (Sinuses)</label>
+                                    <input type="file" name="x-ray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI (Head-Neck)</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="nasal_endoscopy">Nasal endoscopy</label>
+                                    <input type="file" name="nasal_endoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="laryngoscopy">Laryngoscopy</label>
+                                    <input type="file" name="laryngoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="audiometry">Audiometry</label>
+                                    <input type="file" name="audiometry">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Cardiothorasic" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Cardiac examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Thorasic examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cardiac_inspection" placeholder="Chest deformities or scars">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cardiac_palpation" placeholder="Herat size & location">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cardiac_auscultation" placeholder="Herat sound">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thorasic_inspection_1" placeholder="Respiratory rate">
+                                    <input type="text" name="thorasic_inspection_2" placeholder="Respiratory pattern">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thorasic_inspection_3" placeholder="Chest wall movement">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thorasic_palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="thorasic_palpation_2" placeholder="Chest expansion">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thorasic_auscultation_1" placeholder="Dullness or hyperresonance">
+                                    <input type="text" name="thorasic_auscultation_2" placeholder="Breath sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="basic_metabolic_panel" placeholder="Basic metabolic panel">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cardiac_enzymes" placeholder="Cardiac enzymes">
+                                    <input type="text" name="abg" placeholder="Arterial blood gas">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan (Chest)</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="x-ray">X-Ray (Chest)</label>
+                                    <input type="file" name="x-ray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI (Chest)</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cardiac_stress_test">Cardiac stress test</label>
+                                    <input type="file" name="cardiac_stress_test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="pulmonary_function">Pulmonary function</label>
+                                    <input type="file" name="pulmonary_function">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="coronary_angiography">Coronary Angiography</label>
+                                    <input type="file" name="coronary_angiography">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Dermatology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Dermatological examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Genitourinary examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="dermatological_inspection_1" placeholder="Skin lesions">
+                                    <input type="text" name="dermatological_inspection_2" placeholder="Hair & Nail examination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="dermatological_palpation_1" placeholder="Texture">
+                                    <input type="text" name="dermatological_palpation_2" placeholder="Tenderness">
+                                    <input type="text" name="dermatological_palpation_3" placeholder="Temp. Changes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="genitourinary_inspection_1" placeholder="Genital lesions">
+                                    <input type="text" name="genitourinary_inspection_2" placeholder="Discharge">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="genitourinary_palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="genitourinary_palpation_2" placeholder="Lymphadenopathy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="thorasic_auscultation_1" placeholder="Dullness or hyperresonance">
+                                    <input type="text" name="thorasic_auscultation_2" placeholder="Breath sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="skin_scraping" placeholder="Skin scrapings">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="std" placeholder="STDs (HIV,Syphilis,Gonorrhea)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                    <input type="text" name="sti_panel" placeholder="STI panel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Orthopedics" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Musculoskeletal examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Neurological examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="orthopedic_inspection_1" placeholder="Swelling">
+                                    <input type="text" name="orthopedic_inspection_2" placeholder="Deformities">
+                                    <input type="text" name="orthopedic_inspection_3" placeholder="Scars">
+                                    <input type="text" name="orthopedic_inspection_4" placeholder="Redness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="orthopedic_palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="orthopedic_palpation_2" placeholder="Warmth">
+                                    <input type="text" name="orthopedic_palpation_3" placeholder="Crepitus">
+                                    <input type="text" name="orthopedic_palpation_4" placeholder="Masses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="orthopedic_rom_1" placeholder="Active range of motion">
+                                    <input type="text" name="orthopedic_rom_2" placeholder="Passive range of motion">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="orthopedic_gait_1" placeholder="Gait analysis: Normal?">
+                                    <input type="text" name="orthopedic_gait_2" placeholder="Antalgic">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="orthopedic_strength_1" placeholder="Strength Test (Grade 0-5)">
+                                    <input type="text" name="orthopedic_strength_2" placeholder="Stability">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_1" placeholder="Light touch">
+                                    <input type="text" name="sensory_2" placeholder="Pain touch">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sensory_3" placeholder="Vibration sense">
+                                    <input type="text" name="sensory_4" placeholder="Proprioception">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="reflex_1" placeholder="Deep tendon reflexes">
+                                    <input type="text" name="reflex_2" placeholder="Pathological reflexes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="esr" placeholder="ESR">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="crp" placeholder="CRP">
+                                    <input type="text" name="rf" placeholder="Rheumatoid Factor (RF)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT Scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="x-ray">X-Ray</label>
+                                    <input type="file" name="x-ray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="bone_scan">Bone scan</label>
+                                    <input type="file" name="bone_scan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Eye" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Eye examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Distant vision(Snellen chart)">
+                                    <input type="text" name="inspection_2" placeholder="Near vision(Joeger chart)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Eyelids">
+                                    <input type="text" name="inspection_4" placeholder="Conjunctiva">
+                                    <input type="text" name="inspection_5" placeholder="Sclera">
+                                    <input type="text" name="inspection_6" placeholder="Refraction">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Pupil size">
+                                    <input type="text" name="inspection_8" placeholder="Pupil Shape">
+                                    <input type="text" name="inspection_9" placeholder="Reactivity to light">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_10" placeholder="Extraocular movements">
+                                    <input type="text" name="inspection_11" placeholder="Alignment (cover test)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_12" placeholder="Cornea">
+                                    <input type="text" name="inspection_13" placeholder="Anterior chamber">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_14" placeholder="Iris">
+                                    <input type="text" name="inspection_15" placeholder="Lens">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_16" placeholder="Tonometry">
+                                    <input type="text" name="inspection_17" placeholder="Fundoscopy (Optic disc, macula)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="blood_glucose" placeholder="Blood glucose levels">
+                                    <input type="text" name="thyroid_function" placeholder="Thyroid function test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="intraocular_pressure" placeholder="Intraocular pressure measurement">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="oct">OCT</label>
+                                    <input type="file" name="oct">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound B-scan</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="fluorescein_angiography">Fluorescein Angiography</label>
+                                    <input type="file" name="fluorescein_angiography">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Pediatrics Medicine" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Systemic examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Frontanelles">
+                                    <input type="text" name="inspection_2" placeholder="Eye movements">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Ear examination">
+                                    <input type="text" name="inspection_4" placeholder="Throat examination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Heart sounds">
+                                    <input type="text" name="inspection_6" placeholder="Murmurs">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Breath sounds">
+                                    <input type="text" name="inspection_8" placeholder="Wheezes">
+                                    <input type="text" name="inspection_9" placeholder="Crackles">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_10" placeholder="Abdominal inspection">
+                                    <input type="text" name="inspection_11" placeholder="Abdominal palpation">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_12" placeholder="Abdominal percussion">
+                                    <input type="text" name="inspection_13" placeholder="Abdominal auscultation">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_14" placeholder="External genitalia">
+                                    <input type="text" name="inspection_15" placeholder="Hernias">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_16" placeholder="Limb exam.">
+                                    <input type="text" name="inspection_17" placeholder="Joint exam.">
+                                    <input type="text" name="inspection_18" placeholder="Spine exam.">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_19" placeholder="Reflexes">
+                                    <input type="text" name="inspection_20" placeholder="Muscle tone">
+                                    <input type="text" name="inspection_21" placeholder="Sensory">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="lft" placeholder="Liver function test">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="xray">X-Ray</label>
+                                    <input type="file" name="xray">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Pediatrics Surgery" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Systemic examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Frontanelles">
+                                    <input type="text" name="inspection_2" placeholder="Eye movements">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Ear examination">
+                                    <input type="text" name="inspection_4" placeholder="Throat examination">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Heart sounds">
+                                    <input type="text" name="inspection_6" placeholder="Murmurs">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Breath sounds">
+                                    <input type="text" name="inspection_8" placeholder="Wheezes">
+                                    <input type="text" name="inspection_9" placeholder="Crackles">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_10" placeholder="Abdominal inspection">
+                                    <input type="text" name="inspection_11" placeholder="Abdominal palpation">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_12" placeholder="Abdominal percussion">
+                                    <input type="text" name="inspection_13" placeholder="Abdominal auscultation">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_14" placeholder="External genitalia">
+                                    <input type="text" name="inspection_15" placeholder="Hernias">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_16" placeholder="Limb exam.">
+                                    <input type="text" name="inspection_17" placeholder="Joint exam.">
+                                    <input type="text" name="inspection_18" placeholder="Spine exam.">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_19" placeholder="Reflexes">
+                                    <input type="text" name="inspection_20" placeholder="Muscle tone">
+                                    <input type="text" name="inspection_21" placeholder="Sensory">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="lft" placeholder="Liver function test">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="xray">X-Ray</label>
+                                    <input type="file" name="xray">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Neuro Surgery" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Neurological examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Mental orientation">
+                                    <input type="text" name="inspection_2" placeholder="Memory">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Speech">
+                                    <input type="text" name="inspection_4" placeholder="Cognition">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Olfaction">
+                                    <input type="text" name="inspection_6" placeholder="Vision">
+                                    <input type="text" name="inspection_7" placeholder="Eye movement">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_8" placeholder="Facial Sensation">
+                                    <input type="text" name="inspection_9" placeholder="Hearing & balance">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_10" placeholder="Shoulder shrug">
+                                    <input type="text" name="inspection_11" placeholder="Tongue movements">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_12" placeholder="Muscle bulk">
+                                    <input type="text" name="inspection_13" placeholder="Co-ordination">
+                                    <input type="text" name="inspection_14" placeholder="Strength">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_15" placeholder="Light touch">
+                                    <input type="text" name="inspection_16" placeholder="pain touch">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_17" placeholder="Vibration">
+                                    <input type="text" name="inspection_18" placeholder="Proprioception">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_19" placeholder="Deep tendon reflexes">
+                                    <input type="text" name="inspection_20" placeholder="Plantar response">
+                                    <input type="text" name="inspection_21" placeholder="Walking pattern">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="electrolytes" placeholder="Electrolytes">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="coagulation" placeholder="Coagulation profile">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="angiography">Angiography</label>
+                                    <input type="file" name="angiography">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="eeg">EEG</label>
+                                    <input type="file" name="eeg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Radiology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Investigations Ordered</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="xray">X-Ray</label>
+                                    <input type="file" name="xray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mammography">Mammography</label>
+                                    <input type="file" name="mammography">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="nuclear_medicine">Nuclear Medicine Studies</label>
+                                    <input type="file" name="nuclear_medicine">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="body_part">Body part exam.</label>
+                                    <input type="file" name="body_part">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Oncology" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Oncologic examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Visible tumors">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_2" placeholder="Swelling">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Tenderness location">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_4" placeholder="Tenderness Size">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Lymphadenopathy location">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_6" placeholder="Lymphadenopathy size">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Lymphadenopathy consistency">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_8" placeholder="Abnormal sounds in areas">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="tumor_marker" placeholder="Tumor markers">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="lft" placeholder="Liver function test">
+                                    <input type="text" name="rft" placeholder="Renal function test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="mri">MRI</label>
+                                    <input type="file" name="mri">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="biopsy">Biopsy</label>
+                                    <input type="file" name="biopsy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="pet_scan">PET Scan</label>
+                                    <input type="file" name="pet_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="molecular_test">Molecular Testing</label>
+                                    <input type="file" name="molecular_test">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Colorectal" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Abdominal examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Rectal examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Distension">
+                                    <input type="text" name="inspection_2" placeholder="Scars">
+                                    <input type="text" name="inspection_3" placeholder="Visible peristalsis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="palpation_1" placeholder="Tenderness">
+                                    <input type="text" name="palpation_2" placeholder="Masses">
+                                    <input type="text" name="palpation_3" placeholder="Organomegaly">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="percussion_1" placeholder="Tympany">
+                                    <input type="text" name="percussion_2" placeholder="Dullness">
+                                    <input type="text" name="percussion_3" placeholder="Bowel sounds">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_4" placeholder="Hemorrhoids">
+                                    <input type="text" name="inspection_5" placeholder="Fissures">
+                                    <input type="text" name="inspection_6" placeholder="Fistulas">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="dre_1" placeholder="DRE: masses">
+                                    <input type="text" name="dre_2" placeholder="DRE: tenderness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="dre_3" placeholder="DRE: Sphincter tone">
+                                    <input type="text" name="dre_4" placeholder="DRE: Blood on gloves">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="lft" placeholder="Liver function test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="fobt" placeholder="Fecal Occult Blood test">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="crp" placeholder="CRP">
+                                    <input type="text" name="tumor_marker" placeholder="Tumor markers">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound (Abdominal)</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="colonoscopy">Colonoscopy</label>
+                                    <input type="file" name="colonoscopy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "Obstetrics" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Gynecological examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Obstetric examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="External genitalia">
+                                    <input type="text" name="inspection_2" placeholder="Signs of infections">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Abdominal tenderness">
+                                    <input type="text" name="inspection_4" placeholder="Uterine tenderness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Uterine size">
+                                    <input type="text" name="inspection_6" placeholder="Ovarian masses">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Vaginal Walls">
+                                    <input type="text" name="inspection_8" placeholder="Cervix">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_9" placeholder="Ovarian size">
+                                    <input type="text" name="inspection_10" placeholder="Ovarian tenderness">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_11" placeholder="Sign of swelling/edema">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_12" placeholder="Fundal height">
+                                    <input type="text" name="inspection_13" placeholder="Fetal heart tone">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_14" placeholder="Abdominal Girth">
+                                    <input type="text" name="inspection_15" placeholder="Cervical dilation">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="urinalysis" placeholder="Urinalysis">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="pregnancy" placeholder="Pregnancy test">
+                                    <input type="text" name="pap_semar" placeholder="Pap semar">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="hormone" placeholder="Hormone levels">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ultrasound">Ultrasound</label>
+                                    <input type="file" name="ultrasound">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="cultures">Cultures</label>
+                                    <input type="file" name="cultures">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="biopsy">Biopsy</label>
+                                    <input type="file" name="biopsy">
                                 </div>
                             </div>
                         </div>
