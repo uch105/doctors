@@ -1786,6 +1786,7 @@ def updateidentity(request):
         sc = request.POST.get("subcategory")
         doctor.sub_category = DoctorSubCategory.objects.get(name=sc)
         doctor.category = doctor.sub_category.category
+        doctor.bsub_category = sub_category_conversion(sc)
         doctor.save()
         return redirect('profile-self')
 
@@ -1819,6 +1820,15 @@ def updatequalification(request):
     if request.method == "POST":
         doctor = Doctor.objects.get(bmdc=get_username(request))
         doctor.qualification += request.POST.get("qualification")
+        doctor.save()
+        return redirect('profile-self')
+
+@login_required(login_url="/log-in/")
+def updatebangla(request):
+    if request.method == "POST":
+        doctor = Doctor.objects.get(bmdc=get_username(request))
+        doctor.bname = request.POST.get("bname")
+        doctor.bqualification = request.POST.get("bqualification")
         doctor.save()
         return redirect('profile-self')
     

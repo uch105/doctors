@@ -94,6 +94,13 @@ Profile
         </div>
     </div>
     <div class="profileforms">
+        <form action="{% url 'updatebangla' %}" method="POST">
+            {% csrf_token %}
+            <h5>Update Bengali Name</h5>
+            <input type="text" name="bname" placeholder="নাম (বাংলায়)" required>
+            <input type="text" name="bqualification" placeholder="যোগ্যতা (বাংলায়)" required>
+            <input type="submit" value="Update" class="submit">
+        </form>
         <form action="{% url 'updatejobs' %}" method="POST">
             {% csrf_token %}
             <h5>Update job places</h5>

@@ -50,6 +50,7 @@ urlpatterns = [
     path("dashboard/settings/profile/self/",views.dashboard_profileself,name="profile-self"),
     path("dashboard/settings/profile/self/updatejobs",views.updatejobs,name="updatejobs"),
     path("dashboard/settings/profile/self/updatecontact",views.updatecontact,name="updatecontact"),
+    path("dashboard/settings/profile/self/updatebangla",views.updatebangla,name="updatebangla"),
     path("dashboard/settings/profile/self/updatequalification",views.updatequalification,name="updatequalification"),
     path("dashboard/settings/profile/self/updateidentity",views.updateidentity,name="updateidentity"),
     path("dashboard/settings/profile/self/updateimage",views.updateimage,name="updateimage"),
