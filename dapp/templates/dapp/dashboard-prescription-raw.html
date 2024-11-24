@@ -1,0 +1,29 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+{{ patient.name }}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/prescription.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="rawcontainer" style="padding: 20px 0px;">
+        Name: {{ patient.name }}<br>
+        Age: {{ patient.age }}<br>
+        Sex: {{ patient.sex }}<br>
+        Address: {{ patient.address }}<br>
+        Contact: {{ patient.contact }}<br>
+        Occupation: {{ patient.occupation }}<br>
+        Date: {{ patient.created }}<br><br>
+        {% for symptom in patient.patientdetails.all %}
+        {{ symptom.symptom }}: {% if symptom.file %} <a href="{{ symptom.file.url }}" target="_top">See file</a> {% else %} {{ symptom.details }} {% endif %} <br>
+        {% empty %}
+        No data to show
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

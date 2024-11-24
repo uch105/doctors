@@ -21,6 +21,7 @@ urlpatterns = [
     #prescription
     path("dashboard/prescription/",views.dashboard_prescription,name="prescription"),
     path("dashboard/prescription/create/",views.dashboard_createprescription,name="createprescription"),
+    path("dashboard/prescription/raw/<str:pk>/",views.dashboard_rawprescription,name="rawprescription"),
     #tools
     path("dashboard/tools/",views.dashboard_tools,name="tools"),
     path("dashboard/tools/rqst/",views.dashboard_rqst_tools,name="rqsttool"),

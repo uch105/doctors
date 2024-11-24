@@ -1,4 +1,4 @@
-from django.http import JsonResponse,request
+from django.http import HttpResponse, JsonResponse,request
 from django.core.serializers import serialize
 from django.shortcuts import render,redirect
 from django.contrib.auth import login as auth_login
@@ -17,10 +17,12 @@ import random,string,json,time
 from itertools import chain
 from django.conf import settings
 from django.utils import timezone
+from datetime import datetime, timedelta
+from django.utils.timezone import now
 from .models import *
 from decouple import config
 from .bmdc import fetch_doctor_data
-
+from .createprescription import create_pdf
 
 
 
@@ -60,6 +62,43 @@ def sub_validity_check(request):
 
 def generate_id(s,n):
     return str(str(s)+''.join(random.choices(string.ascii_uppercase+string.ascii_lowercase+string.digits,k=int(n))))
+
+def catergory_conversion(s):
+    d = {
+        'MBBS':'এমবিবিএস',
+        'BDS':'বিডিএস',
+    }
+    return d[str(s)]
+
+def sub_category_conversion(s):
+    d = {
+        'Burn & Plastic':'বার্ন এন্ড প্লাস্টিক সার্জারি',
+        'Hepatology':'হেপাটোলজি',
+        'Nephrology':'নেফ্রোলজি',
+        'Cardiology':'কার্ডিওলজি',
+        'Endocrynology':'এন্ডোক্রাইনোলজি',
+        'Neuro Medicine':'নিউরো মেডিসিন',
+        'Physical Medicine':'ফিজিক্যাল মেডিসিন',
+        'Urology':'ইউরোলজি',
+        'Hematology':'হেমাটোলজি',
+        'Gastroenterology':'গ্যাস্ট্রোএন্টারোলজি',
+        'ENT':'ইএনটি',
+        'Cardiothorasic':'কার্ডিওথোরাসিক',
+        'Respiratory Medicine':'রেসপিরেটরি মেডিসিন',
+        'Dermatology':'ডার্মাটোলজি',
+        'Orthopedics':'অর্থোপেডিক',
+        'Eye':'চোখ',
+        'Pediatrics Medicine':'পেডিয়াট্রিকস মেডিসিন',
+        'Pediatrics Surgery':'পেডিয়াট্রিকস সার্জারি',
+        'Neuro Surgery':'নিউরো সার্জারি',
+        'Radiology':'রেডিওলজি',
+        'Oncology':'অনকোলজি',
+        'Colorectal':'কলোরেক্টাল',
+        'Obstetrics':'গাইনি এন্ড অবস',
+        'General BDS':'জেনারেল বিডিএস',
+        'General Medicine':'জেনারেল মেডিসিন',
+    }
+    return d[str(s)]
 
 
 
@@ -196,7 +235,7 @@ def signin(request):
             }
             return render(request,'dapp/login.html',context)
         except:
-            instance = Doctor.objects.create(bmdc=c+bmdc,category=category,sub_category=sub_category,name=context['name'],reg_year=context['regyear'],valid_till=context['regvalidyear'],blood_group=context['bg'],status= True,dob=context['dob'],fname=context['fname'],mname=context['mname'])
+            instance = Doctor.objects.create(bmdc=c+bmdc,category=category,sub_category=sub_category,bsub_category=sub_category_conversion(sub_category),name=context['name'],reg_year=context['regyear'],valid_till=context['regvalidyear'],blood_group=context['bg'],status= True,dob=context['dob'],fname=context['fname'],mname=context['mname'])
             instance.save()
             s = Subscription.objects.create(doctor=instance,is_active=True)
             n = Notification.objects.create(doctor=instance,text="Welcome to prescribemate! Thank you for choosing us.",link="#")
@@ -329,20 +368,836 @@ def reset(request):
 @login_required(login_url="/log-in/")
 def dashboard_prescription(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
+    if request.GET.get("filter")=="yesterday":
+        current_time = now()
+        yesterday_start = (current_time - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+        yesterday_end = (current_time - timedelta(days=1)).replace(hour=23, minute=59, second=59, microsecond=999999)
+        patients = Patient.objects.filter(created__range=(yesterday_start, yesterday_end)).order_by('-created')
+        context={
+            'filter_value': 'yesterday',
+            'doctor': doctor,
+            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+            'patients': patients,
+        }
+    elif request.GET.get("filter")=="last_week":
+        current_time = now()
+        last_week_start = (current_time - timedelta(days=current_time.weekday() + 7)).replace(hour=0, minute=0, second=0, microsecond=0)
+        last_week_end = last_week_start + timedelta(days=6, hours=23, minutes=59, seconds=59)
+        patients = Patient.objects.filter(created__range=(last_week_start, last_week_end)).order_by('-created')
+        context={
+            'filter_value': 'last_week',
+            'doctor': doctor,
+            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+            'patients': patients,
+        }
+    elif request.GET.get("filter")=="last_month":
+        current_time = now()
+        first_day_of_current_month = current_time.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        last_month_end = first_day_of_current_month - timedelta(seconds=1)
+        last_month_start = last_month_end.replace(day=1)
+        patients = Patient.objects.filter(created__range=(last_month_start, last_month_end)).order_by('-created')
+        context={
+            'filter_value': 'last_month',
+            'doctor': doctor,
+            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+            'patients': patients,
+        }
+    elif request.GET.get("filter")=="all":
+        patients = Patient.objects.all().order_by('-created')
+        context={
+            'filter_value': 'all',
+            'doctor': doctor,
+            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+            'patients': patients,
+        }
+    else:
+        patients = Patient.objects.filter(doctor=doctor).order_by('-created')[:20]
     context={
         'doctor': doctor,
         'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+        'patients': patients,
     }
     return render(request,"dapp/dashboard-prescription.html",context)
 
 @login_required(login_url="/log-in/")
 def dashboard_createprescription(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
+    if request.method == "POST":
+        fullname = request.POST.get("fullname")
+        age = request.POST.get("age")
+        sex = request.POST.get("sex")
+        address = request.POST.get("address")
+        occupation = request.POST.get("occupation")
+        contact = request.POST.get("contact")
+        cc = request.POST.get("cc")
+        oe = request.POST.get("oe")
+        dx = request.POST.get("dx")
+        ix = request.POST.get("ix")
+        prestext = request.POST.get("prestext")
+
+        text_blocks = [
+            {"text": 'C/C: '+cc+"\n\n"+"O/E: "+oe, "x": 83.333, "y": 1400.8333, "width": 2062.5, "height": 500},
+            {"text": 'Ix: '+ix, "x": 83.333, "y": 2170.333, "width": 2062.5, "height": 430},
+            {"text": 'Dx: '+dx, "x": 83.333, "y": 2800.533, "width": 2062.5, "height": 470},
+            {"text": prestext, "x": 1291.6, "y": 1156.25, "width": 2083.33333, "height": 1000},
+        ]
+
+        pid = generate_id('patient','12')
+
+        template_image_path = config("TEMPLATE_IMAGE_PATH")
+        output_pdf_path = config("OUTPUT_PDF_PATH")+f'{pid}.pdf'
+
+        create_pdf(template_image_path=template_image_path,output_pdf_path=output_pdf_path,text_blocks=text_blocks,chamber="Chamber: "+doctor.chamber,dr_name_e=doctor.name,dr_c_e=doctor.sub_category.name,dr_q_e=doctor.qualification,dr_name_b=doctor.bname,dr_c_b=doctor.bsub_category,dr_q_b=doctor.bqualification,p_name="Name: "+fullname,p_age="Age: "+age,p_sex="Sex: "+sex,p_contact="Contact: "+contact)
+
+        with open(output_pdf_path,'rb') as pdf_file:
+            patient = Patient(doctor=doctor,pid=pid,name=fullname,age=age,sex=sex,address=address,contact=contact,occupation=occupation,pdf=f"files/prescription/{pid}.pdf")
+            patient.save()
+        
+        PatientDetail.objects.create(patient=patient,symptom="C/C",details=request.POST.get("cc"))
+        PatientDetail.objects.create(patient=patient,symptom="O/E",details=request.POST.get("oe"))
+        PatientDetail.objects.create(patient=patient,symptom="Ix",details=request.POST.get("ix"))
+        PatientDetail.objects.create(patient=patient,symptom="Dx",details=request.POST.get("dx"))
+        PatientDetail.objects.create(patient=patient,symptom="Onset",details=request.POST.get("onset"))
+        PatientDetail.objects.create(patient=patient,symptom="Onset Duration",details=request.POST.get("onset_duration"))
+        PatientDetail.objects.create(patient=patient,symptom="Frequency",details=request.POST.get("onset_frequency"))
+        PatientDetail.objects.create(patient=patient,symptom="Aggravating Factors",details=request.POST.get("aggravating_factors"))
+        PatientDetail.objects.create(patient=patient,symptom="Relieving Factors",details=request.POST.get("relieving_factors"))
+        PatientDetail.objects.create(patient=patient,symptom="Hepatobiliary Conditions",details=request.POST.get("hepatobiliary_conditions"))
+        PatientDetail.objects.create(patient=patient,symptom="Drug history",details=request.POST.get("past_medications"))
+        PatientDetail.objects.create(patient=patient,symptom="Past Surgeries",details=request.POST.get("past_surgeries"))
+        PatientDetail.objects.create(patient=patient,symptom="Recreational Drugs",details=request.POST.get("recreational_drugs"))
+        PatientDetail.objects.create(patient=patient,symptom="Edema Location",details=request.POST.get("edema_location"))
+        PatientDetail.objects.create(patient=patient,symptom="Edema timing",details=request.POST.get("edema_timing"))
+        PatientDetail.objects.create(patient=patient,symptom="General Appearance",details=request.POST.get("general_appearance"))
+        PatientDetail.objects.create(patient=patient,symptom="Overall health status",details=request.POST.get("overall_health"))
+        PatientDetail.objects.create(patient=patient,symptom="Vital Signs",details=request.POST.get("vital_signs"))
+        PatientDetail.objects.create(patient=patient,symptom="BP",details=request.POST.get("blood_pressure"))
+        PatientDetail.objects.create(patient=patient,symptom="Pulse",details=request.POST.get("pulse"))
+        PatientDetail.objects.create(patient=patient,symptom="R/R",details=request.POST.get("respiratory_rate"))
+        PatientDetail.objects.create(patient=patient,symptom="SPO2",details=request.POST.get("spo2"))
+        PatientDetail.objects.create(patient=patient,symptom="Temperature",details=request.POST.get("body_temp"))
+        PatientDetail.objects.create(patient=patient,symptom="Body Mass Index (BMI)",details=request.POST.get("bmi"))
+        PatientDetail.objects.create(patient=patient,symptom="Any other symptoms or findings",details=request.POST.get("other_sg"))
+        PatientDetail.objects.create(patient=patient,symptom="Jaundice",details='Yes' if request.POST.get("jaundice")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Abdominal Pain",details='Yes' if request.POST.get("abdominal_pain")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Nausea",details='Yes' if request.POST.get("nausea")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Change in stool color",details='Yes' if request.POST.get("change_stool_color")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Change in urine color",details='Yes' if request.POST.get("change_urine_color")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Prurities (itching)",details='Yes' if request.POST.get("itching")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Loss of appetite",details='Yes' if request.POST.get("loss_of_appetite")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Weight loss",details='Yes' if request.POST.get("weight_loss")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Fever",details='Yes' if request.POST.get("fever")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Chronic Illness",details='Yes' if request.POST.get("chronic_illness")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Diabetes",details='Yes' if request.POST.get("diabetes")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Cardiovascular Disease",details='Yes' if request.POST.get("cardiovascular_disease")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Allergies",details='Yes' if request.POST.get("allergies")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Genetic Disorders",details='Yes' if request.POST.get("genetic_disorders")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Kidney Diseases",details='Yes' if request.POST.get("kidney_disease")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Hypertension",details='Yes' if request.POST.get("hypertension")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Heart Disease",details='Yes' if request.POST.get("heart_disease")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Arthritis",details='Yes' if request.POST.get("arthritis")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Osteoporesis",details='Yes' if request.POST.get("osteoporesis")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Leukemia",details='Yes' if request.POST.get("leukemia")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Lymphoma",details='Yes' if request.POST.get("lymphoma")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Epilepsy",details='Yes' if request.POST.get("epilepsy")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Asthma",details='Yes' if request.POST.get("asthma")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Lung Disease",details='Yes' if request.POST.get("lung_disease")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Colorectal Disease",details='Yes' if request.POST.get("colorectal_disease")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Acne",details='Yes' if request.POST.get("acne")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Psoriasis",details='Yes' if request.POST.get("psoriasis")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Eczema",details='Yes' if request.POST.get("eczema")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Polyps",details='Yes' if request.POST.get("polyps")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Migraines",details='Yes' if request.POST.get("migraines")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Smoking",details='Yes' if request.POST.get("smoking")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Alcohol",details='Yes' if request.POST.get("alcohol")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Sleep Disorder",details='Yes' if request.POST.get("sleep_disorder")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Weight gain",details='Yes' if request.POST.get("weight_gain")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Fatigue",details='Yes' if request.POST.get("fatigue")=='on' else 'No')
+        PatientDetail.objects.create(patient=patient,symptom="Chest Pain",details='Yes' if request.POST.get("chest_pain")=='on' else 'No')
+
+        if "Burn & Plastic" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Location and extent of burns",details=request.POST.get("burn_location_extent"))
+            PatientDetail.objects.create(patient=patient,symptom="Depth of burns",details=request.POST.get("burn_depth"))
+            PatientDetail.objects.create(patient=patient,symptom="Blisters?",details='Yes' if request.POST.get("blisters")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Eschar?",details='Yes' if request.POST.get("eschar")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Necrosis?",details='Yes' if request.POST.get("necrosis")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Redness?",details='Yes' if request.POST.get("redness")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Swelling?",details='Yes' if request.POST.get("swelling")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Discharge?",details='Yes' if request.POST.get("discharge")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Texture",details=request.POST.get("texture"))
+            PatientDetail.objects.create(patient=patient,symptom="Surgical scars",details=request.POST.get("surgical_scars"))
+            PatientDetail.objects.create(patient=patient,symptom="Symmetry and contour",details=request.POST.get("symmetry_contour"))
+            PatientDetail.objects.create(patient=patient,symptom="Sign of infections",details=request.POST.get("sign_of_infection"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpation : Tenderness",details=request.POST.get("palpation_tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpation : Masses",details=request.POST.get("palpation_masses"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpation : Abnormalities",details=request.POST.get("palpation_abnormalities"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Wound cultures (if infection)",details=request.POST.get("wound_cultures"))
+            PatientDetail.objects.create(patient=patient,symptom="Coagulation profile",details=request.POST.get("coagulation_profile"))
+            if request.FILES.get("cbc"):
+                PatientDetail.objects.create(patient=patient,symptom="Complete Blood Count (CBC)",file=request.FILES.get("cbc"))
+            if request.FILES.get("x-ray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-ray (if underlying injury is suspected)",file=request.FILES.get("x-ray"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri/ctscan"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI/CT Scan (for complex cases)",file=request.FILES.get("mri/ctscan"))
+        
+        if "Hepatology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver size",details=request.POST.get("liver_size"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal Distension?",details='Yes' if request.POST.get("abdominal_distension")=='on' else 'No')
+            PatientDetail.objects.create(patient=patient,symptom="Gallbladder Tenderness",details=request.POST.get("gallbladder_tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Spleen size",details=request.POST.get("spleen_size"))
+            PatientDetail.objects.create(patient=patient,symptom="Upper border liver dullness",details=request.POST.get("border_liver_dullness"))
+            PatientDetail.objects.create(patient=patient,symptom="Serum Albumin",details=request.POST.get("serum_albumin"))
+            PatientDetail.objects.create(patient=patient,symptom="Prothrombin time",details=request.POST.get("prothrombin"))
+            PatientDetail.objects.create(patient=patient,symptom="Ascites",details=request.POST.get("ascites"))
+            PatientDetail.objects.create(patient=patient,symptom="Bowel sounds",details=request.POST.get("bowel_sounds"))
+            if request.FILES.get("cbc"):
+                PatientDetail.objects.create(patient=patient,symptom="Complete Blood Count (CBC)",file=request.FILES.get("cbc"))
+            if request.FILES.get("hepatitis_panel"):
+                PatientDetail.objects.create(patient=patient,symptom="Hepatitis panel",file=request.FILES.get("hepatitis_panel"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound of Abdomen",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("ctscan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan of Abdomen",file=request.FILES.get("ctscan"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI of Abdomen",file=request.FILES.get("mri"))
+            if request.FILES.get("ercp"):
+                PatientDetail.objects.create(patient=patient,symptom="ERCP (Endoscopic Retrograde Cholangiopancreatography)",file=request.FILES.get("ercp"))
+            if request.FILES.get("liver_biopsy"):
+                PatientDetail.objects.create(patient=patient,symptom="Liver biopsy",file=request.FILES.get("liver_biopsy"))
+            if request.FILES.get("fibroscan"):
+                PatientDetail.objects.create(patient=patient,symptom="FibroScan (Liver Fibrosis Assessment)",file=request.FILES.get("fibroscan"))
+        
+        if "Nephrology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Edema extent",details=request.POST.get("edema_extent"))
+            PatientDetail.objects.create(patient=patient,symptom="Skin change",details=request.POST.get("skin_change"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpation : Tenderness",details=request.POST.get("palpation_tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpation : Masses",details=request.POST.get("palpation_masses"))
+            PatientDetail.objects.create(patient=patient,symptom="Bruits (Renal Arteries)",details=request.POST.get("bruits"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sounds",details=request.POST.get("heart_sounds"))
+            PatientDetail.objects.create(patient=patient,symptom="Peripheral pulses",details=request.POST.get("peripheral_pulses"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal examinations",details=request.POST.get("abdominal_examinations"))
+            PatientDetail.objects.create(patient=patient,symptom="Serum Creatinine",details=request.POST.get("serum_creatinine"))
+            PatientDetail.objects.create(patient=patient,symptom="BUN (Renal function test)",details=request.POST.get("bun"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            PatientDetail.objects.create(patient=patient,symptom="Urine protein/creatinine ratio",details=request.POST.get("protein-creatinine"))
+            PatientDetail.objects.create(patient=patient,symptom="GFR score",details=request.POST.get("gfr_score"))
+            if request.FILES.get("cbc"):
+                PatientDetail.objects.create(patient=patient,symptom="Complete Blood Count (CBC)",file=request.FILES.get("cbc"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound of Abdomen",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("ctscan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan of Abdomen",file=request.FILES.get("ctscan"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI of Abdomen",file=request.FILES.get("mri"))
+            if request.FILES.get("renal_biopsy"):
+                PatientDetail.objects.create(patient=patient,symptom="Renal biopsy",file=request.FILES.get("renal_biopsy"))
+        
+        if "Cardiology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Apex beat",details=request.POST.get("apex_beat"))
+            PatientDetail.objects.create(patient=patient,symptom="Palpable P2",details=request.POST.get("palpablep2"))
+            PatientDetail.objects.create(patient=patient,symptom="Peripheral Pulse Quality",details=request.POST.get("peripheral_pulse_quality"))
+            PatientDetail.objects.create(patient=patient,symptom="Peripheral Pulse Symmetry",details=request.POST.get("peripheral_pulse_symmetry"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sound (s1)",details=request.POST.get("heart_sound_s1"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sound (s2)",details=request.POST.get("heart_sound_s2"))
+            PatientDetail.objects.create(patient=patient,symptom="(Additional)",details=request.POST.get("heart_sound_additional"))
+            PatientDetail.objects.create(patient=patient,symptom="Murmurs type",details=request.POST.get("murmurs_type"))
+            PatientDetail.objects.create(patient=patient,symptom="Murmurs location",details=request.POST.get("murmurs_location"))
+            PatientDetail.objects.create(patient=patient,symptom="Murmurs intensity",details=request.POST.get("murmurs_intensity"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Lipid profile",details=request.POST.get("lipid_profile"))
+            PatientDetail.objects.create(patient=patient,symptom="BUN (Renal function test)",details=request.POST.get("bun"))
+            PatientDetail.objects.create(patient=patient,symptom="Cardiac Biomarkers (Troponins)",details=request.POST.get("cardiac_biomarker"))
+            PatientDetail.objects.create(patient=patient,symptom="Holter Monitor (24h ECG)",details=request.POST.get("holter_monitor"))
+            if request.FILES.get("cbc"):
+                PatientDetail.objects.create(patient=patient,symptom="Complete Blood Count (CBC)",file=request.FILES.get("cbc"))
+            if request.FILES.get("ecg"):
+                PatientDetail.objects.create(patient=patient,symptom="ECG",file=request.FILES.get("ecg"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="Chest X-Ray",file=request.FILES.get("xray"))
+            if request.FILES.get("ecocardiogram"):
+                PatientDetail.objects.create(patient=patient,symptom="Ecocardiogram",file=request.FILES.get("ecocardiogram"))
+            
+        if "Endocrynology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid size",details=request.POST.get("thyroid_size"))
+            PatientDetail.objects.create(patient=patient,symptom="Consistency",details=request.POST.get("thyroid_consistency"))
+            PatientDetail.objects.create(patient=patient,symptom="Nodules",details=request.POST.get("thyroid_nodules"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("thyroid_tenderness"))
+            PatientDetail.objects.create(patient=patient,symptom="Skin Texture",details=request.POST.get("skin_texture"))
+            PatientDetail.objects.create(patient=patient,symptom="Pigmentation",details=request.POST.get("skin_pigmentation"))
+            PatientDetail.objects.create(patient=patient,symptom="Sweating",details=request.POST.get("skin_sweating"))
+            PatientDetail.objects.create(patient=patient,symptom="Hands (Tremors)",details=request.POST.get("hands_tremors"))
+            PatientDetail.objects.create(patient=patient,symptom="(Palmar Erythema)",details=request.POST.get("hands_palmar_erythema"))
+            PatientDetail.objects.create(patient=patient,symptom="Jugular venous pressure",details=request.POST.get("neck_jugular_venous_pressure"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymphadenopathy",details=request.POST.get("neck_lymphadenopathy"))
+            PatientDetail.objects.create(patient=patient,symptom="Organomegaly",details=request.POST.get("abdomen_organomegaly"))
+            PatientDetail.objects.create(patient=patient,symptom="Striae",details=request.POST.get("abdomen_striae"))
+            PatientDetail.objects.create(patient=patient,symptom="Edema",details=request.POST.get("lower_limbs_edema"))
+            PatientDetail.objects.create(patient=patient,symptom="Reflexes",details=request.POST.get("lower_limbs_reflexes"))
+            PatientDetail.objects.create(patient=patient,symptom="Blood glucose levels",details=request.POST.get("blood_glucose_levels"))
+            PatientDetail.objects.create(patient=patient,symptom="HbA1c",details=request.POST.get("hba1c"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (T3)",details=request.POST.get("thyroid_t3"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (T4)",details=request.POST.get("thyroid_t4"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (TSH)",details=request.POST.get("thyroid_tsh"))
+            PatientDetail.objects.create(patient=patient,symptom="Cortisol levels",details=request.POST.get("cortisol_levels"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan / MRI",file=request.FILES.get("ct_scan"))
+        
+        if "Neuro Medicine" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient, symptom="Short/Long term memory", details=request.POST.get("mental_memory"))
+            PatientDetail.objects.create(patient=patient, symptom="Attention", details=request.POST.get("mental_attention"))
+            PatientDetail.objects.create(patient=patient, symptom="Function & Sensory Assessment", details=request.POST.get("cranial_nerves"))
+            PatientDetail.objects.create(patient=patient, symptom="Muscle strength", details=request.POST.get("motor_system_1"))
+            PatientDetail.objects.create(patient=patient, symptom="Tone", details=request.POST.get("motor_system_2"))
+            PatientDetail.objects.create(patient=patient, symptom="Co-ordination", details=request.POST.get("motor_system_3"))
+            PatientDetail.objects.create(patient=patient, symptom="Light touch", details=request.POST.get("sensory_1"))
+            PatientDetail.objects.create(patient=patient, symptom="Pain touch", details=request.POST.get("sensory_2"))
+            PatientDetail.objects.create(patient=patient, symptom="Temperature sense", details=request.POST.get("sensory_3"))
+            PatientDetail.objects.create(patient=patient, symptom="Vibration sense", details=request.POST.get("sensory_4"))
+            PatientDetail.objects.create(patient=patient, symptom="Proprioception sense", details=request.POST.get("sensory_5"))
+            PatientDetail.objects.create(patient=patient, symptom="Deep tendon reflexes", details=request.POST.get("reflexes_1"))
+            PatientDetail.objects.create(patient=patient, symptom="Pathological reflexes", details=request.POST.get("reflexes_2"))
+            PatientDetail.objects.create(patient=patient, symptom="Walking pattern", details=request.POST.get("gait_balance_1"))
+            PatientDetail.objects.create(patient=patient, symptom="Balance tests", details=request.POST.get("gait_balance_2"))
+            PatientDetail.objects.create(patient=patient, symptom="Electrolytes", details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient, symptom="Thyroid (T3)", details=request.POST.get("thyroid_t3"))
+            PatientDetail.objects.create(patient=patient, symptom="Thyroid (T4)", details=request.POST.get("thyroid_t4"))
+            PatientDetail.objects.create(patient=patient, symptom="Thyroid (TSH)", details=request.POST.get("thyroid_tsh"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient, symptom="CT Scan (Head)", file=request.FILES.get("ct_scan"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient, symptom="MRI (Brain)", file=request.FILES.get("mri"))
+            if request.FILES.get("eeg"):
+                PatientDetail.objects.create(patient=patient, symptom="EEG", file=request.FILES.get("eeg"))
+            if request.FILES.get("lumbar_puncture"):
+                PatientDetail.objects.create(patient=patient, symptom="Lumbar puncture", file=request.FILES.get("lumbar_puncture"))
+            if request.FILES.get("evoked"):
+                PatientDetail.objects.create(patient=patient, symptom="Evoked potentials", file=request.FILES.get("evoked"))
+            if request.FILES.get("genetictest"):
+                PatientDetail.objects.create(patient=patient, symptom="Genetic testing", file=request.FILES.get("genetictest"))
+        
+        if "Physical Medicine" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Joint deformities",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle atrophy",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Swelling",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Temp. Cahnge",details=request.POST.get("palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Active range of motion",details=request.POST.get("rom_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Passive range of motion",details=request.POST.get("rom_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle groups (grade strength)",details=request.POST.get("strength"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle strength",details=request.POST.get("motor_system_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Tone",details=request.POST.get("motor_system_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Co-ordination",details=request.POST.get("motor_system_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Light touch",details=request.POST.get("sensory_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Pain touch",details=request.POST.get("sensory_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Temperature sense",details=request.POST.get("sensory_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Vibration sense",details=request.POST.get("sensory_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Proprioception sense",details=request.POST.get("sensory_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Deep tendon reflexes",details=request.POST.get("reflexes_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Pathological reflexes",details=request.POST.get("reflexes_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (T3)",details=request.POST.get("thyroid_t3"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (T4)",details=request.POST.get("thyroid_t4"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid (TSH)",details=request.POST.get("thyroid_tsh"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("emg"):
+                PatientDetail.objects.create(patient=patient,symptom="EMG",file=request.FILES.get("emg"))
+
+        if "Urology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal distension",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="External genitalia",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal Tenderness",details=request.POST.get("palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Testicular examination",details=request.POST.get("palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Kidney tenderness",details=request.POST.get("percussion"))
+            PatientDetail.objects.create(patient=patient,symptom="Bowel sounds",details=request.POST.get("auscultation"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Serum creatinine",details=request.POST.get("serum_creatinine"))
+            PatientDetail.objects.create(patient=patient,symptom="Urine RME",details=request.POST.get("urinalysis"))
+            PatientDetail.objects.create(patient=patient,symptom="Urine culture",details=request.POST.get("urine_culture"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan (Abdomen)",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI (Pelvis)",file=request.FILES.get("mri"))
+            if request.FILES.get("cystoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Cystoscopy",file=request.FILES.get("cystoscopy"))
+            if request.FILES.get("urodynamics"):
+                PatientDetail.objects.create(patient=patient,symptom="Urodynamics",file=request.FILES.get("urodynamics"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound of pelvis/abdomen",file=request.FILES.get("ultrasound"))
+
+        if "Hematology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Pallor",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Bruises or Petechiae",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Swollen lymph nodes",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness in bone area",details=request.POST.get("palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Splenomegaly or Hepatomegaly",details=request.POST.get("palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sounds",details=request.POST.get("auscultation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Lung sounds",details=request.POST.get("auscultation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Reticulocyte counts",details=request.POST.get("reticulocyte"))
+            PatientDetail.objects.create(patient=patient,symptom="Coagulation profile",details=request.POST.get("coagulation"))
+            PatientDetail.objects.create(patient=patient,symptom="Vitamin B12 & Folate levels",details=request.POST.get("vitamin"))
+            PatientDetail.objects.create(patient=patient,symptom="Bone marrow biopsy",details=request.POST.get("bone_marrow"))
+            PatientDetail.objects.create(patient=patient,symptom="Serum Iron Studies",details=request.POST.get("serum_iron"))
+            PatientDetail.objects.create(patient=patient,symptom="LDH",details=request.POST.get("ldh"))
+            PatientDetail.objects.create(patient=patient,symptom="Peripheral blood semar",details=request.POST.get("pbf"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound (Abdomen)",file=request.FILES.get("ultrasound"))
+        
+        if "Gastroenterology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Distension",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Scars",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Skin changes",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Masses",details=request.POST.get("palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver size",details=request.POST.get("palpation_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Spleen size",details=request.POST.get("palpation_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Upper border dullness",details=request.POST.get("percussion_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Ascites",details=request.POST.get("percussion_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Bowel sounds",details=request.POST.get("auscultation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Bruits",details=request.POST.get("auscultation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver function test",details=request.POST.get("lft"))
+            PatientDetail.objects.create(patient=patient,symptom="Renal function test",details=request.POST.get("rft"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Stool analysis",details=request.POST.get("stool"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan (Abdomen)",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound (Abdomen)",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI (Abdomen)",file=request.FILES.get("mri"))
+            if request.FILES.get("upper_endoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Upper endoscopy",file=request.FILES.get("upper_endoscopy"))
+            if request.FILES.get("colonoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Colonoscopy",file=request.FILES.get("colonoscopy"))
+            if request.FILES.get("flexible_sigmoidoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Flexible sigmoidoscopy",file=request.FILES.get("flexible_sigmoidoscopy"))
+            
+        if "ENT" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="External ear",details=request.POST.get("ear_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Ear canal",details=request.POST.get("ear_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Tympanic membrane",details=request.POST.get("ear_inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Ear tenderness (Auricle)",details=request.POST.get("ear_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Ear tenderness (Mastoid)",details=request.POST.get("ear_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="External nose",details=request.POST.get("nose_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Nasal cavity",details=request.POST.get("nose_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Sinus tenderness (frontal)",details=request.POST.get("nose_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Sinus tenderness (maxillary)",details=request.POST.get("nose_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Oral cavity",details=request.POST.get("throat_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Pharynx",details=request.POST.get("throat_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Tonsils",details=request.POST.get("throat_inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymph nodes (cervical)",details=request.POST.get("throat_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymph nodes (submandibular)",details=request.POST.get("throat_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Alergy testing",details=request.POST.get("alergy"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan (Sinuses)",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("x-ray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray (Sinuses)",file=request.FILES.get("x-ray"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI (Head-Neck)",file=request.FILES.get("mri"))
+            if request.FILES.get("nasal_endoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Nasal endoscopy",file=request.FILES.get("nasal_endoscopy"))
+            if request.FILES.get("laryngoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Laryngoscopy",file=request.FILES.get("laryngoscopy"))
+            if request.FILES.get("audiometry"):
+                PatientDetail.objects.create(patient=patient,symptom="Audiometry",file=request.FILES.get("audiometry"))
+
+        if "Cardiothorasic" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Chest deformities or scars",details=request.POST.get("cardiac_inspection"))
+            PatientDetail.objects.create(patient=patient,symptom="Herat size & location",details=request.POST.get("cardiac_palpation"))
+            PatientDetail.objects.create(patient=patient,symptom="Herat sound",details=request.POST.get("cardiac_auscultation"))
+            PatientDetail.objects.create(patient=patient,symptom="Respiratory rate",details=request.POST.get("thorasic_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Respiratory pattern",details=request.POST.get("thorasic_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Chest wall movement",details=request.POST.get("thorasic_inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("thorasic_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Chest expansion",details=request.POST.get("thorasic_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Dullness or hyperresonance",details=request.POST.get("thorasic_auscultation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Breath sounds",details=request.POST.get("thorasic_auscultation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Basic metabolic panel",details=request.POST.get("basic_metabolic_panel"))
+            PatientDetail.objects.create(patient=patient,symptom="Cardiac enzymes",details=request.POST.get("cardiac_enzymes"))
+            PatientDetail.objects.create(patient=patient,symptom="Arterial blood gas",details=request.POST.get("abg"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan (Chest)",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("x-ray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray (Chest)",file=request.FILES.get("x-ray"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI (Chest)",file=request.FILES.get("mri"))
+            if request.FILES.get("cardiac_stress_test"):
+                PatientDetail.objects.create(patient=patient,symptom="Cardiac stress test",file=request.FILES.get("cardiac_stress_test"))
+            if request.FILES.get("pulmonary_function"):
+                PatientDetail.objects.create(patient=patient,symptom="Pulmonary function",file=request.FILES.get("pulmonary_function"))
+            if request.FILES.get("coronary_angiography"):
+                PatientDetail.objects.create(patient=patient,symptom="Coronary Angiography",file=request.FILES.get("coronary_angiography"))
+
+        if "Dermatology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Skin lesions",details=request.POST.get("dermatological_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Hair & Nail examination",details=request.POST.get("dermatological_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Texture",details=request.POST.get("dermatological_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("dermatological_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Temp. Changes",details=request.POST.get("dermatological_palpation_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Genital lesions",details=request.POST.get("genitourinary_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Discharge",details=request.POST.get("genitourinary_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("genitourinary_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymphadenopathy",details=request.POST.get("genitourinary_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Dullness or hyperresonance",details=request.POST.get("thorasic_auscultation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Breath sounds",details=request.POST.get("thorasic_auscultation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Skin scrapings",details=request.POST.get("skin_scraping"))
+            PatientDetail.objects.create(patient=patient,symptom="STDs (HIV,Syphilis,Gonorrhea)",details=request.POST.get("std"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            PatientDetail.objects.create(patient=patient,symptom="STI panel",details=request.POST.get("sti_panel"))
+
+        if "Orthopedics" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Swelling",details=request.POST.get("orthopedic_inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Deformities",details=request.POST.get("orthopedic_inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Scars",details=request.POST.get("orthopedic_inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Redness",details=request.POST.get("orthopedic_inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("orthopedic_palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Warmth",details=request.POST.get("orthopedic_palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Crepitus",details=request.POST.get("orthopedic_palpation_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Masses",details=request.POST.get("orthopedic_palpation_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Active range of motion",details=request.POST.get("orthopedic_rom_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Passive range of motion",details=request.POST.get("orthopedic_rom_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Gait analysis: Normal?",details=request.POST.get("orthopedic_gait_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Antalgic",details=request.POST.get("orthopedic_gait_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Strength Test (Grade 0-5)",details=request.POST.get("orthopedic_strength_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Stability",details=request.POST.get("orthopedic_strength_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Light touch",details=request.POST.get("sensory_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Pain touch",details=request.POST.get("sensory_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Vibration sense",details=request.POST.get("sensory_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Proprioception",details=request.POST.get("sensory_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Deep tendon reflexes",details=request.POST.get("reflex_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Pathological reflexes",details=request.POST.get("reflex_2"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="ESR",details=request.POST.get("esr"))
+            PatientDetail.objects.create(patient=patient,symptom="CRP",details=request.POST.get("crp"))
+            PatientDetail.objects.create(patient=patient,symptom="Rheumatoid Factor (RF)",details=request.POST.get("rf"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT Scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("x-ray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("x-ray"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("bone_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="Bone scan",file=request.FILES.get("bone_scan"))
+
+        if "Eye" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Distant vision(Snellen chart)",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Near vision(Joeger chart)",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Eyelids",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Conjunctiva",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Sclera",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Refraction",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Pupil size",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Pupil Shape",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Reactivity to light",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Extraocular movements",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Alignment (cover test)",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Cornea",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Anterior chamber",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="Iris",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Lens",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="Tonometry",details=request.POST.get("inspection_16"))
+            PatientDetail.objects.create(patient=patient,symptom="Fundoscopy (Optic disc, macula)",details=request.POST.get("inspection_17"))
+            PatientDetail.objects.create(patient=patient,symptom="Blood glucose levels",details=request.POST.get("blood_glucose"))
+            PatientDetail.objects.create(patient=patient,symptom="Thyroid function test",details=request.POST.get("thyroid_function"))
+            PatientDetail.objects.create(patient=patient,symptom="Intraocular pressure measurement",details=request.POST.get("intraocular_pressure"))
+            if request.FILES.get("oct"):
+                PatientDetail.objects.create(patient=patient,symptom="OCT",file=request.FILES.get("oct"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound B-scan",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("fluorescein_angiography"):
+                PatientDetail.objects.create(patient=patient,symptom="Fluorescein Angiography",file=request.FILES.get("fluorescein_angiography"))
+
+        if "Pediatrics Medicine" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Frontanelles",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Eye movements",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Ear examination",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Throat examination",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sounds",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Murmurs",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Breath sounds",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Wheezes",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Crackles",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal inspection",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal palpation",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal percussion",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal auscultation",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="External genitalia",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Hernias",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="Limb exam.",details=request.POST.get("inspection_16"))
+            PatientDetail.objects.create(patient=patient,symptom="Joint exam.",details=request.POST.get("inspection_17"))
+            PatientDetail.objects.create(patient=patient,symptom="Spine exam.",details=request.POST.get("inspection_18"))
+            PatientDetail.objects.create(patient=patient,symptom="Reflexes",details=request.POST.get("inspection_19"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle tone",details=request.POST.get("inspection_20"))
+            PatientDetail.objects.create(patient=patient,symptom="Sensory",details=request.POST.get("inspection_21"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver function test",details=request.POST.get("lft"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("xray"))
+
+        if "Pediatrics Surgery" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Frontanelles",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Eye movements",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Ear examination",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Throat examination",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Heart sounds",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Murmurs",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Breath sounds",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Wheezes",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Crackles",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal inspection",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal palpation",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal percussion",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal auscultation",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="External genitalia",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Hernias",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="Limb exam.",details=request.POST.get("inspection_16"))
+            PatientDetail.objects.create(patient=patient,symptom="Joint exam.",details=request.POST.get("inspection_17"))
+            PatientDetail.objects.create(patient=patient,symptom="Spine exam.",details=request.POST.get("inspection_18"))
+            PatientDetail.objects.create(patient=patient,symptom="Reflexes",details=request.POST.get("inspection_19"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle tone",details=request.POST.get("inspection_20"))
+            PatientDetail.objects.create(patient=patient,symptom="Sensory",details=request.POST.get("inspection_21"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver function test",details=request.POST.get("lft"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("xray"))
+
+        if "Neuro Surgery" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Mental orientation",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Memory",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Speech",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Cognition",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Olfaction",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Vision",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Eye movement",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Facial Sensation",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Hearing & balance",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Shoulder shrug",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Tongue movements",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Muscle bulk",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Co-ordination",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="Strength",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Light touch",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="Pain touch",details=request.POST.get("inspection_16"))
+            PatientDetail.objects.create(patient=patient,symptom="Vibration",details=request.POST.get("inspection_17"))
+            PatientDetail.objects.create(patient=patient,symptom="Proprioception",details=request.POST.get("inspection_18"))
+            PatientDetail.objects.create(patient=patient,symptom="Deep tendon reflexes",details=request.POST.get("inspection_19"))
+            PatientDetail.objects.create(patient=patient,symptom="Plantar response",details=request.POST.get("inspection_20"))
+            PatientDetail.objects.create(patient=patient,symptom="Walking pattern",details=request.POST.get("inspection_21"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Electrolytes",details=request.POST.get("electrolytes"))
+            PatientDetail.objects.create(patient=patient,symptom="Coagulation profile",details=request.POST.get("coagulation"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("angiography"):
+                PatientDetail.objects.create(patient=patient,symptom="Angiography",file=request.FILES.get("angiography"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("eeg"):
+                PatientDetail.objects.create(patient=patient,symptom="EEG",file=request.FILES.get("eeg"))
+
+        if "Radiology" in doctor.sub_category.name:
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("xray"))
+            if request.FILES.get("mammography"):
+                PatientDetail.objects.create(patient=patient,symptom="Mammography",file=request.FILES.get("mammography"))
+            if request.FILES.get("nuclear_medicine"):
+                PatientDetail.objects.create(patient=patient,symptom="Nuclear Medicine Studies",file=request.FILES.get("nuclear_medicine"))
+            if request.FILES.get("body_part"):
+                PatientDetail.objects.create(patient=patient,symptom="Body part exam.",file=request.FILES.get("body_part"))
+
+        if "Oncology" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Visible tumors",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Swelling",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness location",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness Size",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymphadenopathy location",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymphadenopathy size",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymphadenopathy consistency",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Abnormal sounds in areas",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Tumor markers",details=request.POST.get("tumor_marker"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver function test",details=request.POST.get("lft"))
+            PatientDetail.objects.create(patient=patient,symptom="Renal function test",details=request.POST.get("rft"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("mri"):
+                PatientDetail.objects.create(patient=patient,symptom="MRI",file=request.FILES.get("mri"))
+            if request.FILES.get("biopsy"):
+                PatientDetail.objects.create(patient=patient,symptom="Biopsy",file=request.FILES.get("biopsy"))
+            if request.FILES.get("pet_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="PET Scan",file=request.FILES.get("pet_scan"))
+            if request.FILES.get("molecular_test"):
+                PatientDetail.objects.create(patient=patient,symptom="Molecular Testing",file=request.FILES.get("molecular_test"))
+
+        if "Colorectal" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Distension",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Scars",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Visible peristalsis",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("palpation_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Masses",details=request.POST.get("palpation_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Organomegaly",details=request.POST.get("palpation_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Tympany",details=request.POST.get("percussion_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Dullness",details=request.POST.get("percussion_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Bowel sounds",details=request.POST.get("percussion_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Hemorrhoids",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Fissures",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Fistulas",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="DRE: masses",details=request.POST.get("dre_1"))
+            PatientDetail.objects.create(patient=patient,symptom="DRE: tenderness",details=request.POST.get("dre_2"))
+            PatientDetail.objects.create(patient=patient,symptom="DRE: Sphincter tone",details=request.POST.get("dre_3"))
+            PatientDetail.objects.create(patient=patient,symptom="DRE: Blood on gloves",details=request.POST.get("dre_4"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Liver function test",details=request.POST.get("lft"))
+            PatientDetail.objects.create(patient=patient,symptom="Fecal Occult Blood test",details=request.POST.get("fobt"))
+            PatientDetail.objects.create(patient=patient,symptom="CRP",details=request.POST.get("crp"))
+            PatientDetail.objects.create(patient=patient,symptom="Tumor markers",details=request.POST.get("tumor_marker"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound (Abdominal)",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("colonoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Colonoscopy",file=request.FILES.get("colonoscopy"))
+
+        if "Obstetrics" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="External genitalia",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Signs of infections",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal tenderness",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Uterine tenderness",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Uterine size",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Ovarian masses",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Vaginal Walls",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Cervix",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Ovarian size",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Ovarian tenderness",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Sign of swelling/edema",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Fundal height",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Fetal heart tone",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="Abdominal Girth",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Cervical dilation",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Urinalysis",details=request.POST.get("urinalysis"))
+            PatientDetail.objects.create(patient=patient,symptom="Pregnancy test",details=request.POST.get("pregnancy"))
+            PatientDetail.objects.create(patient=patient,symptom="Pap smear",details=request.POST.get("pap_semar"))
+            PatientDetail.objects.create(patient=patient,symptom="Hormone levels",details=request.POST.get("hormone"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("ultrasound"):
+                PatientDetail.objects.create(patient=patient,symptom="Ultrasound",file=request.FILES.get("ultrasound"))
+            if request.FILES.get("cultures"):
+                PatientDetail.objects.create(patient=patient,symptom="Cultures",file=request.FILES.get("cultures"))
+            if request.FILES.get("biopsy"):
+                PatientDetail.objects.create(patient=patient,symptom="Biopsy",file=request.FILES.get("biopsy"))
+
+        if "Respiratory" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Respiratory rate",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Respiratory pattern",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Use of accessory muscles",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Cyanosis (Bluish discoloration)",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Chest expansion",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Tenderness",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Dullness or Hyperresonance",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Breath sounds",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Adventitious sound",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            PatientDetail.objects.create(patient=patient,symptom="Arterial Blood Gases",details=request.POST.get("abg"))
+            PatientDetail.objects.create(patient=patient,symptom="Sputum Culture",details=request.POST.get("sputum_culture"))
+            PatientDetail.objects.create(patient=patient,symptom="Sputum Sensitivity",details=request.POST.get("sputum_sensitivity"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="HRCT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("spirometry"):
+                PatientDetail.objects.create(patient=patient,symptom="Spirometry",file=request.FILES.get("spirometry"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("xray"))
+            if request.FILES.get("bronchoscopy"):
+                PatientDetail.objects.create(patient=patient,symptom="Bronchoscopy",file=request.FILES.get("bronchoscopy"))
+            PatientDetail.objects.create(patient=patient,symptom="Exercise Training",details=request.POST.get("exercise_training"))
+
+        if "BDS" in doctor.sub_category.name:
+            PatientDetail.objects.create(patient=patient,symptom="Face Symmetry",details=request.POST.get("inspection_1"))
+            PatientDetail.objects.create(patient=patient,symptom="Swelling",details=request.POST.get("inspection_2"))
+            PatientDetail.objects.create(patient=patient,symptom="Temporomandibular Joint",details=request.POST.get("inspection_3"))
+            PatientDetail.objects.create(patient=patient,symptom="Lymph nodes",details=request.POST.get("inspection_4"))
+            PatientDetail.objects.create(patient=patient,symptom="Lips",details=request.POST.get("inspection_5"))
+            PatientDetail.objects.create(patient=patient,symptom="Buccal Mucosa",details=request.POST.get("inspection_6"))
+            PatientDetail.objects.create(patient=patient,symptom="Tongue",details=request.POST.get("inspection_7"))
+            PatientDetail.objects.create(patient=patient,symptom="Floor of mouth",details=request.POST.get("inspection_8"))
+            PatientDetail.objects.create(patient=patient,symptom="Palate",details=request.POST.get("inspection_9"))
+            PatientDetail.objects.create(patient=patient,symptom="Gingiva",details=request.POST.get("inspection_10"))
+            PatientDetail.objects.create(patient=patient,symptom="Teeth",details=request.POST.get("inspection_11"))
+            PatientDetail.objects.create(patient=patient,symptom="Mobility",details=request.POST.get("inspection_12"))
+            PatientDetail.objects.create(patient=patient,symptom="Occlusion",details=request.POST.get("inspection_13"))
+            PatientDetail.objects.create(patient=patient,symptom="Pocket depth",details=request.POST.get("inspection_14"))
+            PatientDetail.objects.create(patient=patient,symptom="Gingival condition",details=request.POST.get("inspection_15"))
+            PatientDetail.objects.create(patient=patient,symptom="CBC",details=request.POST.get("cbc"))
+            if request.FILES.get("ct_scan"):
+                PatientDetail.objects.create(patient=patient,symptom="CBCT scan",file=request.FILES.get("ct_scan"))
+            if request.FILES.get("iopa"):
+                PatientDetail.objects.create(patient=patient,symptom="IOPA",file=request.FILES.get("iopa"))
+            if request.FILES.get("xray"):
+                PatientDetail.objects.create(patient=patient,symptom="X-Ray",file=request.FILES.get("xray"))
+            if request.FILES.get("opg"):
+                PatientDetail.objects.create(patient=patient,symptom="OPG",file=request.FILES.get("opg"))
+
+        return redirect('prescription')
+        
+
     context={
         'doctor': doctor,
         'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
     }
     return render(request,"dapp/dashboard-prescription-create.html",context)
+
+def dashboard_rawprescription(request,pk):
+    doctor = Doctor.objects.get(bmdc=get_username(request))
+    patient = Patient.objects.filter(pid=pk)[0]
+    context = {
+        'patient': patient,
+        'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+    }
+    return render(request,"dapp/dashboard-prescription-raw.html",context)
 
 
 

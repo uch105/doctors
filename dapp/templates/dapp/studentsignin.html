@@ -19,7 +19,7 @@ Doctors - Login
         <p style="text-align: center;margin: 10px 0px;">{{ message }}</p>
         <form action="{% url 'reportlogin' %}" method="POST">
             {% csrf_token %}
-            <input type="text" class="inputfield" name="report" placeholder="Explain your problem (provide contact no)">
+            <input type="text" class="inputfield" name="report" placeholder="Explain your problem (provide contact no)" required>
             <input type="submit" value="Report" class="submit-btn">
         </form>
         {% endif %}
@@ -47,12 +47,12 @@ Doctors - Login
             </select>
             <select name="institute" class="inputfield" required>
                 {% for clg in clgs %}
-                <option value="{{ clg.name }}">{{ clg.name }}</option>
+                <option value="{{ clg }}">{{ clg }}</option>
                 {% endfor %}
             </select>
             <label for="image" class="blur5">Set profile image <br>Square ( 1:1 ) shaped image is recommeneded</label>
-            <input type="file" name="image" id="" class="fileinput">
-            <input type="text" name="password" id="password" class="inputfield" placeholder="Enter password">
+            <input type="file" name="image" id="" class="fileinput" required>
+            <input type="text" name="password" id="password" class="inputfield" placeholder="Enter password" required>
             <input type="submit" class="submit-btn" value="Submit">
         </form>
     </div>

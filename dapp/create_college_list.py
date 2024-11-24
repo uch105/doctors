@@ -11,7 +11,7 @@ django.setup()
 
 from dapp.models import MedicalCollege
 
-with open("collegelist.txt",'r') as file:
+with open("clglist.txt",'r') as file:
     for line in file:
         m = MedicalCollege.objects.create(name=line.strip())
         m.save()

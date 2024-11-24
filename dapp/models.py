@@ -28,6 +28,7 @@ class Doctor(models.Model):
     bmdc = models.CharField(max_length=255,primary_key=True)
     password = models.CharField(max_length=255,default="1234")
     name = models.CharField(max_length=255,null=True,blank=True)
+    bname = models.CharField(max_length=255,default="[পাওয়া যায় নি]")
     phone = models.CharField(max_length=255,unique=True,default="Null")
     email = models.CharField(max_length=255,unique=True,default="Null")
     image = models.ImageField(upload_to="images/doctors/")
@@ -42,8 +43,10 @@ class Doctor(models.Model):
     job = models.CharField(max_length=255,default="Null")
     chamber = models.CharField(max_length=255,default="Null")
     qualification = models.CharField(max_length=1000,default="Null")
+    bqualification = models.CharField(max_length=255,default="[পাওয়া যায় নি]")
     category = models.ForeignKey(DoctorCategory,on_delete=models.CASCADE,related_name="categories")
     sub_category = models.ForeignKey(DoctorSubCategory,on_delete=models.CASCADE,related_name="subcategories")
+    bsub_category = models.CharField(max_length=255,default="[পাওয়া যায় নি]")
     points = models.IntegerField(default=0)
     
     def __str__(self):
@@ -478,13 +481,14 @@ class SelectedTheme(models.Model):
     
 class Patient(models.Model):
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,related_name="patients")
+    pid = models.CharField(max_length=255,null=True,blank=True)
     name = models.CharField(max_length=255,null=True,blank=True)
     age = models.CharField(max_length=2,null=True,blank=True)
     sex = models.CharField(max_length=255,null=True,blank=True)
     address = models.CharField(max_length=255,null=True,blank=True)
     contact = models.CharField(max_length=255,null=True,blank=True)
     occupation = models.CharField(max_length=255,null=True,blank=True)
-    pdf = models.FileField(upload_to="files/",null=True,blank=True)
+    pdf = models.FileField(upload_to="files/prescription/",null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -493,4 +497,9 @@ class Patient(models.Model):
 class Symptom(models.Model):
     dept = models.ForeignKey(DoctorSubCategory,on_delete=models.CASCADE,related_name="symptoms")
     parent = models.CharField(max_length=255,null=True,blank=True)
-    
+
+class PatientDetail(models.Model):
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name="patientdetails")
+    symptom = models.CharField(max_length=500,null=True,blank=True)
+    details = models.TextField(null=True,blank=True)
+    file = models.FileField(upload_to="files/patient_details/",null=True,blank=True)

@@ -11,7 +11,8 @@ Create Prescription
 
 {% block body %}
 <div class="container">
-    <form action="" id="prescription" autocomplete="off">
+    <form action="{% url 'createprescription' %}" id="prescription" autocomplete="off" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="person-details">
             <input type="text" class="textinput" name="fullname" placeholder="Enter patient name" required>
             <input type="text" class="textinput" name="age" placeholder="Enter age" required>
@@ -36,9 +37,10 @@ Create Prescription
                     </div>
                     <div id="sgf1">
                         <div class="sgf">
-                            <textarea name="primary_complaint" placeholder="Primary complaints"></textarea>
-                            <input type="text" name="duration" placeholder="Duration">
-                            <textarea name="additional_complaint" placeholder="Additional complaints"></textarea>
+                            <textarea name="cc" placeholder="Chief Complaints (C/C)" required></textarea>
+                            <textarea name="oe" placeholder="On Examination (O/E)"></textarea>
+                            <input type="text" name="dx" placeholder="Diagnosis/Dx">
+                            <textarea name="ix" placeholder="Investigation/Ix"></textarea>
                         </div>
                     </div>
                     <div id="sgf2" class="hide">
@@ -279,11 +281,6 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <input type="text" name="general_appearance" placeholder="General Appearance">
-                                </div>
-                            </div>
-                            <div class="sgf-child">
-                                <div class="sgf-child-pack">
                                     <input type="text" name="blood_pressure" placeholder="BP">
                                     <input type="text" name="pulse" placeholder="Pulse">
                                     <input type="text" name="respiratory_rate" placeholder="R/R">
@@ -508,20 +505,20 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="ultrasound_abdomen">Ultrasound of Abdomen</label>
-                                    <input type="file" name="ultrasound_abdomen">
+                                    <label for="ultrasound">Ultrasound of Abdomen</label>
+                                    <input type="file" name="ultrasound">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
-                                    <input type="file" name="ctscan_abdomen">
+                                    <label for="ctscan">CT Scan of Abdomen</label>
+                                    <input type="file" name="ctscan">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="mri_abdomen">MRI of Abdomen</label>
-                                    <input type="file" name="mri_abdomen">
+                                    <label for="mri">MRI of Abdomen</label>
+                                    <input type="file" name="mri">
                                 </div>
                             </div>
                             <div class="sgf-child">
@@ -623,14 +620,14 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="ctscan_abdomen">CT Scan of Abdomen</label>
-                                    <input type="file" name="ctscan_abdomen">
+                                    <label for="ctscan">CT Scan of Abdomen</label>
+                                    <input type="file" name="ctscan">
                                 </div>
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="mri_abdomen">MRI of Abdomen</label>
-                                    <input type="file" name="mri_abdomen">
+                                    <label for="mri">MRI of Abdomen</label>
+                                    <input type="file" name="mri">
                                 </div>
                             </div>
                             <div class="sgf-child">
@@ -722,8 +719,8 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <label for="chest_x_ray">Chest X-Ray</label>
-                                    <input type="file" name="chest_x_ray">
+                                    <label for="xray">Chest X-Ray</label>
+                                    <input type="file" name="xray">
                                 </div>
                             </div>
                             <div class="sgf-child">
@@ -790,8 +787,8 @@ Create Prescription
                             </div>
                             <div class="sgf-child">
                                 <div class="sgf-child-pack">
-                                    <input type="text" name="lower_limbs_edema" placeholder="Edema">
-                                    <input type="text" name="lower_limbs_reflexes" placeholder="Reflexes">
+                                    <input type="text" name="lower_limbs_edema" placeholder="Edema(Lower limb)">
+                                    <input type="text" name="lower_limbs_reflexes" placeholder="Reflexes(Lower limb)">
                                 </div>
                             </div>
                         </div>
@@ -2460,6 +2457,209 @@ Create Prescription
                     </div>
                 </div>
                 {% endif %}
+                {% if "Respiratory" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Respiratory examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Respiratory rate">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_2" placeholder="Respiratory pattern">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Use of accessory muscles">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_4" placeholder="Cyanosis (Bluish discoloration)">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Chest expansion">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_6" placeholder="Tenderness">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_7" placeholder="Dullness or Hyperresonance">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_8" placeholder="Breath sounds">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_9" placeholder="Adventitious sound">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                    <input type="text" name="abg" placeholder="Arterial Blood Gases">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="sputum_culture" placeholder="Sputum Culture">
+                                    <input type="text" name="sputum_sensitivity" placeholder="Sputum Sensitivity">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">HRCT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="spirometry">Spirometry</label>
+                                    <input type="file" name="spirometry">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="xray">X-Ray</label>
+                                    <input type="file" name="xray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="bronchoscopy">Bronchoscopy</label>
+                                    <input type="file" name="bronchoscopy">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="exercise_training" placeholder="Exercise Training">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if "BDS" in doctor.sub_category.name %}
+                <div class="symptom-specific">
+                    <div class="buttons">
+                        <a onclick="showSS('1')" id="ssb1" class="ss-buttons agreen">Extra Oral examination</a>
+                        <a onclick="showSS('2')" id="ssb2" class="ss-buttons">Intra Oral examination</a>
+                        <a onclick="showSS('3')" id="ssb3" class="ss-buttons">Investigations</a>
+                    </div>
+                    <div id="ssf1">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_1" placeholder="Face Symmetry">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_2" placeholder="Swelling">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_3" placeholder="Temporomandibular Joint">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_4" placeholder="Lymph nodes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf2" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_5" placeholder="Lips">
+                                    <input type="text" name="inspection_6" placeholder="Buccal Mucosa">
+                                    <input type="text" name="inspection_7" placeholder="Tongue">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_8" placeholder="Floor of mouth">
+                                    <input type="text" name="inspection_9" placeholder="Palate">
+                                    <input type="text" name="inspection_10" placeholder="Gingiva">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_11" placeholder="Teeth">
+                                    <input type="text" name="inspection_12" placeholder="Mobility">
+                                    <input type="text" name="inspection_13" placeholder="Occlusion">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_14" placeholder="Pocket depth">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="inspection_15" placeholder="Gingival condition">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ssf3" class="hide">
+                        <div class="sgf">
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <input type="text" name="cbc" placeholder="CBC">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="ct_scan">CBCT scan</label>
+                                    <input type="file" name="ct_scan">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="iopa">IOPA</label>
+                                    <input type="file" name="iopa">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="xray">X-Ray</label>
+                                    <input type="file" name="xray">
+                                </div>
+                            </div>
+                            <div class="sgf-child">
+                                <div class="sgf-child-pack">
+                                    <label for="opg">OPG</label>
+                                    <input type="file" name="opg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
             <div class="prescription">
                 <div class="buttons">
@@ -2488,8 +2688,8 @@ Create Prescription
                     
                     <select class="textinput" id="dosage2" onchange="insertDoseText2()">
                         <option value="None">Before/After</option>
-                        <option value="Before meal">Before meal</option>
-                        <option value="After meal">After meal</option>
+                        <option value="খাওয়ার আগে">খাওয়ার আগে</option>
+                        <option value="খাওয়ার পরে">খাওয়ার পরে</option>
                     </select>
 
                     <select class="textinput" id="dosage3" onchange="insertDoseText3()">

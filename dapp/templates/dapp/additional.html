@@ -19,7 +19,7 @@ Doctors - Login
         <p style="text-align: center;margin: 10px 0px;">{{ message }}</p>
         <form action="{% url 'reportlogin' %}" method="POST">
             {% csrf_token %}
-            <input type="text" class="inputfield" name="report" placeholder="Explain your problem">
+            <input type="text" class="inputfield" name="report" placeholder="Explain your problem" required>
             <input type="submit" value="Report" class="submit-btn">
         </form>
         {% endif %}
@@ -47,7 +47,7 @@ Doctors - Login
             <input type="file" name="image" id="" class="fileinput" required>
             <input type="text" class="inputfield" name="job" placeholder="Job location. Type none if not applicable" required>
             <input type="text" class="inputfield" name="chamber" placeholder="Chamber location. Type none if not applicable" required>
-            <input type="text" name="password" id="password" class="inputfield" placeholder="Enter password">
+            <input type="text" name="password" id="password" class="inputfield" placeholder="Enter password" required>
             <input type="submit" class="submit-btn" value="Submit">
         </form>
     </div>
