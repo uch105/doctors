@@ -43,7 +43,8 @@ for row in range(1,sheet.max_row+1):
     )
 
     counter+=1
-    print(str(counter) + "Drugs imported successfully!")
+    if counter%100==0:
+            print(str(counter)+" drugs added")
 
     #print(str(row) + " drugs added")
 
