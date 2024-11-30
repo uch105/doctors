@@ -1,0 +1,2339 @@
+1 hour postprandial Plasma glucose
+1.5 hrs postprandial Plasma glucose
+17a - OH Progesterone
+2 hrs postprandial Plasma glucose
+24 Hrs Ambulatory BP
+24 hrs Urinary Metanephrine
+24 hrs Urinary Microalbumin
+24 hrs. Urinary Chloride
+24 hrs. Urinary Creatinine
+24 hrs. Urinary Potassium
+24 hrs. Urinary Sodium
+24 hrs. Urinary Total Protein
+24 hrs. Urine for Albumin
+24 hrs. Urine for Calcium
+24 hrs. Urine for Electrolytes
+24 hrs. Urine for Magnesium
+24 hrs. Urine for Phosphate
+24 hrs. Urine for Urea
+24 hrs. Urine for Uric Acid
+2D Echo
+ABVS Both Breast with Ultrasound
+ABVS Single Breast with Ultrasound
+ACTH
+ALT
+ANA Profile
+ANA-HEp-2
+AP Spine 2 side measurement of bone densitometer
+APTT
+ASO Titre
+AST
+Abcess fluid for GeneXpert
+Abdomenal Discharge Fluid for C/S
+Abscess Fluid for AFB
+Abscess Fluid for Anti TB IgA
+Abscess Fluid for Anti TB IgG
+Abscess Fluid for Anti TB IgM
+Acid Phosphatase
+Adrenal
+Aldehyde Test
+Aldolase
+Aldosterone
+Alkaline phosphatase
+Allergy profile
+Alpha Feto Protein
+Ammonia
+Amphetamine
+Amylase
+Anesthesia Charge for EEG
+Anesthesia Charge for Echo/Echo Color Doppler
+Angiotensin Converting Enzyme
+Anomaly + BPP
+Anomaly Scan With Dopler
+Ant. Abd Wall
+Anti HAV - IgM
+Anti HBc
+Anti HBc - IgM
+Anti HBe
+Anti HBs
+Anti HCV
+Anti HEV - IgM
+Anti Thyroid Ab
+Anti- TPO Ab
+Anti-CCP
+Anti-Cardiolipin antibody
+Anti-Jo-I
+Anti-Mitochondrial Antibody
+Anti-Mullerian Hormone
+Anti-Nuclear Ab
+Anti-Phospholipid Antibody
+Anti-RNP
+Anti-SS-A
+Anti-SS-B
+Anti-Scl-70
+Anti-Sm
+Anti-TG Ab
+Anti-Tissue-Transglutaminase IgA
+Anti-ds DNA
+Anti-sperm Antibody Test
+Antibody Against Chicken Pox
+Appendix
+Ascitic Fluid C/S for AFB
+Ascitic Fluid for AFB
+Ascitic Fluid for Anti TB IgA
+Ascitic Fluid for Anti TB IgG
+Ascitic Fluid for Anti TB IgM
+Ascitic Fluid for Biochemical test
+Ascitic Fluid for C/S
+Ascitic Fluid for Cytology
+Ascitic Fluid for Gram Stain
+Ascitic Fluid for Malignant Cells
+Ascitic fluid for GeneXpert
+Aspirated Fluid C/S for AFB
+Aspirated Fluid C/S for Anerobic
+Aspirated Fluid for Gram Stain
+Aspirated fluid for C/S
+Aspiration Fluid for AFB Stain
+Aural Swab for CS
+Aural/Swab for Gram Stain
+B - hCG
+B N P
+B2 - Microglobulin
+BUN
+Balloon Dilatation of Duodenum
+Balloon Dilatation of Oesophageal
+Balloon Dilatation of Oesophagus
+Basal Cortisol
+Bence-Jones Protein
+Benzodiazepines
+Bicarbonate
+Bile for C/S
+Bilirubin
+Biophysical Profile with Color Doppler
+Black Tube
+Bleeding Time
+Blood C/S
+Blood C/S for Anerobic
+Blood Drawing
+Blood Group & RH Factor
+Blood Screening+Drawing+Grouping
+Blood Screening+Grouping
+Blood for ADA
+Blood for C/S
+Blood for Microfileria
+Blood for Osmolality
+Blue Tube
+Bone Age Adult
+Bone Marrow Examination
+Bone Marrow Trephine Biopsy
+Bone Marrow for C/S
+Bone Marrow for Fungus
+Bone Marrow for Fungus C/S
+Bony Tissue for C/S
+Both Foot Weight Bearing
+Both Leg AP View
+Both Leg B/V
+Breast Absess for C/S
+Breast Tumor Profile-1
+Breast Tumor Profile-2
+Breast Tumor Profile-3
+Bronchial Brushing for Gram Stain
+Bronchial Lavage Cytology
+Bronchial Washing Cytology for Malignant Cells
+Bronchial Washing for AFB
+Bronchial Washing for C/S
+Bronchial Washing for C/S for AFB
+Bronchial Washing for Fungus
+Bronchial Washing for Gram Stain
+Broncho Provocation test
+Broncho-alveolai Lavage for AFB Stain
+Broncho-alveolai Lavage for C/S
+Broncho-alveolai Lavage for Fungus
+Broncho-alveolai Lavage for Gram Stain
+Bronchoalveolar Lavage for GeneXpert
+Bronchoscope of washing for C/S
+Bronchoscopic Biopsy
+Bronchoscopy
+Bronchoscopy Medicine
+Bronco Dilator/Reversibility Test
+Brucella & Rickettsia
+Buccal Swab for C/S
+C-ANCA
+C-Peptide
+C-Reactive Protein
+C.V. Tip for C/S
+CA 125
+CA 15-3
+CA 19-9
+CAPD Fluid for AFB
+CAPD Fluid for Anti TB IgA
+CAPD Fluid for Anti TB IgG
+CAPD Fluid for Anti TB IgM
+CAPD Fluid for Biochemical Test
+CAPD Fluid for C/S
+CAPD Fluid for Cytology
+CAPD Fluid for Fungus
+CAPD Fluid for Gram Stain
+CARDIAC MAGNETIC RESONANCE IMAGING
+CBC, ESR
+CBCT Scan of Anterior Tooth
+CBCT Scan of Face
+CBCT Scan of Lower Anterior Region
+CBCT Scan of Lower Jaw
+CBCT Scan of Lower Left Quadrant
+CBCT Scan of Lower Right Quadrant
+CBCT Scan of Paranasal Sinuses
+CBCT Scan of TMJ
+CBCT Scan of Upper & Lower Jaw
+CBCT Scan of Upper Anterior Region
+CBCT Scan of Upper Jaw
+CBCT Scan of Upper Left Quadrant
+CBCT Scan of Upper Right Quadrant
+CBCT of Posterior Tooth
+CD
+CD138
+CD15
+CD20
+CD3
+CD30
+CD34
+CD99
+CEA
+CHILD CT OF K.U.B
+CHILD CT OF UROGRAM
+CHILD CT OF WHOLE ABDOMEN
+CHILD MRI OF KUB
+CHILD MRI OF WHOLE ABDOMEN
+CK 20
+CK 7
+CK-MB
+CLO Test
+CLO Test Only.
+CMV - IgG
+CMV - IgM
+COVID-19 Rapid Antigen Test
+CPK
+CSF C/S for AFB
+CSF C/S for Fungus
+CSF Cytology for Malignant Cells
+CSF FOR TPHA
+CSF for AFB
+CSF for Anti TB IgA
+CSF for Anti TB IgG
+CSF for Anti TB IgM
+CSF for Biochemical Test
+CSF for C/S
+CSF for Cytology
+CSF for GeneXpert
+CSF for Gram Stain
+CSF for VDRL
+CT Scan
+CT ANGIOGRAM OF NECK VESSEL & CRENIOVERTEBRAL SPIN
+CT Angio + Perfusion
+CT Angio Abdomenal Vessel
+CT Angio of Aortogram
+CT Angio of Brain
+CT Angio of Brain & Neck Vessel
+CT Angio of Brain perfusion With Acetazolamide Challenge
+CT Angio of Brain perfusion With Acetazolamide Challenge & Neck vessel
+CT Angio of Cardiac
+CT Angio of Liver / Three Phase Liver
+CT Angio of Neck Vessels
+CT Angio of Neck and Brain + Perfusion
+CT Angio of Peripheral Lower Limbs
+CT Angio of Peripheral Upper Limbs
+CT Angio of Pulmonary Vessel
+CT Angio of Renal
+CT Angio of cardio-pulmonary
+CT Angiogram of Spine
+CT CSF Rhinorrhea
+CT Cisternography / Cistetnogram
+CT Enterography
+CT GUIDED CORE BIOPSY
+CT GUIDED CORE BIOPSY-1
+CT GUIDED CORE BIOPSY-2
+CT Guided Core Biopsy
+CT Guided FNAC-1
+CT Guided FNAC-2
+CT Myelogram of Cervical Spine
+CT Myelogram of Dorsal Spine
+CT Myelogram of Lumber Spine
+CT Nesopharunx
+CT Oesophagus
+CT POLY TRAUMA
+CT Perfusion
+CT SCAN CERVICAL SPINE SCREENING WHOLE SPINE
+CT SCAN DORSAL SPINE SCREENING WHOLE SPINE
+CT SCAN LUMBER SPINE SCREENING WHOLE SPINE
+CT SCAN OF BRAIN & ORBIT
+CT SCAN OF BRAIN & PNS
+CT SCAN OF PELVIS
+CT Scan of Base of the Skull
+CT Scan of Brain & Base of Skull
+CT Scan of Brain Ear's
+CT Scan of Brain with Screen Cervical Spine
+CT Scan of Brain with Screen Whole Spine
+CT Scan of Calcium Scoring
+CT Scan of Chest With Contrast
+CT Scan of Colonogram
+CT Scan of Ears
+CT Scan of Heart
+CT Scan of Larynx
+CT Scan of Left Ankle
+CT Scan of Left Arm
+CT Scan of Left Ear/Mastoid
+CT Scan of Left Elbow Joint
+CT Scan of Left Femur
+CT Scan of Left Foot
+CT Scan of Left Forearm
+CT Scan of Left Hand
+CT Scan of Left Hip Joint
+CT Scan of Left Knee Joint
+CT Scan of Left Leg
+CT Scan of Left Petromastoid Region
+CT Scan of Left Scapula
+CT Scan of Left Shoulder Joint
+CT Scan of Left Thigh
+CT Scan of Left Wrist Joint
+CT Scan of Lower Jaw
+CT Scan of Mandible/Maxilla
+CT Scan of Maxillofacial
+CT Scan of Maxillofacial / Mandible
+CT Scan of Nasopharynx
+CT Scan of Orbits
+CT Scan of Petromastoid Brain
+CT Scan of Right Ankle
+CT Scan of Right Arm
+CT Scan of Right Ear/Mastoid
+CT Scan of Right Elbow Joint
+CT Scan of Right Femur
+CT Scan of Right Foot
+CT Scan of Right Forearm
+CT Scan of Right Hand
+CT Scan of Right Hip Joint
+CT Scan of Right Knee Joint
+CT Scan of Right Leg
+CT Scan of Right Petromastoid Region
+CT Scan of Right Scapula
+CT Scan of Right Shoulder Joint
+CT Scan of Right Thigh
+CT Scan of Right Wrist Joint
+CT Scan of Sacro-Cocegeal Region
+CT Scan of Scoliogram
+CT Scan of Styloid Process
+CT Scan of T.M. Joint
+CT Scan of Temporal Bone
+CT Scan of Thymus
+CT Scan of Undescending Testis
+CT Scan of Upper Jaw
+CT Scan of chest with Liver
+CT Supra-renalgland
+CT Urography
+CT VENOGRA OF UPPER LIMB
+CT VENOGRAM OF LOWER LIMB
+CT of GE Visipaque Contrast-50 ml with procedure, appliances & extra film.
+CT of Oral Cavity
+CT of Parotid Gland
+CT of Thyroid Gland
+Calory Function Tests
+Cannabinoids
+Canula Procedure Charge
+Carbondioxide
+Cardiac CT for Calcium Scoring
+Cardiac MRI with CMR Perfusion
+Cardiac Troponin I
+Carotid Duplex
+Catheter Tip for C/S
+Cephalometric View
+Ceruloplasmin
+Cervarix PFF 0.5 ml
+Cervical Smear Cytology for Malignant Cells
+Cervical Smear for AFB
+Cervical Smear for C/S
+Cervical Smear for Gram Stain
+Cervical Smear for Wet Film
+Cervix
+Cervix + Internal Os
+Child MRI of undescended Testis
+Chloride
+Choanogram
+Cholesterol
+Cine MRI of Cysternogram
+Circulating Eosinophil Count
+Clotting Time
+Cocaine
+Colonoscopy Polypectomy EMR/ESD Large
+Colonoscopy Polypectomy EMR/ESD small
+Colonoscopy Polypectomy Large
+Colonoscopy with Polypectomy
+Colour Doppler Echo CFM
+Colposcopy
+Complement 3
+Complement 4
+Conjunctival Swab for AFB
+Conjunctival Swab for C/S
+Conjunctival Swab for Gram Stain
+Contrast : Gadolinium
+Coombs Test
+Coombs Test Direct
+Coombs Test Indirect
+Core Biopsy
+Corneal Swab for C/S
+Corresponding Urine Sugar 2 hrs. after meal
+Corresponding Urine Sugar with 1 hr. ABF
+Corresponding Urine Sugar with 1.5 hr. ABF
+Corresponding Urine Sugar with 1.5 hr. after 75 gm Glucose
+Corresponding Urine Sugar with 1.5 hr. after Lunch
+Corresponding Urine Sugar with 1.h after 75 gm Glucose
+Corresponding Urine Sugar with 2 hrs after Lunch
+Corresponding Urine Sugar with 2 hrs. after Diner
+Corresponding Urine Sugar with 2.h after 75 gm Glucose
+Corresponding Urine Sugar with 2HABF
+Corresponding Urine Sugar with Fasting
+Corresponding Urine Sugar with RPG
+Corresponding Urine Sugar with before Diner
+Corresponding Urine Sugar with before Lunch
+Corresponding Urine sugar with postprandial plasma glucose
+Cortisol
+Cortisol level 0.5 hr After Injection
+Cortisol level 1hr After Injection
+Cortisol level 2 hrs. After Injection
+Cortisol level before Injection
+Creatinine Clearance Rate
+Ct Scan of Left Heel
+Ct Scan of Right Heel
+Cyclosporine
+Cyst Fluid for Biochemical Test
+Cyst Fluid for Cytology
+Cystic Fluid for AFB
+Cystic Fluid for C/S
+Cystic Fluid for Gram Stain
+Cytology
+D - Dimer
+DHEA - SO4
+DLC
+Dengue NS1 Ag
+Dental film - One film
+Dental film - Three film
+Dental film - Two film
+Dialysis Fluid for C/S
+Digital 24 Hrs. late Film for Barium Follow through
+Digital 24 Hrs. late Film for I.V.U.
+Digital Ba-meal study of Stomach, Duodenum, Follow through
+Digital Ba-meal study of Stomach,Duodenum & Followthrough of small gut & Ileo-caecal gut
+Digital Ba-meal study of small bowel Ileo-caecal gut with spot film of Ileo-caecal gut
+Digital Barium Swallow of Oesophagus
+Digital Barium Swallow of Oesophagus including Hiatus Hernia
+Digital Barium enema of colon Double contrast
+Digital Barium meal study of Ileo-caecal gut and appendix
+Digital Barium meal study of Stomach, Duodenum
+Digital Barium meal study of Stomach, Duodenum & Hiatus Hernia
+Digital Barium meal study of Stomach, Duodenum including
+Digital Cologram/Loopogram through colostomy opening
+Digital EEG
+Digital Fluoroscopy of chest to see movement of diaphragm with one spot film
+Digital Micturating Cysto Urethrogram
+Digital X - Ray of Flexion and Extension
+Digital X-Ray Extra film
+Digital X-Ray for 100%
+Digital X-Ray of ..................
+Digital X-Ray of Abdomen Erect Posture AP & Lat. View
+Digital X-Ray of Abdomen Erect Posture Including Diaphragm
+Digital X-Ray of Acoustic meatus perorbital view
+Digital X-Ray of Atlanto axial joint OM view
+Digital X-Ray of Atlanton Axial O.M & Lateral View
+Digital X-Ray of Ba-Followthrough double contrast
+Digital X-Ray of Ba-enema of colon Single contrast of child to examin Hirscha.
+Digital X-Ray of Ba-meal of small intestine and follow thorough
+Digital X-Ray of Bone Age
+Digital X-Ray of Bone age
+Digital X-Ray of Both Ankle Joint
+Digital X-Ray of Both Ankle Joint & Both Foot
+Digital X-Ray of Both Ankle Joint AP View
+Digital X-Ray of Both Ankle Joint Lateral View
+Digital X-Ray of Both Ankle joint Lateral view
+Digital X-Ray of Both Clavicle AP View
+Digital X-Ray of Both Feet AP View
+Digital X-Ray of Both Feet Lateral View
+Digital X-Ray of Both Hand
+Digital X-Ray of Both Hand AP View
+Digital X-Ray of Both Hand B/V
+Digital X-Ray of Both Hand Lateral View
+Digital X-Ray of Both Heel B/V
+Digital X-Ray of Both Knee AP, Lat Rt & Lt. Oblique standing position
+Digital X-Ray of Both Knee Joint AP View
+Digital X-Ray of Both Knee Joint AP View Standing Position
+Digital X-Ray of Both Knee Joint B/V
+Digital X-Ray of Both Knee Joint Lat. View
+Digital X-Ray of Both Knee Joint and Oblique View
+Digital X-Ray of Both Knee Joint and Skyline B/V
+Digital X-Ray of Both Knee Joint skyline position
+Digital X-Ray of Both Knee Joints AP & Lateral
+Digital X-Ray of Both Leg AP View
+Digital X-Ray of Both Leg with Ankle Joint in Standing Position
+Digital X-Ray of Both Mastoid AP oblique & Lateral Oblique view
+Digital X-Ray of Both Shoulder AP & Axillary View
+Digital X-Ray of Both Shoulder joint AP View
+Digital X-Ray of Both Shoulder joint Lateral view
+Digital X-Ray of Both T.M. Joint open & close Mouth
+Digital X-Ray of Both Wrist AP View
+Digital X-Ray of Both Wrist Lateral View
+Digital X-Ray of Both feet both view
+Digital X-Ray of Both foot
+Digital X-Ray of Both hand for bone age
+Digital X-Ray of Both hand with wrist joint AP view
+Digital X-Ray of Both heel lateral view for soft tissue
+Digital X-Ray of Both hip joint
+Digital X-Ray of Both hip joint Lat view
+Digital X-Ray of Both shoulder joint
+Digital X-Ray of C. Spine AP,Lat,Flexion,Extension,Neutral
+Digital X-Ray of Cervical One Oblique View
+Digital X-Ray of Cervical Spine B/V with Atlanto Axial Joint
+Digital X-Ray of Cervical Spine Both Lateral View
+Digital X-Ray of Cervical Spine Both Oblique View
+Digital X-Ray of Cervical spine AP & Both oblique View
+Digital X-Ray of Cervical spine AP & Lateral View
+Digital X-Ray of Cervical spine AP & One oblique View
+Digital X-Ray of Cervical spine AP & both lat view
+Digital X-Ray of Cervical spine AP View Only
+Digital X-Ray of Cervical spine AP, Lateral & Both oblique View
+Digital X-Ray of Cervical spine AP, Lateral & Left oblique View
+Digital X-Ray of Cervical spine AP, Lateral & Right oblique View
+Digital X-Ray of Cervical spine AP,Lat,Flexion,Extension, & Rt. oblique view
+Digital X-Ray of Cervical spine Lateral & Both oblique View
+Digital X-Ray of Cervical spine Lateral & One oblique View
+Digital X-Ray of Cervical spine Lateral View
+Digital X-Ray of Cervical spine One Oblique View Only
+Digital X-Ray of Cervical spine flexion, extention and open mouth
+Digital X-Ray of Cervico-dorsal spine spine AP & Lateral view
+Digital X-Ray of Chest AP View
+Digital X-Ray of Chest AP, Rt. Letaral, Oblique View
+Digital X-Ray of Chest Apical view
+Digital X-Ray of Chest Inspiratory & Expiratory PA view
+Digital X-Ray of Chest Lordotic View
+Digital X-Ray of Chest P/A View
+Digital X-Ray of Chest PA & lateral view
+Digital X-Ray of Chest PA & left lateral view
+Digital X-Ray of Chest PA & right lateral view
+Digital X-Ray of Chest PA with Sternum
+Digital X-Ray of Chest Penetrating Lateral View
+Digital X-Ray of Chest Penetrating View
+Digital X-Ray of Chest apical lordotic & Lt. Lat view
+Digital X-Ray of Chest for Rib Left Side
+Digital X-Ray of Chest for Rib Right Side
+Digital X-Ray of Chest left lateral decubitus view
+Digital X-Ray of Chest left lateral view
+Digital X-Ray of Chest right lateral decubitus view
+Digital X-Ray of Chest right lateral view
+Digital X-Ray of Clavical
+Digital X-Ray of Coccyx Bone Both View
+Digital X-Ray of Cone both Lat view of lumbo secral joint
+Digital X-Ray of Cone down AP & Lat view
+Digital X-Ray of Cone down Lateral View
+Digital X-Ray of Dacrocystogram
+Digital X-Ray of Distal Cologram
+Digital X-Ray of Dorsal Spine both Lateral view
+Digital X-Ray of Dorsal Spine both Oblique view
+Digital X-Ray of Dorsal spine AP & Lateral View
+Digital X-Ray of Dorsal spine AP View
+Digital X-Ray of Dorsal spine AP, Lat & Both oblique view
+Digital X-Ray of Dorsal spine AP, Lateral & Both oblique View
+Digital X-Ray of Dorsal spine AP, Lateral & One oblique View
+Digital X-Ray of Dorsal spine Lateral View
+Digital X-Ray of Dorso Lumber Spine AP View
+Digital X-Ray of Dorso Lumber Spine AP,Lat,Flexion,Extension,Neutral
+Digital X-Ray of Dorso lumber Spine AP View
+Digital X-Ray of Dorso lumber spine AP & Lateral View
+Digital X-Ray of Dorso lumber spine Lateral View
+Digital X-Ray of Dorso-Lumbar spine both lateral view
+Digital X-Ray of Dorso-Lumbar spine both oblique view
+Digital X-Ray of Dorso-Lumber AP, Lat & Oblique View
+Digital X-Ray of Face
+Digital X-Ray of Face AP & Lat. View
+Digital X-Ray of Ferguson View
+Digital X-Ray of Fistulogram
+Digital X-Ray of Fluroscopic Guided Marking of Disc Level
+Digital X-Ray of Hysterosalpingography
+Digital X-Ray of I. A. M. Perorbital view
+Digital X-Ray of I. V. U.
+Digital X-Ray of I. V. U. with M. C. U.
+Digital X-Ray of I. V. U. with late film
+Digital X-Ray of Invertogram
+Digital X-Ray of Knee joint oblique view RT
+Digital X-Ray of L/S Spine Both Oblique View
+Digital X-Ray of L/S Spine Left Oblique View
+Digital X-Ray of L/S Spine Rt. Oblique View
+Digital X-Ray of L/S spine AP,Lat,Flexion,Extension, & Rt. oblique view
+Digital X-Ray of L/S spine Ap & Both Lat view
+Digital X-Ray of L/S, Spine both lateral view
+Digital X-Ray of LS Spine AP,Lat,Flexion,Extension,Neutral
+Digital X-Ray of Left Ankle joint AP & Lateral view
+Digital X-Ray of Left Clavicle AP & Lateral View
+Digital X-Ray of Left Clavicle AP View
+Digital X-Ray of Left Ear
+Digital X-Ray of Left Elbow joint AP & Lateral view
+Digital X-Ray of Left Elbow joint AP, Lat. & oblique view
+Digital X-Ray of Left Foot AP & Oblique View
+Digital X-Ray of Left Forearm AP & Lat.View including Wrist joint
+Digital X-Ray of Left ForearmAP &Lat.View inclu.Elbow &Wrist joint
+Digital X-Ray of Left Hand AP & Lateral View
+Digital X-Ray of Left Hand PA & Oblique View
+Digital X-Ray of Left Heel Axial & Lateral View
+Digital X-Ray of Left Hip joint oblique view
+Digital X-Ray of Left Humerus AP & Lat. View including Shoulder joint
+Digital X-Ray of Left HumerusAP &Lat.View including Shoulder &Elbow joint
+Digital X-Ray of Left Leg AP & Lateral View
+Digital X-Ray of Left Leg including Knee & Ankle joint
+Digital X-Ray of Left Leg including ankle joint AP & Lat view
+Digital X-Ray of Left Leg including knee joint AP & Lat view
+Digital X-Ray of Left Orbit AP & Lateral
+Digital X-Ray of Left Scapula AP & Lateral view with shoulder joint
+Digital X-Ray of Left Scapula AP view
+Digital X-Ray of Left T.M. Joint open & close Mouth
+Digital X-Ray of Left Thigh AP & Lateral view including Knee joint
+Digital X-Ray of Left Thigh AP& Lateral view inclu.hip joint in one film
+Digital X-Ray of Left ThighAP& Lateral view inclu.Knee joint in one film
+Digital X-Ray of Left ThighAP& Lateral view including hip joint
+Digital X-Ray of Left Thumb B/V
+Digital X-Ray of Left Wrist Joint PA & Lateral View
+Digital X-Ray of Left Wrist joint AP, Lateral View & Oblique view
+Digital X-Ray of Left hip joint AP & Lateral View
+Digital X-Ray of Left hip joint AP View
+Digital X-Ray of Left hip joint Lateral View
+Digital X-Ray of Left knee joint AP & Lateral view
+Digital X-Ray of Left knee joint AP, Lateral & Skyline view
+Digital X-Ray of Left knee joint AP, Lateral, Skyline & Intercondylar view
+Digital X-Ray of Left lower jaw AP, Lat & Oblique view
+Digital X-Ray of Left shoulder joint AP View
+Digital X-Ray of Left sub-mandibular gland lateral oblique view
+Digital X-Ray of Left thumb
+Digital X-Ray of Lower Limb AP
+Digital X-Ray of Lower Limb Lateral
+Digital X-Ray of Lt. Ankle Lateral View
+Digital X-Ray of Lt. Arm AP & Lateral View
+Digital X-Ray of Lt. Foot AP & Lat. View
+Digital X-Ray of Lt. Foot including ankle joint
+Digital X-Ray of Lt. Foot including heel lat view
+Digital X-Ray of Lt. Heel with Ankle AP and Lat View
+Digital X-Ray of Lt. Index Finger AP & Lat View
+Digital X-Ray of Lt. Knee Joint AP & Lat. View
+Digital X-Ray of Lt. Knee Joint AP, Lat in weight bearing position
+Digital X-Ray of Lt. Knee joint AP, Lat. & Intercondylar view
+Digital X-Ray of Lt. Leg AP & Lateral view
+Digital X-Ray of Lt. Little Finger AP & Lat View
+Digital X-Ray of Lt. Middle Finger AP & Lateral View
+Digital X-Ray of Lt. Patella Axial View
+Digital X-Ray of Lt. Ring Finger AP & Lat View
+Digital X-Ray of Lt. Shoulder Joint AP & Lateral View
+Digital X-Ray of Lt. Shoulder Jt. AP,Lat,Abduction,Adduction
+Digital X-Ray of Lt. Shoulder Jt. AP,Lat,Internal & External rotation
+Digital X-Ray of Lt. Shoulder joint AP, Lat. & oblique view
+Digital X-Ray of Lt. Thight AP & Lateral view
+Digital X-Ray of Lumber Spine AP View
+Digital X-Ray of Lumber Spine AP, Lat & Both Oblique View
+Digital X-Ray of Lumber Spine lateral view
+Digital X-Ray of Lumber spine AP & Lateral View
+Digital X-Ray of Lumbo Sacral Spine P/A view
+Digital X-Ray of Lumbo secral lat & oblique view
+Digital X-Ray of Lumbo-Secral Spine Both Oblique View
+Digital X-Ray of Lumbo-sacral spine AP & Both oblique View
+Digital X-Ray of Lumbo-sacral spine AP & Lateral View
+Digital X-Ray of Lumbo-sacral spine AP View
+Digital X-Ray of Lumbo-sacral spine Lateral View
+Digital X-Ray of Lumbo-sacral spine PA & Lateral View
+Digital X-Ray of Lumbo-sacral spine PA, Lateral & Both oblique View
+Digital X-Ray of Lumbo-sacral spine PA, Lateral & One oblique View
+Digital X-Ray of Mandible PA & both lateral oblique view
+Digital X-Ray of Mandible PA & left lateral oblique view
+Digital X-Ray of Mandible PA & right lateral oblique view
+Digital X-Ray of Mandible PA view
+Digital X-Ray of Mandible both lateral oblique view
+Digital X-Ray of Mandible left lateral oblique view
+Digital X-Ray of Mandible right lateral oblique view
+Digital X-Ray of Mastoid AP oblique & Lateral Oblique view left side
+Digital X-Ray of Mastoid AP oblique & Lateral Oblique view right side
+Digital X-Ray of Mastoid Towne's View
+Digital X-Ray of Mastoid Towne`s View
+Digital X-Ray of Mastoid Townes
+Digital X-Ray of Mastoid Townes & Stenverse View
+Digital X-Ray of Maxilla, Left Lateral oblique view
+Digital X-Ray of Maxilla, Right Lateral oblique view
+Digital X-Ray of Micturating Cystogram
+Digital X-Ray of Mortise view
+Digital X-Ray of Myelogram
+Digital X-Ray of Nasal Bones both lateral view
+Digital X-Ray of Nasopharynx lateral view for soft tissues/adenoid
+Digital X-Ray of Neck AP & Lateral View
+Digital X-Ray of Neck lateral view for soft tissue/Nasopharynx
+Digital X-Ray of Neck of Cervical Ribs
+Digital X-Ray of Nephro Urethrogram
+Digital X-Ray of Nephrostogram
+Digital X-Ray of O.C.G.
+Digital X-Ray of Occlusal view for lower jaw
+Digital X-Ray of Occlusal view for upper jaw
+Digital X-Ray of Occlusal view of maxilla
+Digital X-Ray of Optic foramen
+Digital X-Ray of P. T. C.
+Digital X-Ray of P.N.S. O/M & Lateral view
+Digital X-Ray of P.N.S. O/M view
+Digital X-Ray of Pelvis AP & Both Hip joint Letaral View
+Digital X-Ray of Pelvis AP & Lateral View with Both hip joint
+Digital X-Ray of Pelvis AP & lateral both view
+Digital X-Ray of Pelvis AP View
+Digital X-Ray of Pelvis AP with Both hip joint AP View
+Digital X-Ray of Pelvis Both Oblique view
+Digital X-Ray of Pelvis Erect Posture
+Digital X-Ray of Pelvis Lateral View
+Digital X-Ray of Pelvis erect lat view for CPD
+Digital X-Ray of Pelvis erect posture
+Digital X-Ray of Pelvis with both hip joint AP view
+Digital X-Ray of Pericathetar Urethogram
+Digital X-Ray of Phonogram
+Digital X-Ray of Plain Abdomen AP & Lat. View
+Digital X-Ray of Plain Abdomen AP View
+Digital X-Ray of Plain Abdomen Erect & Supine View
+Digital X-Ray of Plain Abdomen Erect View including Diaphragm
+Digital X-Ray of Plain Abdomen Lateral View
+Digital X-Ray of Plain Abdomen in Supine View
+Digital X-Ray of Plain KUB AP & Lateral View
+Digital X-Ray of Plain KUB AP View
+Digital X-Ray of Plain KUB AP View and Lumber Spine lat-View
+Digital X-Ray of Plain KUB Erect View
+Digital X-Ray of Plain KUB one film
+Digital X-Ray of Retrograde Pyelography
+Digital X-Ray of Retrograde Urethro Cystogram
+Digital X-Ray of Retrograde Urethrogram
+Digital X-Ray of Retrograde Urethrogram with Antegrade cystogram
+Digital X-Ray of Retrograde Urethrogram with MCU
+Digital X-Ray of Right Ankle joint AP & Lateral view
+Digital X-Ray of Right Clavicle AP & Lateral View
+Digital X-Ray of Right Clavicle AP View
+Digital X-Ray of Right Elbow joint AP & Lateral view
+Digital X-Ray of Right Elbow joint AP, Lat. & oblique view
+Digital X-Ray of Right Foot AP & Oblique View
+Digital X-Ray of Right Forearm AP & Lat.View including Elbow joint
+Digital X-Ray of Right Forearm AP & Lat.View including Wrist joint
+Digital X-Ray of Right ForearmAP &Lat.View inclu.Elbow &Wrist joint
+Digital X-Ray of Right Hand AP & Lateral View
+Digital X-Ray of Right Hand PA & Oblique View
+Digital X-Ray of Right Heel Axial & Lateral View
+Digital X-Ray of Right Humerus AP & Lat. View including Shoulder joint
+Digital X-Ray of Right HumerusAP &Lat.View including Shoulder&Elbow joint
+Digital X-Ray of Right Leg AP & Lateral View
+Digital X-Ray of Right Leg including Knee & Ankle joint
+Digital X-Ray of Right Leg including ankle joint AP & Lat view
+Digital X-Ray of Right Leg including knee joint AP & Lat view
+Digital X-Ray of Right S/C joint AP & Oblique view
+Digital X-Ray of Right Scapula AP & Lateral view with shoulder joint
+Digital X-Ray of Right Scapula AP view
+Digital X-Ray of Right T.M. Joint open & close Mouth
+Digital X-Ray of Right Thigh AP & Lateral view including Knee joint
+Digital X-Ray of Right Thigh AP & Lateral view including hip joint
+Digital X-Ray of Right Thigh AP&Lateral view inclu. Knee joint in 1 film
+Digital X-Ray of Right Thumb B/V
+Digital X-Ray of Right Wrist Joint PA & Lateral View
+Digital X-Ray of Right Wrist joint AP, Lateral View & Oblique view
+Digital X-Ray of Right hip joint AP & Lateral View
+Digital X-Ray of Right hip joint AP View
+Digital X-Ray of Right hip joint Lateral View
+Digital X-Ray of Right knee joint AP & Lateral view
+Digital X-Ray of Right knee joint AP, Lateral & Skyline view
+Digital X-Ray of Right knee joint AP, Lateral, Skyline & Intercondylar view
+Digital X-Ray of Right shoulder joint AP View
+Digital X-Ray of Right sub-mandibular gland lateral oblique view
+Digital X-Ray of Right thumb
+Digital X-Ray of Rt. Ankle Lateral View
+Digital X-Ray of Rt. Arm AP & Lateral View
+Digital X-Ray of Rt. Foot AP & Lat. View
+Digital X-Ray of Rt. Foot including ankle joint
+Digital X-Ray of Rt. Foot including heel lat view
+Digital X-Ray of Rt. Heel with Ankle AP and Lat View
+Digital X-Ray of Rt. Index Finger AP & Lat View
+Digital X-Ray of Rt. Knee Joint AP & Lat View
+Digital X-Ray of Rt. Knee Joint AP, Lat & both oblique view in standing position
+Digital X-Ray of Rt. Knee Joint AP, Lat in weight bearing position
+Digital X-Ray of Rt. Knee joint AP, Lat. & Intercondylar view
+Digital X-Ray of Rt. Leg AP & Lateral view
+Digital X-Ray of Rt. Little Finger AP & Lat View
+Digital X-Ray of Rt. Middle Finger AP & Lateral View
+Digital X-Ray of Rt. Middle finger AP, Lat view
+Digital X-Ray of Rt. Orbit AP & Lateral
+Digital X-Ray of Rt. Patella Axial View
+Digital X-Ray of Rt. Ring Finger AP & Lat View
+Digital X-Ray of Rt. Shoulder AP, Lat & Oblique view
+Digital X-Ray of Rt. Shoulder Joint AP & Lateral View
+Digital X-Ray of Rt. Shoulder Jt. AP,Lat,Aboduction,Adaction
+Digital X-Ray of Rt. Shoulder Jt. AP,Lat,Internal & External rotation
+Digital X-Ray of Rt. Thigh AP & Lateral view
+Digital X-Ray of S. I. Joint
+Digital X-Ray of S. I. Joint Both oblique view
+Digital X-Ray of S. I. Joint PA view
+Digital X-Ray of Sacro-Coccygeal spine AP & Lateral View
+Digital X-Ray of Sacro-Coccygeal spine Lateral View
+Digital X-Ray of Scaphoid view for wrist joint
+Digital X-Ray of Scapula Lateral View
+Digital X-Ray of Scapula Oblique View
+Digital X-Ray of Scoliogram
+Digital X-Ray of Scoliogram AP & LATERAL VIEW
+Digital X-Ray of Sinogram
+Digital X-Ray of Sinus
+Digital X-Ray of Skiagram
+Digital X-Ray of Skull AP & Lateral view
+Digital X-Ray of Skull AP Rt. and Lt. Lat view
+Digital X-Ray of Skull AP View
+Digital X-Ray of Skull Lateral view
+Digital X-Ray of Skull Left Lat view
+Digital X-Ray of Skull PA & Lateral view
+Digital X-Ray of Skull Right Lat view
+Digital X-Ray of Skull Townes View
+Digital X-Ray of Skull Transorbital PA view for internal auditory canal
+Digital X-Ray of Skull base of the skull
+Digital X-Ray of Skull for Sella Turcica/Pituitary Fossa Cone down view
+Digital X-Ray of Skull for Sella Turcica/Pituitary Fossa Lateral view
+Digital X-Ray of Skull for Sinuses
+Digital X-Ray of Skull for sinuses
+Digital X-Ray of Skull silla tursica both view
+Digital X-Ray of Skull with Mandible AP view
+Digital X-Ray of Spinal colum B/V
+Digital X-Ray of Sternum AP & Lateral View
+Digital X-Ray of Sternum AP, Lat & Oblique View
+Digital X-Ray of Sternum Lateral View
+Digital X-Ray of Sternum Oblique & lateral View
+Digital X-Ray of Sternum Oblique View
+Digital X-Ray of Styloid Process B/V
+Digital X-Ray of Styloid process per-Orbital View
+Digital X-Ray of Submento vertical view
+Digital X-Ray of T-Tube Cholangiogram
+Digital X-Ray of Tendo Achilies/Tendo Calcaneum
+Digital X-Ray of Trans Orbital Patrus view
+Digital X-Ray of Upper Limb AP
+Digital X-Ray of Upper Limb Lateral
+Digital X-Ray of Whole Spine
+Digital X-Ray of Wrist Joints to Assess Bone Age
+Digital X-Ray of Zygomatic, arches
+Digital X-ray of Chest AP & Lateral View
+Digital x-ray of Lt. Knee Skyline View
+Digital x-ray of Rt. Knee Skyline View
+Digoxin
+Discharge for AFB
+Discharge for C/S
+Discharge for Gram Stain
+Discharge for Wet Film
+Doppler
+Doppler Study of Left Lower Limb Vessels
+Doppler Study of Right Lower Limb Vessels
+Doppler Study of Upper Limb Vessels Right
+Doppler Study of Whole Abdomen
+Doppler Study of--------
+Doppler USG of -----------------------
+Doppler USG of .................
+Doppler USG of Penis
+Doppler USG of Portal & Hepatic Vein
+Doppler USG of Scrotum and Testis
+Doppler USG of TVS
+Doppler USG of Testis
+Doppler Ultrasonogram of TVS
+Double Antibody
+Douche Charge
+Dual Femur measurement of bone densitometer
+Duplex Study of Abdominal aorta and its branches
+Duplex Study of Arteri
+Duplex Study of Both Lower Limb Artery
+Duplex Study of Both Lower limb Vessels
+Duplex Study of Both Upper limb Artery
+Duplex Study of Both Upper limb Vessels
+Duplex Study of Kidney/Renal Perfusion
+Duplex Study of Left Lower Limb Arteries
+Duplex Study of Left Lower limb Vessels
+Duplex Study of Left Upper limb Vessels
+Duplex Study of Neck Vessel
+Duplex Study of Neck/Popliteal Mass/growth in other parts of the body
+Duplex Study of Pampiniform Plexus
+Duplex Study of Penile vessels
+Duplex Study of Right Lower Limb Arteries
+Duplex Study of Right Lower limb Vessels
+Duplex Study of Right Upper limb Veins
+Duplex Study of ScotumDuplex Study of Testis
+Duplex Study of Upper Limb Vessels
+ECG
+ELISA Test for Dengue Ab.
+ELISA test for Anti TB IgA
+ELISA test for Anti TB IgG
+ELISA test for Anti TB IgM
+EMG
+EMG Both Limb
+EMG Lower Limb
+EMG NCV Both Side
+EMG Upper Limb
+ENA Panel
+ENA Profile
+ER
+ERCP & Papilotomy
+ERCP & Stenting
+ERCP & Stone Extraction
+ERCP + CHANGE OF STENT
+ERCP + NBDT
+ERCP + Papillotomy
+ERCP Diagnostic
+ERCP Re-Stent
+ERCP Removal of stent & stone extraction
+ERCP and Ascaris Extraction
+ERCP and Papillotomy
+ERCP and Stenting
+ERCP and Stone Extraction
+ERCP, Lithotripsy and Stone Extraction
+ESR
+ETT
+Ear Swab for AFB
+Ear Swab for C/S
+Ear Swab for Gram Stain
+Echo Colour Doppler
+Endometrium
+Endoscopic Biopsy of Oesophegus
+Endoscopic Biopsy of Stomach
+Endoscopic Glue Injection of Fundal Varix
+Endoscopic Removal of Foreign body Fish Bone/Meat Bone
+Endoscopic Removal of Foreign body Teeth
+Endoscopy Polypectomy EMR/ESD Large
+Endoscopy Polypectomy EMR/ESD small
+Endoscopy Polypectomy Large
+Endoscopy Removal of Foregone Body Coin /Pin /Key
+Endoscopy Removal of Foregone Body Meat bolus
+Endoscopy of upper GIT with CLO with sedation
+Engerix-B
+Erythropoietin
+Esophageal Reflux Study
+Esophegeal Dilatation of Savary Giliard
+Estradiol
+Extra Film Charge
+Extra Film Charge-2
+Extra Film Charge-3
+Extra Film Charge-4
+Extra Film Charge-5
+Extra Film Charge-6
+FACTOR IX
+FACTOR VII
+FACTOR VIII
+FDP
+FETAL SEX
+FNAC
+FNAC CT
+FNAC GUIDED
+FNAC from Lung
+FSH
+FUNCTIONAL MRI OF BRAIN
+Fasting Plasma glucose
+Febrile Antigens
+Fecal Calprotectin
+Ferritin
+Fetal Anomaly - 4D
+Fetal BPP
+Fetal BPP 2D
+Fetal BPP 4D
+Fetal Biophysical Profile - 4D
+Fetal Biophysical Profile 2D
+Fetal Biophysical Profile 4D
+Fetal Cardiac Anomaly / Fetal Echo - Cardiography
+Fetal Growth + Anomaly
+Fetal Growth + Anomaly 4D
+Fetal Growth + BPP - 4D
+Fetal Growth + BPP 2D
+Fetal Growth - 4D
+Fetal Well-being
+Fetal Well-being - 4D
+Fibre Optic Larynxgoscopy
+Fibrinogen
+FibroScan
+Fibroscan with CAP
+Film/Cell Morphology
+Flexible Fiberoptic Laryngoscopy
+Fluid C/S for AFB
+Fluid Cytology for Malignant Cells
+Fluid for ADA
+Fluid for AFB Stain
+Fluid for Albumin
+Fluid for Amylase
+Fluid for Biochemical Test
+Fluid for C/S
+Fluid for Creatinine
+Fluid for Cytology
+Fluid for Fungal C/S
+Fluid for Fungus
+Fluid for GeneXpert
+Fluid for Gram Stain
+Fluid for LDH
+Fluid for Urea
+Folate / Folic Acid
+Folli-Culometry
+Folliculometry SONO AVC
+Forearm measurement of bone densitometer
+Foreign body removal
+Free PSA
+Free PSA/ PSA Ratio
+Free T3
+Free T4
+Free Testosterone
+Full Breast
+Full Video Colonoscopy
+Full Video Colonoscopy and Ileoscopy
+GATA3
+GFR
+GGT
+GTT 2nd
+GTT 3rd
+GTT 4th
+GTT 5th
+GTT1st
+Gall Bladder
+Gall Bladder Fluid Analysis
+Gall Bladder Fluid for Malignant Cells
+Gall Blader Fluid Analysis
+Gall Blader Fluid for AFB
+Gall Blader Fluid for Anti TB IgA
+Gall Blader Fluid for Anti TB IgG
+Gall Blader Fluid for Anti TB IgM
+Gall Blader Fluid for Biochemical test
+Gall Blader Fluid for C/S
+Gall Blader Fluid for Cytology
+Gall Blader Fluid for Gram Stain
+Gastric Fluid for AFB
+Genito-urinary System
+Gentamicin
+Globulin
+Glucose Tolerance Test
+Glucose Tolerance Test 2.5 hrs
+Glucose Tolerance Test 3 hrs
+Gray Tube
+Green Tube
+Growth Hormone
+Growth Hormone Stimulation Test
+Growth Hormone Suppression Test
+Growth Scan
+Growth Scan + Anomaly
+Growth Scan + BPP
+Growth Scan - 4D
+Growth Scan 2D
+Gum Swab for C/S
+Gum Swab for Gram Stain
+H. Pylori - IgG
+H. Pylori Antibody
+HAVRIX - A
+HBS
+HBS & KUB - 2D
+HBS & KUB - 4D
+HBe Ag
+HBs Ag
+HBsAgQ2
+HCT
+HCVAg
+HDL - Cholesterol
+HER2
+HIV - 1&2
+HMB45
+HOMA IR
+HRCT OF PETROMESTOID
+HSV 1 & 2 - IgG
+HSV 1 & 2 - IgM
+HSV 1 - IgG
+HSV 1 - IgM
+HSV 2 - IgG
+HSV 2 - IgM
+HVS C/S for Anerobic
+HVS C/S for Fungus
+HVS Cytology for Malignanat Cells
+HVS For AFB
+HVS for C/S
+HVS for Gram Stain
+HVS for Wet Film
+Haemistasis of Ulcer Bleeding Injection
+Haemoglobin
+Haemostasis of Ulcer bleeding
+Haemostasis of Ulcer bleeding with Injection
+Hair Clipping for Fungus
+Hair For C/S
+Hair Root C/S for Fungus
+Hair Root for Fungus
+Havrix Double
+Havrix Single
+Hb A1c
+Hb Electrophoresis
+Hepavax
+Hepavax - B
+Hepavax for PDCL Staff & Family Members
+Hiberix
+High Sensitive Troponin-I
+Histopathology Extra Large
+Histopathology Intermediate
+Histopathology Large
+Histopathology Small
+Holter ECG 120hrs
+Holter ECG 24hrs
+Holter ECG 48hrs
+Holter ECG 72hrs
+Holter ECG 96hrs
+Homocysteine
+ICT For Filaria
+ICT For Kalazar
+ICT For Tuberculosis
+ICT for Alcohol
+ICT for Amphitamine
+ICT for Benzodiazepine
+ICT for Cannabinoids
+ICT for Chikungunya IgM
+ICT for Chikungunya:
+ICT for Chlamydia
+ICT for Cocaine
+ICT for Dengue Antibodies:
+ICT for HBsAg
+ICT for Malaria
+ICT for Morphine
+ICT for Opiates
+ICT for TPHA
+IgA
+IgG
+IgM
+Immunohistochemistry panel-1
+Immunohistochemistry panel-2
+Immunohistochemistry panel-3
+Immunohistochemistry panel-4
+Impedance Audiometry
+Insulin
+Intact PTH
+Interleukin-6
+Intra Ocular Fluid C/S for Fungus
+Intra Ocular Fluid for C/S
+Intra Ocular Fluid for Gram Stain
+Iron
+KUB
+KUB & PVR
+KUB & Pelvis
+KUB + Prostate
+KUB , Prostat & PVR
+KUB, Pelvis & PVR
+KUB, Prostate & PVR
+KUB/Kidneys
+Kidny
+L.Node
+L.S Spine Scotty Dog View
+LDH
+LDL - Cholesterol
+LE Cells
+LH
+Lactate
+Large Gut
+Lateral Spine of bone densitometer
+Latex Agglutination Test For Bacterial Antigens
+Lavender Tube
+Left Breast
+Lesion for C/S
+Lesion for Gram Stain
+Lipase
+Lipid Profile
+Liquid Based Cytology
+Lithium
+Liver Abscess Fluid for Biochemical Tests
+Liver Abscess Fluid for Cytology
+Liver Function Test
+Liver abcess Drainage
+Liver abscess fluid for Analysis
+Liver abscess fluid for C/S
+Liver abscess fluid for E. Histolytica
+Loopgram / Cologram Child
+Low dose CT. Scan of Chest Screening
+Lt. Hip Flexion / Extension
+Lt. Shoulder Swimmers View
+Lupus Anticoagulants
+MCH
+MCHC
+MCV
+MLH1
+MR Cystemography
+MR Defecogram
+MR Neurogram Arm
+MR Neurogram Fore Arm
+MR Neurogram Leg
+MR Neurogram Lt Upper limb
+MR Neurogram Lt lower limb
+MR Neurogram Rt Upper limb
+MR Neurogram Rt lower limb
+MR Neurogram Thigh
+MR Renal Angiography
+MR UROGRAPHY
+MR of Peripharal Angio Lower Limbs
+MR of Peripharal Angio Upper Limbs
+MRA & MRV of Brain
+MRA Left/Right Left Lower Limb
+MRA Left/Right Left Upper Limb
+MRA Neck & MRA of Brain
+MRA OF ABDOMINAL VESSEL
+MRA OF AORTA
+MRA OF IVC
+MRA of Brain
+MRA of Neck
+MRCP
+MRCP With CT Scan
+MRI
+MRI & MRA + MR Perfusion & MRI Traetroghaphy of Brain
+MRI & MRA + MR Perfusion of Brain
+MRI & MRA + MRV of Brain
+MRI & MRA + Traetroghaphy of Brain
+MRI & MRA OF BRAIN & NECK VESSEL
+MRI & MRA of Brain
+MRI & MRA of Brain perfusion With Acetazolamide Challenge
+MRI & MRA of Brain perfusion With Acetazolamide Challenge & Neck vessel
+MRI & MRA of Neck
+MRI & MRS of Brain
+MRI & MRV of Brain
+MRI Enterography
+MRI OF ANAL CANAL
+MRI OF BOTH T.M.JOINT
+MRI OF BRAIN CSF FLOW
+MRI OF BRAIN EPILEPSY PROTOCOL
+MRI OF BRAIN WITH PITUITARY PROTOCOL
+MRI OF BRAIN WITH TRACTOGRAPHY
+MRI OF BUTTACK
+MRI OF C/S DYNAMIC WITH CSF FLOW
+MRI OF CV JUNCTION
+MRI OF D/S DYNAMIC WITH CSF FLOW
+MRI OF EAR WITH CISS PROTOCOL
+MRI OF IVC
+MRI OF L/S DYNAMIC WITH CSF FLOW
+MRI OF L/S SCREENING W/S WITH MYELOGRAM
+MRI OF LOWER ABDOMEN SCREENING UPPER ABDOMEN
+MRI OF LUMBER PLEXUS
+MRI OF PELVIS WITH CERVIX PROTOCOL
+MRI OF PERFUSION WITH ACETAZOLAMIDE CHALLENG
+MRI OF PROSTATE SCREENING UPPER ABDOMEN
+MRI OF SACRUM & COCCYS
+MRI Perfusion of Brain
+MRI S.I Joint
+MRI Tractography
+MRI Whole Spine for Bony Metastasis
+MRI and MRA of Peripheral
+MRI of Adreenal Glands
+MRI of Adrenal Gland
+MRI of Both Breast
+MRI of Both Breast Screening
+MRI of Both Hip Joint
+MRI of Both T.M Joint
+MRI of Both T.M. Joint
+MRI of Brachial Plexus
+MRI of Brain
+MRI of Brain & MRA of Neck
+MRI of Brain & Orbits
+MRI of Brain & PNS
+MRI of Brain Stroke Protocol
+MRI of Brain With Screening Of Whole Spine
+MRI of Brain and Ciss/Space/Fiesta/MRA
+MRI of Brain with screening Cervical Spine
+MRI of C/S Dynamic and CSF flow with CT cut
+MRI of CSF Rhinorrhea
+MRI of Cervical Spine
+MRI of Cervical Spine With Screening Of Brain
+MRI of Cervical Spine With Screening Whole Spine
+MRI of Cervical Spine and Flexion
+MRI of Chest
+MRI of Craniovertebral junction Dynamic and CT cut
+MRI of Craniovertebral junction and CT cut
+MRI of DWIBS
+MRI of Dementia Protocol
+MRI of Dorsal Spine
+MRI of Dorsal Spine With Screening Whole Spine
+MRI of Dorso Lumbar Spine
+MRI of Ears
+MRI of Face
+MRI of Finger
+MRI of Fistula gram
+MRI of KUB
+MRI of Kidneys
+MRI of Left Ankle Joint
+MRI of Left Arm
+MRI of Left Ear & Rt Ear
+MRI of Left Elbow Joint
+MRI of Left Foot
+MRI of Left Forearm
+MRI of Left Hand
+MRI of Left Heel
+MRI of Left Hip Joint
+MRI of Left IAC
+MRI of Left Knee Joint
+MRI of Left Leg
+MRI of Left Mastoid
+MRI of Left Shoulder Joint
+MRI of Left Thigh
+MRI of Left Upper Limbs
+MRI of Left Wrist Joint
+MRI of Liver/HBS
+MRI of Lower Abdomen
+MRI of Lumbar Spine With Screening Of Hip Joint
+MRI of Lumbar Spine With Screening Of S.I. Joint
+MRI of Lumbar Spine With Screening Whole Spine
+MRI of Lumbo-Sacral Spine
+MRI of MAT Spine
+MRI of Maxillofacial
+MRI of Nasopharynx
+MRI of Neck
+MRI of Neck Vessels
+MRI of Oral Cavities
+MRI of Orbits
+MRI of P. N. S.
+MRI of PNS
+MRI of Parotid Gland
+MRI of Pelvis
+MRI of Pelvis Screening L/S Spine
+MRI of Pelvis With Hip
+MRI of Penis
+MRI of Prostate
+MRI of Rectum
+MRI of Right Ankle Joint
+MRI of Right Arm
+MRI of Right Elbow Joint
+MRI of Right Foot
+MRI of Right Forearm
+MRI of Right Hand
+MRI of Right Heel
+MRI of Right Hip Joint
+MRI of Right IAC+ MRA
+MRI of Right Knee Joint
+MRI of Right Leg
+MRI of Right Mastoid
+MRI of Right Shoulder Joint
+MRI of Right Thigh
+MRI of Right Upper Limbs
+MRI of Right Wrist Joint
+MRI of S.I Joint Screening L/S Spine
+MRI of Sacro-Coccygeal Region
+MRI of Scapula/Clavicle
+MRI of Sella & Perisellar/ Pituitary Region
+MRI of T.M Joint Right
+MRI of T.M. Joint Left
+MRI of T2 axial ...................................
+MRI of Testis / scrotum
+MRI of Thyroid Gland
+MRI of Toes
+MRI of Tongue
+MRI of Trigeminal Neuralgia Protocol
+MRI of Undescending Testis
+MRI of Upper Abdomen
+MRI of Upper Abdomen/HBS with MRCP
+MRI of Urogram
+MRI of Whole Abdomen
+MRI of Whole Abdomen with MRCP
+MRI of Whole Body
+MRI of Whole Spine
+MRI of fetal Brain
+MRI of skull base
+MRI of sleep Apnea
+MRS OF SPINE
+MRS of Brain
+MRV OF LOWER LIMB
+MRV OF UPPER LIMB
+MRV of Brain
+MRV of IVC & Portal Vein
+MRV of IVC & Renal Vein
+MRV of Lt Lower Limb
+MRV of Lt Upper Limb
+MRV of Rt Lower Limb
+MRV of Rt Upper Limb
+MSH2
+MSH6
+MYO D1
+Machine Charge for injection
+Machine Swab for C/S
+Magnesium
+Malarial Parasite
+Mammography of Both Breast
+Mammography of Left Breast
+Mammography of Right Breast
+Mencevax ACWY
+Micro Albumin Creatinine Ratio
+Multiple Colonoscopy with Polypectomy
+NCS of Right Upper Limb and H. reflex
+NCV
+NCV Both Limb
+NCV Lower Limb
+NCV Single Part
+NCV Upper Limb
+NT-proBNP
+Nail Cliping C/S for Fungus
+Nail Clipping for Fungus
+Nail Scraping for Fungus
+Nail for C/S
+Nasal Sawab Gram Stain
+Nasal Scrapping for Hensens Bacilli
+Nasal Secretion for Biochemical
+Nasal Swab for C/S
+Nasal Swab for Fungus
+Nasopharynx Swab for C/S
+Neurel Tabe Soft Marker
+Nipple Discharge Cytology for Malignant Cells
+Nipple Discharge for AFB Stain
+Nipple Discharge for C/S
+Nipple Discharge for Cytology
+Nipple Discharge for GeneXpert
+Nipple Discharge for Gram Stain
+OPG
+Oesophageal Dilatation of Ballon
+Oesophageal Stenting
+Oesophegeal Dilatation of Balloon
+Oesophegeal Dilatation of Savary Giliard
+Oesphageal Stenting
+Opiates
+Oral Lassion Scrapping for Fungus
+Oral Lassion Scrapping for Gram Stain
+Oral Swab for AFB Stain
+Oral Swab for C/S
+Oral Swab for Gram Stain
+Oral/Mucosal Swab For Cytology and Malignant Cells
+Otomycotic Plug for C/S
+Otomycotic Plug for Microscopy
+Ovary
+P-ANCA
+P. D. Fluid for C/S
+P/S C/S for Fungus
+P/S for AFB
+P/S for C/S
+P/S for Fungus
+P/S for Gram Stain
+P/S for Wet Film
+P53
+P63
+PAX8
+PCN Tube for Creatinine
+PCN Tube for PH
+PCN Tube for Specific Gravity
+PCN tube for C/S
+PH
+PMS2
+PORTABLE XRAY ABDOMEN AP
+PORTABLE XRAY C/S SPINE BV
+PORTABLE XRAY CXR AP
+PORTABLE XRAY CXR AP & OBLIQUE
+PORTABLE XRAY CXR OBLIQUE
+PORTABLE XRAY FEMUR AP & LATERAL
+PORTABLE XRAY L/S SPINE AP & LATERAL
+PORTABLE XRAY LEG AP & LATERAL
+PORTABLE XRAY PELVIS AP
+PORTABLE XRAY SKULL AP & LATERAL
+PR
+PSA
+PTC
+PVR
+Pan CK
+Pancreatic Amylase
+Paps smear for C/S
+Pelvis - 4D
+Pelvis with internal os
+Peri-Urethral Swab for C/S
+Pericardial Fluid for AFB Stain
+Pericardial Fluid for Anti TB IgA
+Pericardial Fluid for Anti TB IgG
+Pericardial Fluid for Anti TB IgM
+Pericardial Fluid for Biochemical test
+Pericardial Fluid for C/S
+Pericardial Fluid for Cytology
+Pericardial Fluid for Gram Stain
+Pericardial Fluid for Malignant Cells
+Pericardial fluid for GeneXpert
+Peritoneal Fluid Analysis
+Peritoneal Fluid for AFB
+Peritoneal Fluid for Anti TB IgA
+Peritoneal Fluid for Anti TB IgG
+Peritoneal Fluid for Anti TB IgM
+Peritoneal Fluid for Biochemical test
+Peritoneal Fluid for C/S
+Peritoneal Fluid for Cytology
+Peritoneal Fluid for Gram Stain
+Peritoneal Fluid for Malignant Cells
+Phenobarbital
+Phenytoin
+Plain KUB With Penis
+Plasma glucose 1 hour ABF
+Plasma glucose 1 hour after 50gm glu.
+Plasma glucose 1 hour after 70 gm glu.
+Plasma glucose 1 hour after 75gm glucose.
+Plasma glucose 1 hr after dinner
+Plasma glucose 1 hr after meal
+Plasma glucose 1.5 hrs ABF
+Plasma glucose 1.5 hrs after 50gm glu.
+Plasma glucose 1.5 hrs after 70 gm glu.
+Plasma glucose 1.5 hrs after 75gm glu.
+Plasma glucose 1.5 hrs after meal
+Plasma glucose 1hr after lunch
+Plasma glucose 2 hour after 20gm glucose
+Plasma glucose 2 hrs ABF
+Plasma glucose 2 hrs after 50gm glu.
+Plasma glucose 2 hrs after 70 gm glu.
+Plasma glucose 2 hrs after 75gm glu.
+Plasma glucose 2 hrs after Iftar
+Plasma glucose 2 hrs after dinner
+Plasma glucose 2 hrs after lunch
+Plasma glucose 2 hrs after meal
+Plasma glucose 2.5 hrs after 75 gm glucose
+Plasma glucose 3 hrs after 75 gm glucose
+Plasma glucose 30 minutes after 75gm glucose
+Plasma glucose 4 hrs after 75 gm glucose
+Plasma glucose before dinner
+Plasma glucose before lunch
+Platelets Count
+Pleural Fluid Analysis
+Pleural Fluid for AFB
+Pleural Fluid for Anti TB IgA
+Pleural Fluid for Anti TB IgG
+Pleural Fluid for Anti TB IgM
+Pleural Fluid for Biochemical test
+Pleural Fluid for C/S
+Pleural Fluid for Cytology
+Pleural Fluid for Gram Stain
+Pleural Fluid for Malignant Cells
+Pleural Fluid for PH
+Pleural fluid for GeneXpert
+Portable Ultrasonogram Doppler USG of Testis
+Portable Ultrasonogram Guided Prostate Biopsy
+Portable Ultrasonogram USCD
+Portable Ultrasonogram of ............................
+Portable Ultrasonogram of Ascites
+Portable Ultrasonogram of Both Breast
+Portable Ultrasonogram of Brain
+Portable Ultrasonogram of Breast & Thyroid
+Portable Ultrasonogram of FNAC
+Portable Ultrasonogram of Foetal Anomaly Scan
+Portable Ultrasonogram of Foetal Biophysical profile
+Portable Ultrasonogram of HBS
+Portable Ultrasonogram of HBS & Breast
+Portable Ultrasonogram of HBS & KUB
+Portable Ultrasonogram of HBS & Pancreas
+Portable Ultrasonogram of HBS & Pelvic Organs
+Portable Ultrasonogram of HBS & Prostate
+Portable Ultrasonogram of HBS & Testis
+Portable Ultrasonogram of HBS, KUB & Breast
+Portable Ultrasonogram of HBS, KUB & PVR
+Portable Ultrasonogram of HBS, KUB & Pelvic Organs
+Portable Ultrasonogram of HBS, KUB & Prostate
+Portable Ultrasonogram of HBS, KUB & Testis
+Portable Ultrasonogram of HBS, KUB, PVR & Pelvic Organs
+Portable Ultrasonogram of HBS, KUB, Prostate & PVR
+Portable Ultrasonogram of HBS, KUB, Prostate & Testis
+Portable Ultrasonogram of HBS, KUB, Prostate, PVR & Testis
+Portable Ultrasonogram of HBS, Pancreas & KUB
+Portable Ultrasonogram of HBS, Pancreas & Kidney
+Portable Ultrasonogram of HBS, Pancrease & Pelvic Organs
+Portable Ultrasonogram of HBS, Pelvic Organ & PVR
+Portable Ultrasonogram of HBS, Pelvic Organs & Breast
+Portable Ultrasonogram of KUB
+Portable Ultrasonogram of KUB & Breast
+Portable Ultrasonogram of KUB & PVR
+Portable Ultrasonogram of KUB & Pelvic Organs
+Portable Ultrasonogram of KUB & Prostate
+Portable Ultrasonogram of KUB & Suprarenal gland
+Portable Ultrasonogram of KUB & Testis
+Portable Ultrasonogram of KUB & Thyroid
+Portable Ultrasonogram of KUB, Pelvic Organ & PVR
+Portable Ultrasonogram of KUB, Pelvic Organs & Breast
+Portable Ultrasonogram of KUB, Prostate & PVR
+Portable Ultrasonogram of KUB, Prostate & Testis
+Portable Ultrasonogram of KUB,Prostate,PVR & Transrectal
+Portable Ultrasonogram of Left Breast
+Portable Ultrasonogram of Lower Abdomen
+Portable Ultrasonogram of Lower Chest
+Portable Ultrasonogram of Neck
+Portable Ultrasonogram of PVR
+Portable Ultrasonogram of PVR & Prostate
+Portable Ultrasonogram of Pelvic Organs
+Portable Ultrasonogram of Pelvic Organs & Breast
+Portable Ultrasonogram of Portal Vein
+Portable Ultrasonogram of Pregnancy Profile
+Portable Ultrasonogram of Pregnancy Profile With Foetal Doppler
+Portable Ultrasonogram of Prostate
+Portable Ultrasonogram of Prostate & Testis
+Portable Ultrasonogram of Right Breast
+Portable Ultrasonogram of Testis
+Portable Ultrasonogram of Thyroid Gland
+Portable Ultrasonogram of Transrectal
+Portable Ultrasonogram of Transvaginal
+Portable Ultrasonogram of Upper Abdomen
+Portable Ultrasonogram of Urinary Bladder & PVR
+Portable Ultrasonogram of Urinary System
+Portable Ultrasonogram of Uterus & Ovary
+Portable Ultrasonogram of Whole Abdomen
+Portable Ultrasonogram of Whole Abdomen & Both Breast
+Portable Ultrasonogram of Whole Abdomen & Left Breast
+Portable Ultrasonogram of Whole Abdomen & Lymphnodes
+Portable Ultrasonogram of Whole Abdomen & PVR
+Portable Ultrasonogram of Whole Abdomen & Prostate
+Portable Ultrasonogram of Whole Abdomen & Right Breast
+Portable Ultrasonogram of Whole Abdomen & Thyroid Gland
+Portable Ultrasonogram of Whole Abdomen, Both Breast & Thyroid Gland
+Portable Ultrasonogram of Whole Abdomen, Prostate & PVR
+Portable X-ray Lt Ankle Joint B/V
+Portable X-ray Lt Elbow Joint B/V
+Portable X-ray Lt Foot B/V
+Portable X-ray Lt Forearm
+Portable X-ray Lt Hand B/V
+Portable X-ray Lt Humerus B/V
+Portable X-ray Lt Leg B/V
+Portable X-ray Lt Shoulder B/V
+Portable X-ray Lt Thigh B/V
+Portable X-ray Lt Wrist Joint B/V
+Portable X-ray Neck Both View
+Portable X-ray Rt Ankle Joint B/V
+Portable X-ray Rt Elbow Joint B/V
+Portable X-ray Rt Foot B/V
+Portable X-ray Rt Forearm
+Portable X-ray Rt Hand B/V
+Portable X-ray Rt Humerus B/V
+Portable X-ray Rt Leg B/V
+Portable X-ray Rt Shoulder B/V
+Portable X-ray Rt Thigh B/V
+Portable X-ray Rt Wrist Joint B/V
+Portable X-ray of Left Knee Joint B/V
+Portable X-ray of Right Knee Joint B/V
+Postprandial Plasma glucose
+Potassium
+Pre-implant Assessment
+Pre-implant Assessment of Anterior Tooth
+Pre-implant Assessment of Posterior Tooth
+Pregnancy Profile
+Pregnancy Profile - 2D
+Pregnancy Profile - 3D/4D
+Pregnancy Profile - 4D
+Pregnancy Test
+Preputial Smear for C/S
+Preputial Smear for Gram Stain
+Priorix
+Progesterone
+Prolactin
+Prolactin with 100 time dilution
+Prostatic Smear C/S for Anerobic
+Prostatic smear Cytology for Malignant Cells
+Protein C
+Protein Electrophoresis
+Protein S
+Prothrombin Time
+Pulmonary Function Test/Lung Function Test/Spirometry
+Pure Tone Audiometry
+Pus C/S for AFB
+Pus C/S for Anerobic
+Pus C/S for Fungus
+Pus Cytology For Malignant Cell
+Pus for AFB
+Pus for C/S
+Pus for Fungus
+Pus for GeneXpert
+Pus for Gram Stain
+Pus from the lesion of breast for C/S
+QuantiFERON-TB Gold Plus
+R. A. Test
+RNS
+Random Plasma glucose
+Rectal Swab for AFB
+Rectal Swab for C/S
+Rectal Swab for Gram Stain
+Red Tube
+Renin
+Reticulocyte Count
+Rh Antibody
+Right Breast
+Rose Waaler Test
+Rt. Hip Flexion / Extension
+Rt. Shoulder Swimmers View
+Rt./ Lt. Breast
+Rubella - IgG
+Rubella - IgM
+S100
+SARS CoV-2
+SARS_CoV-2
+SHBG
+SS C/S for Fungus from Lt. Palm
+SS C/S for Fungus from Lt. Sole
+SS C/S for Fungus from Rt. Hand
+SS C/S for Fungus from Rt. Leg
+SSF From Ear
+SSF From Gram Stain
+SSF from Abdomen
+SSF from Arm
+SSF from Axilla
+SSF from Back
+SSF from Breast
+SSF from Chest
+SSF from Elbow
+SSF from Face
+SSF from Forehead
+SSF from Groin
+SSF from Hip
+SSF from Left Eye
+SSF from Left Palm
+SSF from Left Sole
+SSF from Lt. Cheek
+SSF from Lt. Foot
+SSF from Lt. Hand
+SSF from Lt. Leg
+SSF from Lt. Shoulder
+SSF from Lt. Toe
+SSF from Neck
+SSF from Right Sole
+SSF from Rightt Palm
+SSF from Rt. Cheek
+SSF from Rt. Foot
+SSF from Rt. Hand
+SSF from Rt. Leg
+SSF from Rt. Shoulder
+SSF from Rt. Toe
+SSF from Scalp
+SSF from Thigh
+SSF from Tongue
+SSF from Waist
+STP AG Ratio
+SYNAPTOPHYSIN
+Saline Infusion Sonogram
+Saliva for Fungus
+Scanogram Lower Limb AP & Lateral View
+Scanogram Upper Limb AP & Lateral View
+Scanogram Whole Body AP & Both Lateral View
+Scanogram Whole Body AP View
+Scanogram Whole Body Head to Ankle AP & Lateral View
+Scanogram Whole Body LT. Lateral View
+Scanogram Whole Body RT. Lateral View
+Scanogram Whole Spine AP & Rt. & Lt. Bending
+Scanogram Whole Spine AP/Lateral View
+Scanogram Whole Spine Lateral View
+Scrapping from Lt. Cheek for C/S
+Scrapping from Rt. Cheek for C/S
+Scrapping from Tongue for C/S
+Scrapping from Tongue for Gram Stain
+Scrapping from Tung for AFB Stain
+Sedation
+Sedation Test
+Sedation Test Only.
+Semen Analysis
+Semen for AFB Stain
+Semen for C/S
+Semen for GeneXpert
+Semen for Gram Stain
+Serum Albumin
+Serum Calcium
+Serum Chlamydia Trachomatis IgG
+Serum Copper
+Serum Creatinine
+Serum Electrolytes
+Serum Immuno Electrophoresis
+Serum Inorganic Phosphate
+Serum Procalcitonin
+Serum Uric Acid
+Serum-ascites albumin gradient
+Short Synacthen Test
+Short Video Colonoscopy
+Sialogram Lefl sub mandibular gland & duct
+Sialogram Left parotid gland
+Sialogram right parotid gland
+Sialogram right sub mandibular gland & duct
+Sickly Test
+Single - 1st Obstetrics scan + Anomaly - 4D
+Single - Anomaly
+Single - Anomaly 4D
+Single Antibody
+Single Femur Measurement of bone densitometer
+Skin Biopsy
+Skin Scrapping C/S for AFB
+Skin Scrapping C/S for Fungus
+Skin Scrapping for Cytology
+Skin Scrapping for Fungus
+Skin Scrapping for Fungus from Lips
+Skin Swab for C/S
+Skin for C/S
+Skin scrapping for AFB Stain
+Slide Delivery for Cytology
+Slide Delivery for Histopathology
+Slide Review for Cytology
+Slide Review for Histopathology
+Slide Review for Histopathology.
+Slit smear from skin nodule for L.D. bodies
+Small Gut
+Sodium
+Spiral CT Scan Base of Skull
+Spiral CT Scan of Adrenal Glands
+Spiral CT Scan of Brain
+Spiral CT Scan of Brain & ..............
+Spiral CT Scan of Brain & Orbit/P.N.S.
+Spiral CT Scan of Cervical Spine
+Spiral CT Scan of Chest
+Spiral CT Scan of Chest/Lungs
+Spiral CT Scan of Dorsal/Thoracic Spine
+Spiral CT Scan of Face
+Spiral CT Scan of HBS/Liver
+Spiral CT Scan of KUB
+Spiral CT Scan of Kidnys
+Spiral CT Scan of Lower Abdomen
+Spiral CT Scan of Lumbo Secral Spine
+Spiral CT Scan of Neck
+Spiral CT Scan of P. N. S.
+Spiral CT Scan of Pelvis With 3D
+Spiral CT Scan of Pituitary Gland
+Spiral CT Scan of Upper Abdomen
+Spiral CT Scan of Upper Abdomen With Screening Of Chest
+Spiral CT Scan of Whole Abdomen
+Spondylogram Block Blaster
+Spot Urine Calcium
+Spot Urine Calcium Creatinine Ratio
+Spot Urine Chloride
+Spot Urine Creatinine
+Spot Urine Electrolytes
+Spot Urine Inorganic Phosphate
+Spot Urine Potassium
+Spot Urine Protein
+Spot Urine Protein Creatinine Ratio
+Spot Urine Sodium
+Spot Urine Uric Acid
+Spot Urine for Urea
+Sputum C/S for AFB
+Sputum C/S for Anerobic
+Sputum C/S for Fungus
+Sputum Cytology for Malignant Cells
+Sputum For Eosinophils
+Sputum for AFB
+Sputum for C/S
+Sputum for Fungus
+Sputum for GeneXpert
+Sputum for Gram Stain
+Stapedial Reflex Threshold
+Stool Routine Examination
+Stool for C/S
+Stool for Floatation Test
+Stool for Occult Blood Test
+Stool for Reducing Substance
+Sub Dural Fluid for AFB
+Sub Dural Fluid for Gram Stain
+Sub dural Fluid for C/S
+Suction Tip for C/S
+Suction Tip for GeneXpert
+Suction for GeneXpert
+Swab C/S for AFB
+Swab C/S for Fungus
+Swab Cytology for Malignant Cells
+Swab for C/S
+Swab from A/C for C/S
+Swab from Cervix for C/S
+Swab from Cot for C/S
+Swab from floor for C/S
+Swab from wall for C/S
+Synovial Fluid for AFB
+Synovial Fluid for Anti TB IgA
+Synovial Fluid for Anti TB IgG
+Synovial Fluid for Anti TB IgM
+Synovial Fluid for Biochemical test
+Synovial Fluid for C/S
+Synovial Fluid for Cytology
+Synovial Fluid for GeneXpert
+Synovial Fluid for Gram Stain
+Synovial Fluid for Malignant Cells
+T / E Tube For C/S
+T. I. B. C.
+T3
+T4
+TC - RBC
+TC - WBC
+TC, DC, Hb%, ESR
+TPHA
+TSH receptor antibodies
+TTF1
+Tacrolimus
+Testosterone
+Throat Swab for AFB
+Throat Swab for C/S
+Throat Swab for Fungus
+Throat Swab for Gram Stain
+Throat Swab for KLB
+Thyroid
+Tissue C/S for AFB
+Tissue for AFB
+Tissue for C/S
+Tissue for Fungus
+Tissue for GeneXpert
+Tissue for Gram Stain
+Tissue from Cervix
+Tongue Scrapping C/S for Fungus
+Tongue Scrapping Cytology for Malignant Cells
+Tongue Scrapping for Cutology for Cellular Study
+Tongue Scrapping for Fungus
+Tongue Swab C/S for Fungus
+Tongue Swab for C/S
+Tongue Swab for Fungus
+Total Acid Phosphatase
+Total HCG
+Total IgE
+Total Kidny
+Total Protein
+Toxo - IgG
+Toxo - IgM
+Tracheal Aspirate for AFB Stain
+Tracheal Aspirate for C/S
+Tracheal Aspirate for GeneXpert
+Tracheal Aspirate for Gram Stain
+Trachiostomy Tube Swab for C/S
+Transferrin saturation test
+Transplanted Kidney with Doppler
+Transthoracic 2D-Echo Study
+Transthoracic Echo-Doppler Study
+Triglycerides
+Triphasic CT Scan of HBS/ Liver/ Upper Abdomen
+Triphasic CT Scan of Whole Abdomen
+Triple Antigen
+Triplet - 1st Obstetrics Scan + Anomaly 4D
+Triplet Anomaly 4D
+Tritanrix
+Tuberculin Test
+Twin - 1st Obstetrics scan + Anomaly
+Twin Anomaly
+Twin Anomaly 4D
+Twin BPP
+Twin BPP + Growth
+Twin BPP 4D
+Twin Growth
+Typherix
+USCD
+USCD 4D
+USG Anomaly + Wellbeing
+USG Both Breasts
+USG Doppler Triplet
+USG Doppler Twin
+USG Doppler of Pregnancy Profile
+USG Guided Aspiration
+USG Guided Core Biopsy
+USG Guided FNAC-1
+USG Guided FNAC-2
+USG L/R Axilla
+USG OF KUB, PROSTATE, MCC, PVR
+USG Power dopplar for MSK
+USG Procedure Charge
+USG Protable
+USG Soft Market / Trisomy 21
+USG T/A & Adrenals
+USG TA & PVR
+USG TVS + PVR
+USG Transvaginal of pelvis organ - 4D
+USG Transvaginal of pelvis organs - 2D
+USG Transvaginal of pelvis organs - 4D & Doppler
+USG for Fetal Wt. Presentation & Liquor Volume
+USG for Liquor Volume
+USG of -----------
+USG of ------------
+USG of ABVS
+USG of Abdomen
+USG of Anomaly Scan
+USG of Anterior abdominal wall
+USG of Both Breast
+USG of Both Knee Joint
+USG of Brain
+USG of Breast
+USG of Calf Muscle
+USG of Chest
+USG of Doppler Study
+USG of Heel and Planter Area
+USG of Hip joint
+USG of LT Knee Joint
+USG of Lower Abdomen
+USG of Musculosketal
+USG of Neck
+USG of Parietal Wall
+USG of Parotid Gland
+USG of Pelvis Organs - 2D
+USG of Pelvis for Folliculoletry
+USG of Pelvis with anterior abdominal wall
+USG of Pregnancy Profile
+USG of RT Knee Joint
+USG of Rt/Lt. Shoulder
+USG of Scalp Swelling
+USG of Shoulder
+USG of Single Breast
+USG of Sinus/ Fistula
+USG of Submandibular Gland
+USG of Submental Area
+USG of Tendoachillis
+USG of Testis
+USG of Thyroid Doppler
+USG of Thyroid Gland
+USG of Umbilicus
+USG of Whole Abdomen - 2D
+USG of Whole Back / Lumbar
+USG of arm
+USG of cheek
+USG of forearm
+USG of leg
+USG of pelvis
+USG of thigh
+USG of whole Abdomen
+Ultrasonogram Guided Prostate Biopsy
+Ultrasonogram Guided Prostate Biopsy 4D
+Ultrasonogram of .............................
+Ultrasonogram of ?????????????
+Ultrasonogram of Ankle Joint
+Ultrasonogram of Arm
+Ultrasonogram of Ascites
+Ultrasonogram of Ascites 4D
+Ultrasonogram of Back
+Ultrasonogram of Both Ankle joint
+Ultrasonogram of Both Breast
+Ultrasonogram of Both Breast 4D
+Ultrasonogram of Both Breasts
+Ultrasonogram of Both Hip Joint
+Ultrasonogram of Brain
+Ultrasonogram of Brain 4D
+Ultrasonogram of Breast & Thyroid
+Ultrasonogram of Breast & Thyroid 4D
+Ultrasonogram of Buttock
+Ultrasonogram of CTS assay
+Ultrasonogram of Caudal Root
+Ultrasonogram of Cranium / Cranial
+Ultrasonogram of Doppler of ????. 4D
+Ultrasonogram of Elbow Joint
+Ultrasonogram of Enthesitis assay in Multiple Area
+Ultrasonogram of Erosion assay in Multiple Joint
+Ultrasonogram of FNAC
+Ultrasonogram of FNAC 4D
+Ultrasonogram of FNAC/Aspiration
+Ultrasonogram of Facet Joint
+Ultrasonogram of Foetal Anomaly Scan
+Ultrasonogram of Foetal Biophysical profile
+Ultrasonogram of Foetal Biophysical profile 4D
+Ultrasonogram of Folliculometry
+Ultrasonogram of Folliculometry 4D
+Ultrasonogram of Folliculometry Series
+Ultrasonogram of Folliculometry Series 4D
+Ultrasonogram of Foot
+Ultrasonogram of Forearm
+Ultrasonogram of Growth Scan
+Ultrasonogram of HBS & Breast
+Ultrasonogram of HBS & Breast 4D
+Ultrasonogram of HBS & KUB
+Ultrasonogram of HBS & KUB 4D
+Ultrasonogram of HBS & Pancreas
+Ultrasonogram of HBS & Pancreas 4D
+Ultrasonogram of HBS & Pelvic Organs
+Ultrasonogram of HBS & Pelvic Organs 4D
+Ultrasonogram of HBS & Prostate
+Ultrasonogram of HBS & Prostate 4D
+Ultrasonogram of HBS & Testis
+Ultrasonogram of HBS & Testis 4D
+Ultrasonogram of HBS, KUB & Breast
+Ultrasonogram of HBS, KUB & Breast 4D
+Ultrasonogram of HBS, KUB & PVR
+Ultrasonogram of HBS, KUB & PVR 4D
+Ultrasonogram of HBS, KUB & Pelvic Organs
+Ultrasonogram of HBS, KUB & Pelvic Organs 4D
+Ultrasonogram of HBS, KUB & Prostate
+Ultrasonogram of HBS, KUB & Prostate 4D
+Ultrasonogram of HBS, KUB & Testis
+Ultrasonogram of HBS, KUB & Testis 4D
+Ultrasonogram of HBS, KUB, PVR & Pelvic Organs
+Ultrasonogram of HBS, KUB, PVR & Pelvic Organs 4D
+Ultrasonogram of HBS, KUB, Prostate & PVR
+Ultrasonogram of HBS, KUB, Prostate & PVR 4D
+Ultrasonogram of HBS, KUB, Prostate, PVR & Testis
+Ultrasonogram of HBS, KUB, Prostate, PVR & Testis 4D
+Ultrasonogram of HBS, Pancreas & KUB
+Ultrasonogram of HBS, Pancreas & KUB 4D
+Ultrasonogram of HBS, Pancrease & Pelvic Organs
+Ultrasonogram of HBS, Pancrease & Pelvic Organs 4D
+Ultrasonogram of HBS, Pelvic Organ & PVR
+Ultrasonogram of HBS, Pelvic Organ & PVR 4D
+Ultrasonogram of HBS, Pelvic Organs & Breast
+Ultrasonogram of HBS, Pelvic Organs & Breast 4D
+Ultrasonogram of Hand
+Ultrasonogram of Heel
+Ultrasonogram of Hip Joint
+Ultrasonogram of Inguinal Region
+Ultrasonogram of Inguinal Region.
+Ultrasonogram of Inguino-Scrotal Region
+Ultrasonogram of KUB
+Ultrasonogram of KUB & Breast
+Ultrasonogram of KUB & Breast 4D
+Ultrasonogram of KUB & PVR
+Ultrasonogram of KUB & PVR 4D
+Ultrasonogram of KUB & Pelvic Organs
+Ultrasonogram of KUB & Pelvic Organs 4D
+Ultrasonogram of KUB & Pelvic Organs MCC PVR
+Ultrasonogram of KUB & Prostate
+Ultrasonogram of KUB & Prostate 4D
+Ultrasonogram of KUB & Suprarenal gland
+Ultrasonogram of KUB & Suprarenal gland 4D
+Ultrasonogram of KUB & Testis
+Ultrasonogram of KUB & Testis 4D
+Ultrasonogram of KUB & Thyroid
+Ultrasonogram of KUB & Thyroid 4D
+Ultrasonogram of KUB +PVR+ MCC
+Ultrasonogram of KUB 4D
+Ultrasonogram of KUB, Pelvic Organ & PVR
+Ultrasonogram of KUB, Pelvic Organ & PVR 4D
+Ultrasonogram of KUB, Pelvic Organs & Breast
+Ultrasonogram of KUB, Pelvic Organs & Breast 4D
+Ultrasonogram of KUB, Prostate & PVR
+Ultrasonogram of KUB, Prostate & PVR 4D
+Ultrasonogram of KUB, Prostate & Testis
+Ultrasonogram of KUB, Prostate & Testis 4D
+Ultrasonogram of KUB,Prostate,PVR & Transrectal
+Ultrasonogram of KUB,Prostate,PVR & Transrectal 4D
+Ultrasonogram of Knee
+Ultrasonogram of Left / Right Hand
+Ultrasonogram of Left Ankle joint
+Ultrasonogram of Left Breast
+Ultrasonogram of Left Breast 2D
+Ultrasonogram of Left Breast 4D
+Ultrasonogram of Leg
+Ultrasonogram of Lift Hip Joint
+Ultrasonogram of Liver Elastography
+Ultrasonogram of Lower Abdomen
+Ultrasonogram of Lower Abdomen 4D
+Ultrasonogram of Lower Abdomen with Doppler Study
+Ultrasonogram of Lower Back Muscle
+Ultrasonogram of Lower Chest
+Ultrasonogram of Lower Chest 4D
+Ultrasonogram of MCA+UA+Uterine artery
+Ultrasonogram of MCC & PVR
+Ultrasonogram of N.T. Scan
+Ultrasonogram of Neck
+Ultrasonogram of Neck 4D
+Ultrasonogram of Nerve Tracking in Median / Ulnar Nerve
+Ultrasonogram of PVR
+Ultrasonogram of PVR & Prostate
+Ultrasonogram of PVR & Prostate 4D
+Ultrasonogram of PVR 4D
+Ultrasonogram of Pelvic Organs
+Ultrasonogram of Pelvic Organs & Breast 4D
+Ultrasonogram of Pelvic Organs 4D
+Ultrasonogram of Penis
+Ultrasonogram of Penis 4D
+Ultrasonogram of Perianal
+Ultrasonogram of Portal Vein 4D
+Ultrasonogram of Pregnancy +Adnexa
+Ultrasonogram of Pregnancy Profile
+Ultrasonogram of Pregnancy Profile 4D
+Ultrasonogram of Pregnancy Profile With Foetal Doppler
+Ultrasonogram of Pregnancy Profile and Doppler Study and Biophysical Profile
+Ultrasonogram of Pregnancy Profile with Cervical Length
+Ultrasonogram of Pregnancy Profile with Foetal Anomaly Scan
+Ultrasonogram of Pregnancy Profile with Scar Thickness
+Ultrasonogram of Pregnancy Profile with TVS
+Ultrasonogram of Prostate
+Ultrasonogram of Prostate & Testis
+Ultrasonogram of Prostate & Testis 4D
+Ultrasonogram of Prostate 4D
+Ultrasonogram of Right Ankle joint
+Ultrasonogram of Right Breast
+Ultrasonogram of Right Breast 2D
+Ultrasonogram of Right Breast 4D
+Ultrasonogram of Right Hip Joint
+Ultrasonogram of SI Joint
+Ultrasonogram of Scrotum
+Ultrasonogram of Shoulder
+Ultrasonogram of Small Joint
+Ultrasonogram of Soft Tissue
+Ultrasonogram of Stellate Ganglion
+Ultrasonogram of Swelling
+Ultrasonogram of Swelling with Doppler
+Ultrasonogram of TVS
+Ultrasonogram of TVS with Doppler Study
+Ultrasonogram of TVS with vascularity/color doppler
+Ultrasonogram of Testis
+Ultrasonogram of Testis 4D
+Ultrasonogram of Thyroid Gland
+Ultrasonogram of Thyroid Gland 4D
+Ultrasonogram of Transrectal
+Ultrasonogram of Transrectal 4D
+Ultrasonogram of Transvaginal / TVS
+Ultrasonogram of Transvaginal 4D
+Ultrasonogram of Upper Abdomen
+Ultrasonogram of Upper Abdomen 4D
+Ultrasonogram of Upper Back
+Ultrasonogram of Urinary Bladder & PVR 4D
+Ultrasonogram of Urinary System
+Ultrasonogram of Urinary System 4D
+Ultrasonogram of Uterus & Ovary
+Ultrasonogram of Uterus & Ovary 4D
+Ultrasonogram of Viability + Cervix + Internal Os
+Ultrasonogram of Whole Abdomen
+Ultrasonogram of Whole Abdomen & Adrenal
+Ultrasonogram of Whole Abdomen & Both Breast
+Ultrasonogram of Whole Abdomen & Both Breast 4D
+Ultrasonogram of Whole Abdomen & Left Breast
+Ultrasonogram of Whole Abdomen & Left Breast 4D
+Ultrasonogram of Whole Abdomen & Lymphnodes
+Ultrasonogram of Whole Abdomen & Lymphnodes 4D
+Ultrasonogram of Whole Abdomen & PVR
+Ultrasonogram of Whole Abdomen & PVR 4D
+Ultrasonogram of Whole Abdomen & Prostate
+Ultrasonogram of Whole Abdomen & Prostate 4D
+Ultrasonogram of Whole Abdomen & Pylorus
+Ultrasonogram of Whole Abdomen & Right Breast
+Ultrasonogram of Whole Abdomen & Right Breast 4D
+Ultrasonogram of Whole Abdomen & Testis
+Ultrasonogram of Whole Abdomen 4D
+Ultrasonogram of Whole Abdomen PVR and MCC
+Ultrasonogram of Whole Abdomen Prostate, MCC & PVR
+Ultrasonogram of Whole Abdomen with PVR - 2D
+Ultrasonogram of Whole Abdomen with Pelvis 2D
+Ultrasonogram of Whole Abdomen, Both Breast & Thyroid Gland 4D
+Ultrasonogram of Whole Abdomen, Prostate & PVR
+Ultrasonogram of Whole Abdomen, Prostate & PVR 4D
+Ultrasonogram of Wrist Joint
+Ultrasonography of Hysterosalpino Graphy
+Ultrasound of Gluteal Region
+Umbilical Artery / Uterine Artery Doppler
+Umbilical Swab for C/S
+Umbilical Swab for Gram Stain
+Upper Abdomen
+Urea
+Urethral Discharge for AFB
+Urethral Discharge for C/S
+Urethral Discharge for Gram Stain
+Urethral Discharge for Wet Film
+Urinary Amylase
+Urinary Calcium
+Urinary Inorganic Phosphate
+Urinary Osmolality
+Urinary Uric Acid
+Urinary V.M.A
+Urine C/S for AFB
+Urine C/S for Anerobic
+Urine C/S for Fungus
+Urine Cytology for Malignant Cells
+Urine For Leu
+Urine For Nitrite
+Urine Routine Examination
+Urine for AFB
+Urine for Albumin
+Urine for Bile Pigments
+Urine for Bile Salts
+Urine for Bilirubin
+Urine for C/S
+Urine for Ferric Chloride Test
+Urine for GeneXpert
+Urine for Gram Stain
+Urine for Haemoglobin
+Urine for Ketone Bodies
+Urine for Microalbumin
+Urine for Occult blood Test
+Urine for Pregnancy Test
+Urine for RBC
+Urine for Specific Gravity
+Urine for Sugar
+Urine for Urobilinogen
+Urine for Wet Film
+Urodynamic Study
+Uroflowmetry
+Uterus
+Uterus & Adexa 2D
+Uterus & Adexa 4D
+Uterus & Ovary
+VDRL
+Vaccum Needle
+Vaginal Scrapping for fungus
+Vaginal Swab for AFB
+Vaginal Swab for C/S
+Vaginal Swab for Fungus
+Vaginal Swab for Gram Stain
+Valproic Acid
+Varilrix
+Vault Smear for C/S
+Vault Smear for Gram Stain
+Vault smear Cytology for Malignant Cells
+Venography of Both LIMB
+Venography of Left LIMB
+Venography of Right LIMB
+Venography of Two LIMB
+Venography of one LIMB
+Vesico Ureteric Reflux
+Vi Antigen of S. Typhi
+Viability
+Viability & Dating
+Viability Twin
+Video Clonoscopic Polypectomy Multiple
+Video Colonoscopy Polypectomy
+Video Colonoscopy of Polypectomy.
+Video Colonoscopy with Polypectomy
+Video Colonoscopy with Polypectomy Multiple
+Video Colonoscopy with Polypectomy Single
+Video Endooscopic Varicial Band Ligation
+Video Endoscopic Sclerotherapy
+Video Endoscopic Varicial Band Ligation
+Video Endoscopy
+Video Endoscopy B/V
+Video Endoscopy Of Upper GIT
+Video Endoscopy Upper GIT with CLO
+Video Endoscopy Upper GIT with Sedation
+Video Endoscopy Upper GIT, CLO and Sedation
+Video Endoscopy and CLO Test
+Video Endoscopy of Polypectomy.
+Video Endoscopy of Removal of Foregone Body
+Video Endoscopy of Upper GIT
+Video Endoscopy of Upper GIT.
+Video Endoscopy of upper GIT with CLO Test
+Video Endoscopy of upper GIT with Sedation Test
+Video Endoscopy of upper GIT, CLO and Sedation Test
+Video Endoscopy with Polypectomy
+Video Endoscopy with Polypectomy Multiple
+Video Endoscopy with Polypectomy Single
+Video Endoscopy with Sedation
+Video Endoscopy with polypectomy
+Video Endoscopy with polypectomy Multiple
+Video Full Colonoscopy.
+Video Procto-sigmoidscopy
+Video Proctoscopy
+Video Proctoscopy / Sigmodoscopy.
+Video Proctosigmiodscopy
+Video Sclerotherapy
+Video Short Colonoscopy.
+Video Sigmoidscopy
+Video Varical Banding
+Video Varicial Banding
+Vision Test
+Vitamin B-12
+Vitamin D
+Vitamin D3/D2
+Vitreous Aspirate C/S for Fungus
+Vitreous Aspirate for C/S
+Vitreous Aspirate for Fungus
+Vitreous Aspirate for Gram Stain
+Vulval Swab For Cytology
+Vulval Swab For Cytology and Malignant Cells
+Vulval Swab for Gram Stain
+Vulval scrapping for fungus
+Vulval swab for C/S
+WT1
+Whine Tube
+Whole Spine Pull & Push
+Whole body scan of bone densitometer
+Widal Test
+Wound Swab for AFB
+Wound Swab for C/S
+Wound Swab for Gram Stain
+Wound swab for GeneXpert
+X-Ray
+X-Ray of Ankle Joint Both oblique View
+X-Ray of Lt. Shoulder Jt. Axillary View
+X-Ray of Lt. Shoulder Jt. Supraspinatus Outlet View
+X-Ray of Lumber Spine Flexion & Extension View
+X-Ray of Pelvis Modified Ferguson View
+X-Ray of Rt. Shoulder Jt. Axillary View
+X-Ray of Rt. Shoulder Jt. Supraspinatus Outlet View
+X-Ray of S.I. Joint Modified Ferguson View
+X-Ray of Wrist Joint Both oblique View
+X-ray Ankle joint Mortise view
+X-ray of Both Leg AP
+X-ray of Both Thigh AP
+X-ray of Cloacogram
+X-ray of Coanagram
+X-ray of Defecography
+X-ray of Genitogram
+X-ray of LS Spine Flexion & Extension View
+X-ray of Left Ankle Joint
+X-ray of Meckel's Diverticulum
+X-ray of Pelvis AP & Frog Leg View
+X-ray of Pelvis AP & Inlet & Outlet view
+X-ray of Right Ankle Joint
+X-ray of Scanogram
+X-ray of Whole Spine AP/Lateral & Rt. Lt. Bending
+eGFR
+fluid for PH
+hTSH
+mp MRI OF PROSTATE
+mp MRI of Urinary Bladder Mass

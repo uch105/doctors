@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.db.models import Model
 from django.utils import timezone
@@ -20,6 +21,7 @@ class DoctorCategory(models.Model):
 class DoctorSubCategory(models.Model):
     category = models.ForeignKey(DoctorCategory,on_delete=models.CASCADE,related_name="subcategories",default="MBBS")
     name = models.CharField(max_length=255,primary_key=True)
+    bangla = models.CharField(max_length=255,default="জেনারেল")
 
     def __str__(self):
         return self.name
@@ -42,8 +44,8 @@ class Doctor(models.Model):
     status = models.BooleanField(default=False)
     job = models.CharField(max_length=255,default="Null")
     chamber = models.CharField(max_length=255,default="Null")
-    qualification = models.CharField(max_length=1000,default="Null")
-    bqualification = models.CharField(max_length=255,default="[পাওয়া যায় নি]")
+    qualification = models.TextField(max_length=1000,default="Null")
+    bqualification = models.TextField(max_length=255,default="[পাওয়া যায় নি]")
     category = models.ForeignKey(DoctorCategory,on_delete=models.CASCADE,related_name="categories")
     sub_category = models.ForeignKey(DoctorSubCategory,on_delete=models.CASCADE,related_name="subcategories")
     bsub_category = models.CharField(max_length=255,default="[পাওয়া যায় নি]")
@@ -329,6 +331,11 @@ class Drug(models.Model):
     indication = models.TextField(null=True,blank=True)
     contraindication = models.TextField(null=True,blank=True)
     side_effect = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
 
     def __str__(self):
         return self.brand
@@ -494,6 +501,10 @@ class Patient(models.Model):
     def __str__(self):
         return f"{self.name} - ( {self.sex} - {self.age} years )"
 
+class TempPatientData(models.Model):
+    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,related_name='tempdata')
+    file = models.FileField(upload_to="files/tmp/",null=True,blank=True)
+
 class Symptom(models.Model):
     dept = models.ForeignKey(DoctorSubCategory,on_delete=models.CASCADE,related_name="symptoms")
     parent = models.CharField(max_length=255,null=True,blank=True)
@@ -503,3 +514,81 @@ class PatientDetail(models.Model):
     symptom = models.CharField(max_length=500,null=True,blank=True)
     details = models.TextField(null=True,blank=True)
     file = models.FileField(upload_to="files/patient_details/",null=True,blank=True)
+
+class AdviceTemplate(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE, related_name='advices')
+    index = models.CharField(max_length=10,null=True,blank=True)
+    advice1 = models.TextField(null=True,blank=True)
+    advice2 = models.TextField(null=True,blank=True)
+    advice3 = models.TextField(null=True,blank=True)
+    advice4 = models.TextField(null=True,blank=True)
+    advice5 = models.TextField(null=True,blank=True)
+
+    def __str__(self):
+        return self.doctor.name + " - " + self.index
+
+class OE(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text
+
+class Ix(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text
+
+class CC(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text
+    
+class RF(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text
+    
+class Dx(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text
+
+class District(models.Model):
+    text = models.TextField(null=True,blank=True)
+    priority_index = models.DecimalField(max_digits=14,decimal_places=4,default=Decimal('0.0'))
+
+    def increase_priority(self,increment=Decimal('0.0')):
+        self.priority_index += increment
+        self.save()
+    
+    def __str__(self):
+        return self.text[:10] if len(self.text)>11 else self.text

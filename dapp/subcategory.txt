@@ -1,0 +1,25 @@
+BDS-General BDS
+Gyne & Obs-Gynecology & Obstetrics
+Medicine-Cardiology
+Medicine-Cardiothorasic
+Medicine-Dermatology
+Medicine-Endocrynology
+Medicine-Gastroenterology
+Medicine-Hematology
+Medicine-Hepatology
+Medicine-Medicine
+Medicine-Nephrology
+Medicine-Neuro Medicine
+Medicine-Oncology
+Medicine-Orthopedics
+Medicine-Pediatrics
+Medicine-Physical Medicine
+Medicine-Radiology
+Medicine-Respiratory Medicine
+Medicine-Urology
+Surgery-Burn & Plastic Surgery
+Surgery-Cardiothorasic Surgery
+Surgery-ENT
+Surgery-Eye
+Surgery-Neuro Surgery
+Surgery-Pediatrics Surgery

@@ -26,7 +26,7 @@ Doctors - Prescription
         </div>
         <div class="lists">
             {% for patient in patients %}
-            <div class="list">{{ patient.name }} - {{ patient.created }} - <a href="{{ patient.pdf.url }}" target="_blank">Download/Print pdf</a> - <a href="{% url 'rawprescription' pk=patient.pid %}" target="_blank">View raw</a></div>
+            <div class="list">{{ patient.name }} - {{ patient.created }} - <a href="{{ patient.pdf.url }}" target="_blank">Download/Print pdf</a> - <a href="{% url 'rawprescription' pk=patient.pid %}">View raw</a> - <a href="{% url 'editprescription' pk=patient.pid %}">Edit</a></div>
             {% endfor %}
         </div>
     </div>

@@ -243,7 +243,7 @@ nav{
         padding: 0px 30px;
     }
     .container{
-        padding: 30px;
+        padding: 0px 30px;
     }
     .bn-bold{
         line-height: 100%;
@@ -253,6 +253,9 @@ nav{
     }
 }
 @media screen and (max-width:600px){
+    .container{
+        padding: 10px;
+    }
     .foos{
         grid-template-columns: 300px;
     }

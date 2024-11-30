@@ -22,6 +22,13 @@ urlpatterns = [
     path("dashboard/prescription/",views.dashboard_prescription,name="prescription"),
     path("dashboard/prescription/create/",views.dashboard_createprescription,name="createprescription"),
     path("dashboard/prescription/raw/<str:pk>/",views.dashboard_rawprescription,name="rawprescription"),
+    path("dashboard/prescription/create/edit/<str:pk>/",views.dashboard_editprescription,name="editprescription"),
+    path("api/preview-pdf/",views.dashboard_previewprescription,name="previewprescription"),
+    path("api/search_oe/",views.oeapi,name="oeapi"),
+    path("api/search_ix/",views.ixapi,name="ixapi"),
+    path("api/search_rf/",views.rfapi,name="rfapi"),
+    path("api/search_dx/",views.dxapi,name="dxapi"),
+    path("api/search_advice/",views.adviceapi,name="adviceapi"),
     #tools
     path("dashboard/tools/",views.dashboard_tools,name="tools"),
     path("dashboard/tools/rqst/",views.dashboard_rqst_tools,name="rqsttool"),
@@ -47,6 +54,7 @@ urlpatterns = [
     path("dashboard/forum/post/<str:pk>/comment/",views.postcomment,name="postcomment"),
     #settings
     path("dashboard/settings/",views.dashboard_settings,name="settings"),
+    path("dashboard/settings/profile/set-up/",views.dashboard_setupprofile,name="setup-profile"),
     path("dashboard/settings/profile/self/",views.dashboard_profileself,name="profile-self"),
     path("dashboard/settings/profile/self/updatejobs",views.updatejobs,name="updatejobs"),
     path("dashboard/settings/profile/self/updatecontact",views.updatecontact,name="updatecontact"),

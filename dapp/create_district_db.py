@@ -9,9 +9,8 @@ sys.path.append(project_root)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
 django.setup()
 
-from dapp.models import MedicalCollege
+from dapp.models import District
 
-with open("clglist.txt",'r') as file:
+with open("districts.txt",'r') as file:
     for line in file:
-        m = MedicalCollege.objects.create(name=line.strip())
-        m.save()
+        m = District.objects.create(text=line.split("\n")[0]+': ')

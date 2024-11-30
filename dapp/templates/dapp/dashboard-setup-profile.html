@@ -1,0 +1,39 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Profile set up!
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h3 style="text-align: center;">It takes less than one minute to complete your set-up your profile.</h3>
+    <div class="setup-profile">
+        <form action="{% url 'setup-profile' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" class="inputfield" name="chamber" placeholder="চেম্বারের নাম (বাংলায়)">
+            <input type="text" class="inputfield" name="dr_name_e" placeholder="Name (to be displayed)">
+            <textarea name="dr_d_e" class="textinputfield" placeholder="Qualifications & Details (to be displayed)"></textarea>
+            <input type="text" class="inputfield" name="dr_name_b" placeholder="আপনার নাম (বাংলায়)">
+            <textarea name="dr_d_b" class="textinputfield" placeholder="ডিগ্রী এবং বিবিধ বিষয়সমূহ (বাংলায়)"></textarea>
+            <input type="submit" value="Save" class="submit-btn">
+            <input type="hidden" name="cc" value="">
+            <input type="hidden" name="oe" value="">
+            <input type="hidden" name="rf" value="">
+            <input type="hidden" name="ix" value="">
+            <input type="hidden" name="dx" value="">
+            <input type="hidden" name="prestext" value="">
+        </form>
+        <div class="preview">
+            <a id="previewButton">Preview the outlook</a>
+            <div id="pdfPreview"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

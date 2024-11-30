@@ -98,7 +98,7 @@ Profile
             {% csrf_token %}
             <h5>Update Bengali Name</h5>
             <input type="text" name="bname" placeholder="নাম (বাংলায়)" required>
-            <input type="text" name="bqualification" placeholder="যোগ্যতা (বাংলায়)" required>
+            <textarea name="bqualification" placeholder="যোগ্যতা (বাংলায়)" required></textarea>
             <input type="submit" value="Update" class="submit">
         </form>
         <form action="{% url 'updatejobs' %}" method="POST">

@@ -1,9 +1,9 @@
 import os
 import sys
 import django
+from decouple import config
 
-project_root = '/var/www/doctors/'
-#project_root = 'C:\\Users\\uch\\Downloads\\projects\\doctors'
+project_root = config("PROJECT_ROOT")
 sys.path.append(project_root)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
@@ -22,7 +22,7 @@ counter = 0
 
 for row in range(1,sheet.max_row+1):
     manufacturer = sheet[f'A{row}'].value
-    brand = sheet[f'B{row}'].value
+    brand = sheet[f'I{row}'].value
     generic = sheet[f'C{row}'].value
     drugs_dose = sheet[f'D{row}'].value
     drugs_type = sheet[f'E{row}'].value
@@ -43,6 +43,7 @@ for row in range(1,sheet.max_row+1):
     )
 
     counter+=1
+    print(str(counter) + "Drugs imported successfully!")
 
     #print(str(row) + " drugs added")
 

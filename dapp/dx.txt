@@ -1,0 +1,438 @@
+ABO Incompatibility
+AWD (Acute Watery Diarrhea) with no dehydration
+AWD with severe dehydration
+AWD with some dehydration
+Acanthosis Nigricans
+Achalasia cardia
+Acne
+Acute Abdomen
+Acute Appendicitis
+Acute Bronchiolitis
+Acute Bronchiolitis (mild case)
+Acute Bronchiolitis (severe case)
+Acute Cholecystitis
+Acute Conjunctivitis
+Acute Exacerbation of COPD (AECOPD)
+Acute Glomerulonephritis (AGN)
+Acute Kidney Injury (AKI)
+Acute Left Ventricular Failure (ALVF)
+Acute Leukaemia
+Acute Myocardial Infarction (AMI)
+Acute Pancreatitis
+Acute Parotitis
+Acute Psychosis
+Acute Pulmonary Oedema
+Acute Pyelonephritis
+Acute Retention of Urine Due to Benign Prostatic Hyperplasia (BEP)
+Acute Retention of Urine Due to Stricture Urethra
+Acute Rheumatic Fever
+Acute Rhino Sinusitis
+Acute Severe Asthma
+Acute Tonsillitis
+Acute Transverse Myelitis (ATM)
+Acute Vestibular Failure
+Acute Viral Hepatitis
+Acute appendicitis
+Acute gout
+Acute leukemia
+Acute pancreatitis
+Acute pyelonephritis
+Acute rheumatic fever
+Acute severe asthma
+Acute tonsillitis
+Acute transverse myelitis
+Acute vestibular failure
+Acute viral fever
+Acute viral hepatitis
+Acute viral hepatitis
+Addison's Disease
+Addison's disease
+Addisonian Crisis
+Adenomyosis
+Adult Type Periodontitis
+Allergic Conjunctivitis
+Allergic Contact Dermatitis
+Allergic Rhinitis
+Alopecia Areata
+Alopecia Universalis
+Alopecia areata
+Aluminium Phosphide Poisoning (Gas Tablet/Rice Tablet Poisoning)
+Amoebic Dysentery
+Anal Fissure
+Anaphylactic Shock
+Androgenic Alopecia
+Ankylosing Spondylitis
+Antenatal Visit
+Aphthous ulcer
+Aplastic Anaemia (AA)
+Appendicular Abscess
+Appendicular Lump
+Ascariasis
+Aspiration Pneumonia
+Asthma
+Atopic Dermatitis (AD)
+Atrial Fibrillation
+Atrial Fibrillation (AF)
+Atrial Flutter
+Atrial fibrillation
+Bacillary Dysentery
+Bacterial Meningitis
+Bee Sting / Wasp Bite
+Bell's Palsy
+Benign Paroxysmal Positional Vertigo (BPPV)
+Benzodiazepine Poisoning
+Bipolar Affective Disorder
+Blood Transfusion Reactions
+Boils
+Boils (Furuncle)
+Breast Abscess
+Breast Engorgement
+Breast Skin Infection
+Bronchial Carcinoma
+Bronchiectasis
+Bullous Impetigo
+Bullous Pemphigoid
+COPD
+Callosities
+Candidal Paronychia
+Carbuncles
+Cardiogenic Shock
+Cardiomegaly
+Cellulitis
+Cellulitis and Erysipelas
+Cervical Cancer (Ca Cervix)
+Chalazion
+Chicken Pox (Varicella)
+Chlamydial Infection
+Cholera
+Chronic Cholecystitis
+Chronic Heart Failure
+Chronic Kidney Disease (CKD)
+Chronic Liver Disease (CLD)
+Chronic Lymphocytic Leukaemia (CLL)
+Chronic Myeloid Leukaemia (CML)
+Chronic Pancreatitis
+Chronic Stable Angina
+Chronic cholecystitis
+Chronic heart failure
+Chronic kidney disease
+Chronic liver disease
+Chronic lymphocytic leukemia
+Chronic myeloid leukemia
+Chronic stable angina
+Cold Sores
+Cold sores
+Collapse
+Colorectal Carcinoma
+Common Cold in Pregnancy
+Common cold
+Commonly Used Drugs
+Community Acquired Pneumonia (CAP)
+Community acquired pneumonia
+Complete Heart Block (CHB)
+Consolidation
+Constipation
+Constipation in Pregnancy
+Corrosive Poisoning
+Crohn's Disease
+DVT
+Deep Vein Thrombosis (DVT)
+Dengue
+Dengue fever
+Dental Caries
+Depression
+Dermatophyte Infection (Ring Worm) / Tinea
+Dextrocardia
+Diabetes Mellitus
+Diabetic Foot
+Diabetic Ketoacidosis (DKA)
+Diaper Dermatitis
+Diet and discipline by BSMMU
+Diffuse Parenchymal Lung Disease (DPLD)
+Drug induced Cushing's syndrome
+Drug selection
+Drug-Induced Cushing's Syndrome
+Dysentery
+Dysfunctional Uterine Bleeding (DUB)
+Dysmenorrhoea
+Dyspareunia
+Early Menopause
+Eczema and dermatitis
+Edema in Pregnancy
+Empyema Gall Bladder
+Enteric Fever
+Epididymo-Orchitis
+Epilepsy
+Erectile Dysfunction
+Erythema Multiforme
+Erythema Multiforme / Stevens-Johnson Syndrome / TEN
+Erythrasma
+External Ear Furunculosis
+Febrile Convulsions
+Febrile Reaction
+Fever in Pregnancy
+Fibroid Uterus
+First-degree atrioventricular block
+Fistula-in-Ano
+Fixed Drug Eruption
+Focal Hyperhidrosis
+Focal hyperhidrosis
+Folliculitis
+Freckles
+Furunculosis of Nose (Vestibulitis)
+GBS
+GERD
+GOO Due to Carcinoma Stomach
+Gastric Outlet Obstruction (GOO) Due to Pyloric Stenosis
+Generalized Anxiety Disorder (GAD)
+Generalized Hyperhidrosis
+Generalized Weakness/Body Ache
+Generalized anxiety disorder
+Generalized hyperhidrosis
+Generalized/Focal Burning Sensation of Body
+Genital Candidiasis
+Gestational Diabetes Mellitus (GDM)
+Gonorrhea
+Gout
+Guillain-Barré Syndrome (GBS)
+Haematemesis/Melaena
+Haemophilia
+Head Injury
+Headache in Pregnancy
+Heartburn in Pregnancy
+Hemophilia
+Hemorrhoids
+Piles
+Hepatic Encephalopathy
+Hereditary Haemolytic Anaemia (Thalassaemia)
+Hereditary hemolytic anemia (thalassemia)
+Herpes Zoster
+Herpes Zoster Ophthalmicus
+Hirsutism
+Hoarseness
+Hodgkin’s Lymphoma
+Hookworms
+Hospital Acquired Pneumonia (HAP)
+Hydrocoele
+Hydropneumothorax
+Hypercalcemia
+Hyperglycaemic Hyperosmolar State (HHS)
+Hyperkalemia
+Hypernatremia
+Hypertension
+Hypertensive emergencies
+Hypertensive urgencies
+Hyperthyroidism
+Hypocalcemia
+Hypoglycemia
+Hypokalemia
+Hypomagnesemia
+Hyponatremia
+Hypothyroidism
+Hypovolemic Shock
+Ichthyosis Vulgaris
+Idiopathic Thrombocytopenic Purpura (ITP)
+Impetigo
+Inadequate Secretion of Breast Milk
+Infected Chalazion
+Inflammatory Bowel Disease (IBD)
+Inflammatory Gingival Enlargements
+Ingrowing of Toenail
+Inguinal Hernia
+Initiation and titration of drugs
+Insomnia Disorder
+Insomnia in Pregnancy
+Insulin Therapy at Hospital Settings
+Insulin guideline
+Intermittent asthma
+Intestinal Obstruction
+Iron Deficiency Anaemia (IDA)
+Irritable Bowel Syndrome (IBS)
+Juvenile Periodontitis
+Juvenile idiopathic arthritis
+Kala Azar
+Kerosene Poisoning
+LVH with strain
+Lateral Periodontal Abscess
+Left ventricular hypertrophy
+Leg Cramps in Pregnancy
+Leprosy
+Leptospirosis
+Leucorrhoea
+Leucorrhoea in Pregnancy
+Lichen Planus
+Lichen Simplex Chronicus
+Lip-Licking Dermatitis
+Liver Abscess
+Lumbar Disc Herniation (PLID)
+Lung Abscess
+Malaria
+Mastitis
+Measles
+Measles and Chicken Pox
+Mechanical Back Pain
+Megaloblastic Anaemia
+Melasma
+Migraine
+Miliaria
+Miliary TB
+Missed Period
+Mitral Stenosis (MS)
+Molluscum Contagiosum
+Mucocele Gall Bladder
+Multiple Myeloma
+Multiple secondary deposits in the lung
+Mumps
+Myocardial infarction
+Myocardial ischemia
+Myxedema Coma
+Napkin Candidiasis
+Necrobiosis Lipoidica
+Nephrotic Syndrome (NS)
+Nocturnal Enuresis
+Non-Hodgkin’s Lymphoma
+Non-alcoholic fatty liver
+Non-specific abdominal pain
+Non-ulcer dyspepsia
+Nummular Eczema
+OPC Poisoning
+Obsessive-Compulsive Disorder (OCD)
+Obstructive Jaundice
+Oligohydramnios
+Oral candidiasis
+Orbital Cellulitis
+Osteoarthritis
+Osteoporosis
+Otomycosis
+Ovarian Cyst (3-7cm)
+Ovarian Cyst (complex/>9cm)
+Ovarian Cyst (tiny: few mm)
+Overflow Incontinence
+Painful Red Eye
+Panic Disorder
+Paracetamol Poisoning
+Parkinson's Disease
+Paronychia
+Pediculosis (Lice Infestation)
+Pelvic Inflammatory Disease (PID)
+Pemphigus Vulgaris
+Peptic Ulcer Disease (PUD)
+Perforation
+Periapical Abscess
+Pericardial effusion
+Periorbital Melanosis
+Persistent asthma
+Phobia
+Photocontact Allergic Dermatitis
+Pitted Keratolysis
+Pityriasis Versicolor
+Pleural effusion
+Pneumonia
+Pneumothorax
+Polycystic Ovary Syndrome (PCOS)
+Polycythaemia Rubra Vera
+Pompholyx
+Postponing Menstruation
+Pregnancy with Anemia
+Pregnancy with Backache
+Pregnancy with Bronchial Asthma
+Pregnancy with Diarrhea
+Pregnancy with Hypertension (HTN)
+Pregnancy with Per Vaginal (PV) Bleeding
+Premature Ejaculation
+Primary Amenorrhoea
+Primary Genital Herpes
+Primary Infertility
+Prurigo Nodularis
+Psoriasis
+Puberty Menorrhagia
+Pulmonary Tuberculosis (PTB)
+Pulmonary edema
+Pulmonary emphysema
+Pyodermas
+RTA/Physical Assault
+RVH with strain
+Reactive Arthritis
+Renal Stone
+Restless Legs Syndrome
+Rh Negative Mother
+Rheumatoid Arthritis (RA)
+Rhino sinusitis
+Rickettsial Fever (Scrub Typhus Group)
+Right ventricular hypertrophy
+Rupture Urethra
+Ruptured Esophageal Varices
+Rx algorithm
+Rx of complications
+Sarcoidosis
+Scabies
+Schizophrenia
+Seasonal Influenza
+Seborrheic Dermatitis
+Second-degree atrioventricular block
+Secondary Amenorrhoea
+Septic Arthritis
+Septic Shock
+Severe Allergic Reaction
+Severe persistent diarrhoea
+Severe pneumonia
+Sexual Dysfunction
+Sexually Transmitted Infections
+Sinus Arrhythmia
+Sinus Bradycardia
+Sinus Tachycardia
+Situs inversus
+Snake Bite
+Somatoform Disorder
+Sore Throat
+Staphylococcal Scalded Skin Syndrome (SSSS)
+Starting of drug therapy
+Status Epilepticus
+Street Poisoning / Unknown Poisoning
+Stroke
+Subarachnoid Haemorrhage
+Suppression of Breast Milk
+Supraventricular Tachycardia (SVT)
+Suspected OPC Poisoning
+Swellings in Casualty OPD
+Systemic Lupus Erythematosus (SLE)
+TCA Poisoning
+Tension-Type Headache
+Tetralogy of Fallot
+Thalassemia
+Third-degree atrioventricular block
+Thrush (oral candidiasis)
+Thyrotoxic Crisis
+Tinea Incognito
+Tinea capitis
+Tinea corporis
+Tinea cruris
+Tinea pedis/Tinea manuum
+Tooth Avulsion
+Toothache
+Torsades de pointes
+Torsion of Testis
+Tubercular Meningitis
+Tubercular Pleural Effusion (Rt)
+Ulcerative Colitis (UC)
+Unstable Angina (UA)
+Ureteric Stone
+Urge Incontinence (Overactive Bladder Syndrome)
+Urinary Tract Infection (Cystitis)
+Urinary Tract Infection (Pyelonephritis)
+Urinary Tract Infection (UTI)
+Urinary Tract Infection (UTI) in Pregnancy
+Urinary tract infection
+Urticaria
+Uterine Prolapse
+Vaginal Candidiasis
+Varicose Veins in Pregnancy
+Ventricular Fibrillation
+Ventricular Tachycardia
+Ventricular Tachycardia (VT)
+Vertigo in Pregnancy
+Viral Encephalitis
+Viral Fever
+Vitiligo
+Vomiting in Pregnancy
+Warts

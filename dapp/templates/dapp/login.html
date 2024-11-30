@@ -41,9 +41,11 @@ Doctors - Login
             <p style="max-width: 300px; text-align: center;">
                 Verify your identity from here. Then copy & paste profile link below. <br>
                 <a href="https://verify.bmdc.org.bd/" target="_blank" style="text-decoration: none;color: var(--primary-color);font-weight: 700;">Go to website &#x2197;</a><br>
-                <span style="opacity: 0.5;word-wrap: break-word;">Example : https://verify.bmdc.org.bd/regdata/5FYMtkwhHFFF6SYj03onS3PTnphJgq5AweJOU31Q1u0GPRsxBcbn8dn~nT41EZ7DlL94p5og1eElc9eO3P3PUA--</span>
             </p>
             <input type="text" class="inputfield" name="link" placeholder="Enter your profile link" required>
+            <p style="max-width: 300px; text-align: center;">
+                <span style="opacity: 0.5;word-wrap: break-word;font-size: 12px;">Example : https://verify.bmdc.org.bd/regdata/5FYMtkwhHFFF6SYj03onS3PTnphJgq5AweJOU31Q1u0GPRsxBcbn8dn~nT41EZ7DlL94p5og1eElc9eO3P3PUA--</span>
+            </p>
             <input type="submit" value="Submit" class="submit-btn">
             <a onclick="ShowLogin()">Already a member? <span class="green" style="cursor: pointer;">Login here</span></a>
             <a href="{% url 'studentsignin' %}">Students and Intern Doctors <span class="green" style="cursor: pointer;">Click here!</span></a>

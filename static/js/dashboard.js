@@ -60,11 +60,11 @@ function insertDoseText2(){
 }
 
 function insertDoseText3(){
-    document.getElementById('prestext').value += " - " + document.getElementById("dosage3").value + "\n";
+    document.getElementById('prestext').value += " - " + document.getElementById("dosage3").value + "\n\n";
 }
 
 function showSG(s){
-    for(let i=1; i<5; i++){
+    for(let i=1; i<3; i++){
         if(i==parseInt(s)){
             document.getElementById("sgb"+s).classList.add("agreen");
             document.getElementById("sgf"+s).classList.remove("hide");
@@ -90,48 +90,173 @@ function showSS(s){
     }
 }
 
-const drugInput = document.getElementById('drug');
-const suggestionsDiv = document.getElementById('suggestions');
-
-drugInput.addEventListener('input', function() {
-    const query = this.value;
-
-    if (query.length > 1) {
-        fetch(`/api/search_drug/?query=${query}`)
-            .then(response => response.json())
-            .then(data => {
-                suggestionsDiv.innerHTML = '';
-                data.forEach(drug => {
-                    var type = "";
-                    if(drug.drugs_type=="Injection"){
-                        type = "Inj.";
-                    }
-                    else if(drug.drugs_type=="Tablet"){
-                        type = "Tab.";
-                    }
-                    else if(drug.drugs_type=="Syrup"){
-                        type = "Syr.";
-                    }
-                    else if(drug.drugs_type=="Capsule"){
-                        type = "Cap.";
-                    }
-                    else if(drug.drugs_type=="Suppository"){
-                        type = "Supp.";
-                    }
-                    else{
-                        type = drug.drugs_type;
-                    }
-                    const suggestion = document.createElement('div');
-                    suggestion.classList.add('autocomplete-suggestion');
-                    suggestion.textContent = type+" "+drug.brand;
-                    suggestion.addEventListener('click', () => {
-                        document.getElementById('prestext').value += "\n" + type + " " + drug.brand + "\n";
-                        suggestionsDiv.innerHTML = '';
-                    });
-                    suggestionsDiv.appendChild(suggestion);
-                });
+function addAdviceTemplate(s){
+    fetch('/api/search_advice/?query='+s)
+        .then(response => response.json())
+        .then(data =>{
+            var pad = document.getElementById('prestext');
+            data.forEach(item => {
+                pad.value += '\n\n\nউপদেশঃ\n' + '\t' + item.advice1 + '\n\t' + item.advice2 + '\n\t' + item.advice3 + '\n\t' + item.advice4 + '\n\t' + item.advice5;
             });
-    } else {
-        suggestionsDiv.innerHTML = '';
+        });
+}
+
+
+
+
+// -------------- send for preview -------------
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
     }
+    return cookieValue;
+}
+
+document.getElementById('previewButton').addEventListener('click', function () {
+    const formData = new FormData(document.getElementById('prescription'));
+
+    fetch('/api/preview-pdf/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'), // CSRF token for Django
+        },
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        // Update the PDF preview
+        if (data.pdf_url) {
+            var pdfdom = document.getElementById('pdfPreview');
+            pdfdom.innerHTML = `<embed src="${data.pdf_url}" id="myFrame" type="application/pdf" width="300" height="400">`;
+        }
+    })
+    .catch(error => console.error('Error:', error));
 });
+
+// --------------- Drugs,OE,Ix suggestions -----------------
+
+/*
+function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
+    const inputField = document.getElementById(inputId);
+    const padField = document.getElementById(padId);
+    const suggestionsDiv = document.getElementById(suggestionsId);
+
+    inputField.addEventListener('input', function () {
+        const query = this.value;
+
+        if (query.length > 0) {
+            fetch(`${apiUrl}?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsDiv.innerHTML = '';
+                    data.forEach(item => {
+                        const suggestion = document.createElement('div');
+                        suggestion.classList.add('autocomplete-suggestion');
+                        if(apiUrl=="/api/search_drug/"){
+                            suggestion.textContent = item.brand;
+                            suggestion.addEventListener('click', () => {
+                                padField.value += item.brand + "\n";
+                                suggestionsDiv.innerHTML = '';
+                                inputField.value = "";
+                            });
+                        } else{
+                            suggestion.textContent = item.text;
+                            suggestion.addEventListener('click', () => {
+                                padField.value += item.text + "\n";
+                                suggestionsDiv.innerHTML = '';
+                            });
+                        }
+                        suggestionsDiv.appendChild(suggestion);
+                    });
+                    suggestionsDiv.style.display = "block";
+                });
+        } else {
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = "none";
+        }
+    });
+}
+
+
+setupAutocomplete('drug', 'prestext', 'drugsuggestions', '/api/search_drug/');
+setupAutocomplete('oe', 'oe', 'oesuggestions', '/api/search_oe/');
+setupAutocomplete('ix', 'ix', 'ixsuggestions', '/api/search_ix/');
+*/
+function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
+    const inputField = document.getElementById(inputId);
+    const padField = document.getElementById(padId);
+    const suggestionsDiv = document.getElementById(suggestionsId);
+
+    inputField.addEventListener('input', function () {
+        const query = this.value.split('\n').pop();
+
+        if (query.length > 0) {
+            fetch(`${apiUrl}?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsDiv.innerHTML = '';
+                    data.forEach(item => {
+                        const suggestion = document.createElement('div');
+                        suggestion.classList.add('autocomplete-suggestion');
+                        if(apiUrl=="/api/search_drug/"){
+                            suggestion.textContent = item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')';
+
+                            suggestion.addEventListener('click', () => {
+                                
+                                padField.value += "\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
+                                inputField.value = "";
+                                suggestionsDiv.innerHTML = '';
+                                inputField.focus();
+                            });
+                        } else{
+                            suggestion.textContent = item.text;
+
+                            suggestion.addEventListener('click', () => {
+                                
+                                padField.value = inputField.value.substr(0,inputField.value.length - query.length) + item.text + '\n';
+                                //inputField.value = inputField.value.substr(0,inputField.value.length - query.length);
+                                suggestionsDiv.innerHTML = '';
+                                inputField.focus();
+                            });
+                        }
+                        suggestionsDiv.appendChild(suggestion);
+                    });
+                    suggestionsDiv.style.display = "block";
+                });
+        } else {
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = "none";
+        }
+    });
+
+    inputField.addEventListener('blur', function () {
+        setTimeout(() => {
+            suggestionsDiv.style.display = "none";
+        }, 200);
+    });
+
+    inputField.addEventListener('focus', function () {
+        const query = this.value.trim();
+        if (query.length > 0) {
+            suggestionsDiv.style.display = "block";
+        }
+    });
+}
+
+
+setupAutocomplete('drug', 'prestext', 'drugsuggestions', '/api/search_drug/');
+setupAutocomplete('oe', 'oe', 'oesuggestions', '/api/search_oe/');
+setupAutocomplete('ix', 'ix', 'ixsuggestions', '/api/search_ix/');
+setupAutocomplete('rf', 'rf', 'rfsuggestions', '/api/search_rf/');
+setupAutocomplete('dx', 'dx', 'dxsuggestions', '/api/search_dx/');
+setupAutocomplete('cc', 'cc', 'ccsuggestions', '/api/search_cc/');

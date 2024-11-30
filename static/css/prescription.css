@@ -9,18 +9,9 @@
     border: 0.1px solid rgba(60,60,59,0.1);
     box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
 }
-.textareainput{
-    padding: 7px 10px;
-    width: 360px;
-    height: 400px;
-    background-color: var(--light-color);
-    color: var(--dark-color);
-    border-radius: 7px;
-    border: 0.1px solid rgba(60,60,59,0.1);
-    box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
-}
 .submit-btn{
     padding: 0px;
+    width: 100%;
     background-color: var(--primary-color);
     color: var(--light-color);
     border-radius: 7px;
@@ -28,8 +19,8 @@
     box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
 }
 #prescription{
-    margin: 10px;
-    padding: 10px;
+    margin: 10px 0px;
+    padding: 0px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -38,8 +29,9 @@
 }
 .person-details{
     display: grid;
-    grid-template-columns: 140px 140px 140px 140px 140px 140px auto;
-    gap: 20px;
+    grid-template-columns: 100px 75px 100px 120px 120px 150px;
+    column-gap: 10px;
+    row-gap: 10px;
     justify-content: left;
     align-items: center;
     padding: 10px;
@@ -51,7 +43,7 @@
 
 .symptoms-prescription{
     display: grid;
-    grid-template-columns: auto 480px;
+    grid-template-columns: 350px 650px 250px;
     gap: 20px;
     justify-content: center;
     align-items: flex-start;
@@ -60,41 +52,56 @@
 .prescription{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     justify-content: center;
     align-items: center;
 }
 .prescription .buttons{
     display: grid;
-    grid-template-columns: 150px 90px 110px 100px;
+    grid-template-columns: auto auto;
     gap: 10px;
     justify-content: center;
     align-items: flex-start;
 }
+.prescription .secondbuttons{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.prescription .secondbuttons a{
+    text-decoration: none;
+    padding: 0px 10px;
+    background-color: var(--light-color);
+    color: rgba(60, 60, 59, 0.5);
+    border-radius: 7px;
+    border: 0.1px solid rgba(60,60,59,0.1);
+    box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
+    cursor: pointer;
+}
 .prescription .buttons .textinput{
     font-size: 10px;
 }
-.prescription .autocomplete-suggestions {
-    border: 1px solid #e3e3e3;
-    max-height: 150px;
-    overflow-y: auto;
-}
-.prescription .autocomplete-suggestion {
+.prescription .textareainput{
     padding: 10px;
-    cursor: pointer;
+    width: 600px;
+    height: 400px;
+    background-color: var(--light-color);
+    border-radius: 7px;
+    border: 0.1px solid rgba(60,60,59,0.1);
+    box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
 }
-.prescription .autocomplete-suggestion:hover {
-    background-color: #f0f0f0;
-}
+
 
 .symptoms{
     display: grid;
-    grid-template-columns: 350px 350px;
-    gap: 50px;
+    grid-template-columns: 350px;
+    gap: 0px;
+    padding: 0px;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
 }
-
 .symptoms .buttons{
     margin-bottom: 20px;
     display: flex;
@@ -124,21 +131,31 @@
     border: none;
 }
 .sgf{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 100%;
+    padding: 0px;
     gap: 10px;
     justify-content: center;
     align-items: center;
 }
 .sgf textarea{
     width: 100%;
-    height: 120px;
+    height: 100px;
     padding: 7px 10px;
     background-color: var(--light-color);
     color: var(--dark-color);
     border-radius: 7px;
     border: 0.1px solid rgba(60,60,59,0.1);
     box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
+}
+.sgf div textarea{
+    width: 350px;
+}
+.sgf .cc textarea{
+    height: 75px;
+}
+.sgf .rf-dx textarea{
+    height: 50px;
 }
 .sgf input{
     width: 100%;
@@ -150,38 +167,80 @@
     border: 0.1px solid rgba(60,60,59,0.1);
     box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
 }
-.sgf-child{
-    display: flex;
-    gap: 15px;
-    justify-content: space-around;
-    align-items: flex-start;
+.autocomplete-suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 350px;
+    max-height: 150px;
+    overflow-y: auto;
+    border: 1px solid rgba(60, 60, 59, 0.25);
+    background-color: #ffffff;
+    display: none;
+    z-index: 11111111111;
 }
-.sgf-child-pack{
+#ixa .autocomplete-suggestions {
+    top: -100%;
+}
+#presa .autocomplete-suggestions {
+    max-height: 450px;
+}
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.autocomplete-suggestion:hover {
+    background-color: #f0f0f0;
+}
+
+
+.preview-and-others{
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 20px;
     justify-content: center;
     align-items: center;
+    padding: 0;
 }
-.sgf-child-pack input[type='checkbox']{
-    width: auto;
-    padding: 0px;
-    color: var(--dark-color);
-    border-radius: 7px;
-    border: 0.1px solid rgba(60,60,59,0.1);
-    font-size: 12px;
+.preview-and-others .others{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
 }
-.sgf-child-pack label{
-    font-size: 12px;
-}
-.sgf-child-pack textarea{
-    width: 300px;
-    height: 120px;
-    padding: 7px 10px;
+.preview-and-others .others a{
+    width: 100%;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
     background-color: var(--light-color);
-    color: var(--dark-color);
+    color: rgba(60, 60, 59, 0.8);
     border-radius: 7px;
     border: 0.1px solid rgba(60,60,59,0.1);
     box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
+    padding: 0px 20px;
+}
+.preview-and-others .preview{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.preview-and-others .preview a{
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 7px;
+    border: 0.1px solid rgba(60,60,59,0.1);
+    box-shadow: 0px 4px 8px rgba(60,60,59,0.1);
+    padding: 2px 20px;
 }
 
 
@@ -217,7 +276,7 @@
     text-decoration: none;
     color: var(--primary-color);
     background-color: var(--light-color);
-    padding: 10px 30px;
+    padding: 0px 30px;
     border: 1px solid var(--primary-color);
     border-radius: 10px;
     cursor: pointer;
@@ -226,7 +285,7 @@
     text-decoration: none;
     color: var(--light-color);
     background-color: var(--primary-color);
-    padding: 10px 30px;
+    padding: 0px 30px;
     border: none;
     border-radius: 10px;
     cursor: pointer;

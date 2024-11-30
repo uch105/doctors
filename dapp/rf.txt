@@ -1,0 +1,45 @@
+Alcohol
+Breech delivery
+CKD (Chronic Kidney Disease)
+DM (Diabetes Mellitus)
+DVT (Deep Vein Thrombosis)
+Depressive disorder
+Diabetes mellitus
+Drug abuse
+Elderly
+Emotional abuse
+Epilepsy
+Family history
+Glucocorticoid therapy
+HTN (Hypertension)
+Haemophilia
+Heavy work
+Hypercholesterolemia
+Hypercoagulability
+Hyperlipidaemia
+Hypertension
+Hypothyroidism
+IHD (Ischemic Heart Disease)
+Immobility
+Immunosuppression
+Infection
+Ionizing radiation
+Low socioeconomic status
+Lung diseases:Asthma
+Lung diseases:COPD
+Lung diseases:DPLD
+Malignancy
+Obesity
+Oligohydramnios
+Pregnancy
+SLE (Systemic Lupus Erythematosus)
+Schizophrenia
+Sedentary lifestyle
+Smoking
+Stress
+Stroke
+Sun exposure
+TIA (Transient Ischemic Attack)
+Thrombophilia
+ThyrotoxicityVascular disease
+Xanthelasma
