@@ -1,3 +1,4 @@
+from operator import attrgetter
 from django.http import HttpResponse, JsonResponse,request
 from django.core.serializers import serialize
 from django.shortcuts import render,redirect
@@ -847,9 +848,9 @@ def drugsapi(request):
 
 @login_required(login_url="/log-in/")
 def dashboard_forum(request):
-    doctor_posts = Post.objects.all()
-    student_posts = StudentPost.objects.all()
-    posts = list(chain(doctor_posts,student_posts))
+    doctor_posts = Post.objects.all().order_by('-date_time')
+    student_posts = StudentPost.objects.all().order_by('-date_time')
+    posts = sorted(chain(doctor_posts, student_posts), key=attrgetter('date_time'), reverse=True)
     if is_student(request):
         student = Student.objects.get(sid=get_username(request))
         context={
