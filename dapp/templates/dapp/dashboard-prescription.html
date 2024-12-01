@@ -16,12 +16,14 @@ Doctors - Prescription
             <div class="create-link">
                 <a href="{% url 'createprescription' %}">Create new prescription</a>
             </div>
+            <form action="{% url 'prescription' %}" method="POST">
+                {% csrf_token %}
+                <input type="text" class="inputfield" name="search" placeholder="Patient name...">
+                <input type="submit" class="submit" value="Search">
+            </form>
             <div class="filter-links">
                 <a href="{% url 'prescription' %}" class="active">Latest</a>
-                <a href="{% url 'prescription' %}?filter=yesterday" class="{% if filter_value == 'yesterday' %}active{% endif %}">Yesterday</a>
-                <a href="{% url 'prescription' %}?filter=last_week" class="{% if filter_value == 'last_week' %}active{% endif %}">Last week</a>
-                <a href="{% url 'prescription' %}?filter=last_month" class="{% if filter_value == 'last_month' %}active{% endif %}">Last month</a>
-                <a href="{% url 'prescription' %}?filter=all" class="{% if filter_value == 'all' %}active{% endif %}">All</a>
+                <a href="{% url 'prescription' %}?filter=all" {% if 'all' in filter_value %}class="active"{% endif %}>All</a>
             </div>
         </div>
         <div class="lists">

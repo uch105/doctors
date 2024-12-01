@@ -13,4 +13,4 @@ from dapp.models import CC
 
 with open("cc.txt",'r') as file:
     for line in file:
-        m = CC.objects.create(text=line.split("\n")[0]+': ')
+        m = CC.objects.create(text=line.split("\n")[0])

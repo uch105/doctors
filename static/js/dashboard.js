@@ -60,7 +60,7 @@ function insertDoseText2(){
 }
 
 function insertDoseText3(){
-    document.getElementById('prestext').value += " - " + document.getElementById("dosage3").value + "\n\n";
+    document.getElementById('prestext').value += " - " + document.getElementById("dosage3").value;
 }
 
 function showSG(s){
@@ -101,6 +101,23 @@ function addAdviceTemplate(s){
         });
 }
 
+/*
+let printEmbeddedObject = () => {
+     
+    const getObjectElement = document.querySelector('embed');
+    let pdfFileLocation = getObjectElement.getAttribute('src');
+    console.log(pdfFileLocation);
+   
+    let instanceIframeObject = document.createElement('iframe');  
+    instanceIframeObject.style.visibility = 'hidden';
+    instanceIframeObject.src = pdfFileLocation;
+
+    document.body.appendChild(instanceIframeObject);
+
+    instanceIframeObject.contentWindow.focus();
+    instanceIframeObject.contentWindow.print();
+}
+*/
 
 
 
@@ -213,7 +230,7 @@ function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
 
                             suggestion.addEventListener('click', () => {
                                 
-                                padField.value += "\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
+                                padField.value += "\n\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
                                 inputField.value = "";
                                 suggestionsDiv.innerHTML = '';
                                 inputField.focus();

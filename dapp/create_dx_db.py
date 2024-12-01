@@ -13,4 +13,4 @@ from dapp.models import Dx
 
 with open("dx.txt",'r') as file:
     for line in file:
-        m = Dx.objects.create(text=line.split("\n")[0]+': ')
+        m = Dx.objects.create(text=line.split("\n")[0])

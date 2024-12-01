@@ -369,42 +369,17 @@ def reset(request):
 @login_required(login_url="/log-in/")
 def dashboard_prescription(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
-    if request.GET.get("filter")=="yesterday":
-        current_time = now()
-        yesterday_start = (current_time - timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
-        yesterday_end = (current_time - timedelta(days=1)).replace(hour=23, minute=59, second=59, microsecond=999999)
-        patients = Patient.objects.filter(created__range=(yesterday_start, yesterday_end)).order_by('-created')
+    if request.method == "POST":
+        search = request.POST.get("search")
+        patients = Patient.objects.filter(doctor=doctor,name__icontains=search).order_by('-created')
         context={
-            'filter_value': 'yesterday',
+            'filter_value': 'search',
             'doctor': doctor,
             'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
             'patients': patients,
         }
-    elif request.GET.get("filter")=="last_week":
-        current_time = now()
-        last_week_start = (current_time - timedelta(days=current_time.weekday() + 7)).replace(hour=0, minute=0, second=0, microsecond=0)
-        last_week_end = last_week_start + timedelta(days=6, hours=23, minutes=59, seconds=59)
-        patients = Patient.objects.filter(created__range=(last_week_start, last_week_end)).order_by('-created')
-        context={
-            'filter_value': 'last_week',
-            'doctor': doctor,
-            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
-            'patients': patients,
-        }
-    elif request.GET.get("filter")=="last_month":
-        current_time = now()
-        first_day_of_current_month = current_time.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
-        last_month_end = first_day_of_current_month - timedelta(seconds=1)
-        last_month_start = last_month_end.replace(day=1)
-        patients = Patient.objects.filter(created__range=(last_month_start, last_month_end)).order_by('-created')
-        context={
-            'filter_value': 'last_month',
-            'doctor': doctor,
-            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
-            'patients': patients,
-        }
-    elif request.GET.get("filter")=="all":
-        patients = Patient.objects.all().order_by('-created')
+    if request.GET.get("filter")=="all":
+        patients = Patient.objects.filter(doctor=doctor).order_by('-created')
         context={
             'filter_value': 'all',
             'doctor': doctor,
@@ -413,11 +388,12 @@ def dashboard_prescription(request):
         }
     else:
         patients = Patient.objects.filter(doctor=doctor).order_by('-created')[:20]
-    context={
-        'doctor': doctor,
-        'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
-        'patients': patients,
-    }
+        context={
+            'filter_value': 'latest',
+            'doctor': doctor,
+            'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
+            'patients': patients,
+        }
     return render(request,"dapp/dashboard-prescription.html",context)
 
 @login_required(login_url="/log-in/")

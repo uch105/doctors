@@ -25,6 +25,7 @@ urlpatterns = [
     path("dashboard/prescription/create/edit/<str:pk>/",views.dashboard_editprescription,name="editprescription"),
     path("api/preview-pdf/",views.dashboard_previewprescription,name="previewprescription"),
     path("api/search_oe/",views.oeapi,name="oeapi"),
+    path("api/search_cc/",views.ccapi,name="ccapi"),
     path("api/search_ix/",views.ixapi,name="ixapi"),
     path("api/search_rf/",views.rfapi,name="rfapi"),
     path("api/search_dx/",views.dxapi,name="dxapi"),

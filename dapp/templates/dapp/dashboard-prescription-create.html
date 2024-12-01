@@ -172,7 +172,8 @@ Create Prescription
             <div class="preview-and-others">
                 <div class="others">
                     <a href="{% url 'prescription' %}">See All Prescriptions</a>
-                    <a href="{% url 'tools' %}">Use Some Tools</a>
+                    <a href="{% url 'tools' %}" target="_blank">Use Some Tools</a>
+                    <a onclick="printEmbeddedObject()">Print Now</a>
                 </div>
                 <div class="preview">
                     <a id="previewButton">Preview Before Print</a>
@@ -182,4 +183,21 @@ Create Prescription
         </div>
     </form>
 </div>
+<script>
+    let printEmbeddedObject = () => {
+     
+     const getObjectElement = document.querySelector('embed');
+     let pdfFileLocation = getObjectElement.getAttribute('src');
+     console.log(pdfFileLocation);
+    
+     let instanceIframeObject = document.createElement('iframe');  
+     instanceIframeObject.style.visibility = 'hidden';
+     instanceIframeObject.src = pdfFileLocation;
+ 
+     document.body.appendChild(instanceIframeObject);
+ 
+     instanceIframeObject.contentWindow.focus();
+     instanceIframeObject.contentWindow.print();
+ }
+</script>
 {% endblock %}

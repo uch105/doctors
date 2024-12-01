@@ -13,4 +13,4 @@ from dapp.models import District
 
 with open("districts.txt",'r') as file:
     for line in file:
-        m = District.objects.create(text=line.split("\n")[0]+': ')
+        m = District.objects.create(text=line.split("\n")[0])
