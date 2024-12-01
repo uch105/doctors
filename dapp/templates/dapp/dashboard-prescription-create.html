@@ -161,9 +161,9 @@ Create Prescription
                     
                 </div>
                 <div class="secondbuttons">
-                    <a onclick="addAdviceTemplate('1')">Advice (1)</a>
-                    <a onclick="addAdviceTemplate('2')">Advice (2)</a>
-                    <a onclick="addAdviceTemplate('3')">Advice (3)</a>
+                    {% for at in ats %}
+                    <a onclick="addAdviceTemplate('{{ at.index }}')">Advice ( {{ at.index }} )</a>
+                    {% endfor %}
                 </div>
                 <div class="prestext">
                     <textarea name="prestext" id="prestext" class="textareainput" rows="15" required></textarea>

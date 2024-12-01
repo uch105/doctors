@@ -433,7 +433,9 @@ def dashboard_createprescription(request):
         
         return redirect('createprescription')
 
+    ats = AdviceTemplate.objects.filter(doctor=doctor)
     context={
+        'ats': ats,
         'doctor': doctor,
         'sub_valid': Subscription.objects.get(doctor=doctor).is_active,
     }
@@ -527,7 +529,9 @@ def dashboard_editprescription(request,pk):
     dx_symptom = PatientDetail.objects.filter(patient=patient,symptom="Diagnosis")[0]
     ix_symptom = PatientDetail.objects.filter(patient=patient,symptom="Investigations")[0]
     prestext_symptom = PatientDetail.objects.filter(patient=patient,symptom="Prescriptions")[0]
+    ats = AdviceTemplate.objects.filter(doctor=doctor)
     context = {
+        'ats': ats,
         'patient': patient,
         'cc_symptom': cc_symptom,
         'rf_symptom': rf_symptom,
@@ -1360,6 +1364,36 @@ def dashboard_customthemerequest(request):
     doctor = Doctor.objects.get(bmdc=get_username(request))
     ThemeRequest.objects.create(doctor=doctor,text=request.POST.get("themename"))
     return redirect('customtheme')
+
+@login_required(login_url="/log-in/")
+def dashboard_advicetemplate(request):
+    doctor = Doctor.objects.get(bmdc=get_username(request))
+    if request.method == "POST":
+        index = request.POST.get("index")
+        a1 = request.POST.get("a1")
+        a2 = request.POST.get("a2")
+        a3 = request.POST.get("a3")
+        a4 = request.POST.get("a4")
+        a5 = request.POST.get("a5")
+        try:
+            instance = AdviceTemplate.objects.filter(doctor=doctor,index=index)[0]
+            instance.advice1 = a1
+            instance.advice2 = a2
+            instance.advice3 = a3
+            instance.advice4 = a4
+            instance.advice5 = a5
+            instance.save()
+            return redirect('advicetemplate')
+        except:
+            AdviceTemplate.objects.create(doctor=doctor,index=index,advice1 = a1,advice2 = a2,advice3 = a3,advice4 = a4,advice5 = a5)
+            return redirect('advicetemplate')
+    ats = AdviceTemplate.objects.filter(doctor=doctor)
+    context={
+        'ats': ats,
+        'is_student':is_student(request),
+        'sub_valid': sub_validity_check(request),
+    }
+    return render(request,"dapp/settings/dashboard-advice-template.html",context)
 
 @login_required(login_url="/log-in/")
 def dashboard_customtoolbar(request):

@@ -1,0 +1,41 @@
+{% extends 'dapp/dashboard-base.html' %}
+{% load static %}
+
+{% block title %}
+Advice Template
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'advicetemplate' %}" method="POST">
+    {% csrf_token %}
+    <select name="index" id="" class="inputfield">
+        <option value="1">Advice (1)</option>
+        <option value="2">Advice (2)</option>
+        <option value="3">Advice (3)</option>
+    </select>
+    <input type="text" class="inputfield" name="a1" placeholder="First Line:">
+    <input type="text" class="inputfield" name="a2" placeholder="Second Line:">
+    <input type="text" class="inputfield" name="a3" placeholder="Third Line:">
+    <input type="text" class="inputfield" name="a4" placeholder="Fourth Line:">
+    <input type="text" class="inputfield" name="a5" placeholder="Fifth Line:">
+    <input type="submit" class="submit-btn" value="Create">
+</form>
+<div class="container">
+    <div class="ats">
+        {% for at in ats %}
+        <div class="at">
+            <h4>Advice template ( {{ at.index }} )</h4>
+            <p> {{ at.advice1 }} <br>{{ at.advice2 }} <br>{{ at.advice3 }} <br>{{ at.advice4 }} <br>{{ at.advice5 }}</p>
+        </div>
+        {% empty %}
+        <div class="at">
+            <h4>No Advice Template Found! Create One...</h4>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

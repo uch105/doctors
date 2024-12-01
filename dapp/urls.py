@@ -68,6 +68,7 @@ urlpatterns = [
     path("dashboard/settings/notification/",views.dashboard_notification,name="notification"),
     path("dashboard/settings/notification/clear/",views.dashboard_clearnotification,name="clearnotification"),
     path("dashboard/settings/enableai/",views.dashboard_enableai,name="enableai"),
+    path("dashboard/settings/advicetemplate/",views.dashboard_advicetemplate,name="advicetemplate"),
     path("dashboard/settings/customtheme/",views.dashboard_customtheme,name="customtheme"),
     path("dashboard/settings/customthemerequest/",views.dashboard_customthemerequest,name="customthemerequest"),
     path("dashboard/settings/customtheme/select/<str:pk>/",views.dashboard_selecttheme,name="selecttheme"),

@@ -13,11 +13,12 @@ Doctors - Settings
 <div class="container">
     <div class="settings">
         <a href="{% url 'profile-self' %}">Go to profile</a>
-        <a href="{% url 'notification' %}">Notification ({{ notis_len }})</a>
+        <a href="{% url 'notification' %}">Notification ( {{ notis_len }} )</a>
         {% if is_student %}
         {% else %}
         <a href="{% url 'enableai' %}">Enable AI</a>
         <a href="{% url 'customtheme' %}">Choose theme</a>
+        <a href="{% url 'advicetemplate' %}">Modify Advice Template</a>
         {% endif %}
         <a href="{% url 'changesubscription' %}">Subscription</a>
         <a href="{% url 'history' %}">History</a>

@@ -348,3 +348,15 @@
     border-radius: 10px;
     cursor: pointer;
 }
+.ats{
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.ats .at{
+    width: 350px;
+    text-align: left;
+}
