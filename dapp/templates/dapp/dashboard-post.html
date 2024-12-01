@@ -26,7 +26,7 @@
                 </div>
                 <div class="post-body-images">
                     {% for img in post.images.all %}
-                    <img src="{{ img.image.url }}" alt="">
+                    <img src="{{ img.image.url }}" alt="" onclick="this.requestFullscreen()">
                     {% endfor %}
                 </div>
             </div>
@@ -68,7 +68,7 @@
                     </div>
                     <p>{{ comment.text }}</p>
                     {% if comment.image %}
-                    <img src="{{ comment.image.url }}" alt="">
+                    <img src="{{ comment.image.url }}" alt="" onclick="this.requestFullscreen()">
                     {% endif %}
                 </div>
                 <hr style="width: 80%;height: 0.1px;color: #3c3c3b;text-align: center;">

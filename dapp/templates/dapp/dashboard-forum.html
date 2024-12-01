@@ -35,7 +35,7 @@ Doctors - Forum
                 </div>
                 <div class="post-body-images">
                     {% for img in post.images.all %}
-                    <img src="{{ img.image.url }}" alt="">
+                    <img src="{{ img.image.url }}" alt="" onclick="this.requestFullscreen()">
                     {% endfor %}
                 </div>
             </div>
