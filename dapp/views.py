@@ -1060,6 +1060,7 @@ def postcomment(request,pk):
                     image=comment_image
                 )
                 post.total_comments += 1
+                post.save()
                 n = Notification.objects.create(doctor=Doctor.objects.get(bmdc=post.owner_id),text=f"{doctor.name} commented on your post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 h = History.objects.create(doctor=doctor,text=f"You commented on {post.owner_name}'s post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 n.save()
@@ -1074,6 +1075,7 @@ def postcomment(request,pk):
                 image=comment_image
                 )
                 post.total_comments += 1
+                post.save()
                 n = Notification.objects.create(doctor=Doctor.objects.get(bmdc=post.owner_id),text=f"{student.name} commented on your post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 h = StudentHistory.objects.create(student=student,text=f"You commented on {post.owner_name}'s post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 n.save()
@@ -1090,6 +1092,7 @@ def postcomment(request,pk):
                     image=comment_image
                 )
                 post.total_comments += 1
+                post.save()
                 n = StudentNotification.objects.create(student=Student.objects.get(sid=post.owner_id),text=f"{doctor.name} commented on your post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 h = History.objects.create(doctor=doctor,text=f"You commented on {post.owner_name}'s post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 n.save()
@@ -1104,6 +1107,7 @@ def postcomment(request,pk):
                 image=comment_image
                 )
                 post.total_comments += 1
+                post.save()
                 n = StudentNotification.objects.create(student=Student.objects.get(sid=post.owner_id),text=f"{student.name} commented on your post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 h = StudentHistory.objects.create(student=student,text=f"You commented on {post.owner_name}'s post.",link="https://prescribemate.com/forum/post/"+post.id+"/")
                 n.save()
