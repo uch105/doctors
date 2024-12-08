@@ -124,8 +124,8 @@ def validateuser(request):
                         'message':'Password did not match',
                     }
                     return JsonResponse(data,safe=False)
-        except:
-            return JsonResponse({'message':'Invalid username',},safe=False)
+        except Exception as e:
+            return JsonResponse({'message': f'{e}',},safe=False)
         
 
 @csrf_exempt
@@ -139,7 +139,7 @@ def fetchprofile(request,query):
     
     data = {
         'profile':profile_data,
-        'image_url':'http://127.0.0.1:8000'+profile.image.url,
+        'image_url':'https://prescribemate.com'+profile.image.url,
     }
     return JsonResponse(data,safe=False)
 
