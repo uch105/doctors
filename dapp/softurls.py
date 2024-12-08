@@ -3,6 +3,17 @@ from . import softviews
 from django.conf import settings
 from django.conf.urls.static import static
 
+import os
+import sys
+import django
+from decouple import config
+
+project_root = config("PROJECT_ROOT")
+sys.path.append(project_root)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
+django.setup()
+
 urlpatterns = [
     path("fetchdrugsbyname/<str:query>/",softviews.fetchdrugsbyname,name="fetchdrugsbyname"),
     path("fetchdrugsbygeneric/<str:query>/",softviews.fetchdrugsbygeneric,name="fetchdrugsbygeneric"),
@@ -11,7 +22,7 @@ urlpatterns = [
     path("changeprofile/<str:s>/",softviews.changeprofileinfo,name='changeprofileinfo'),
     path("validateuser/",softviews.validateuser,name="validateuser"),
     path("checkforexpirydate/",softviews.checkforexpirydate,name="checkforexpirydate"),
-    path("createprescription/",softviews.createprescription,name="createprescription"),
+    path("createprescription/",softviews.createprescription,name="softcreateprescription"),
     path("fetchnotifications/",softviews.fetchnotifications,name="fetchnotifications"),
     path("fetchallprescriptions/",softviews.fetchallprescriptions,name="fetchallprescriptions"),
     path("fetchprescription/<str:s>/",softviews.fetchprescription,name="fetchprescription"),

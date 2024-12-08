@@ -13,6 +13,18 @@ from .models import *
 from decouple import config
 from .bmdc import fetch_doctor_data
 from .createprescription import create_pdf
+import os
+import sys
+import django
+from decouple import config
+
+project_root = config("PROJECT_ROOT")
+sys.path.append(project_root)
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
+django.setup()
+
+from dapp.models import *
 
 def get_userid(request):
     return request.user.id
