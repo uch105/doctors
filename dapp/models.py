@@ -55,7 +55,7 @@ class Doctor(models.Model):
         return self.name
 
 class Subscription(models.Model):
-    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,unique=True)
+    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,unique=True,related_name="subscription")
     subscription_type = models.CharField(max_length=255,default="trial")
     is_active = models.BooleanField(default=False)
     start_date = models.DateTimeField(default=timezone.now)
@@ -592,3 +592,19 @@ class District(models.Model):
     
     def __str__(self):
         return self.text[:10] if len(self.text)>11 else self.text
+
+class DoctorSoftwareID(models.Model):
+    doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE,related_name="doctorsoftwares")
+    softwareID = models.CharField(max_length=255, unique=True)
+    device = models.CharField(max_length=255,null=True,blank=True)
+    
+    def __str__(self):
+        return self.doctor.name+" - "+self.device
+
+class StudentSoftwareID(models.Model):
+    student = models.ForeignKey(Student,on_delete=models.CASCADE,related_name="studentsoftwares")
+    softwareID = models.CharField(max_length=255, unique=True)
+    device = models.CharField(max_length=255,null=True,blank=True)
+    
+    def __str__(self):
+        return self.student.name+" - "+self.device
