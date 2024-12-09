@@ -174,6 +174,9 @@ def login(request):
                 'message': 'User not found!',
             }
             return render(request,"dapp/login.html",context)
+    
+    if logged_in(request):
+        return redirect('forum')
     cats = DoctorCategory.objects.all()
     subcats = DoctorSubCategory.objects.all()
     context = {

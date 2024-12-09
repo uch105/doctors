@@ -35,7 +35,7 @@
 }
 @media screen and (max-width:600px){
     .posts{
-        grid-template-columns: 300px;
+        grid-template-columns: 360px;
     }
 }
 .post{
@@ -108,7 +108,7 @@
 }
 @media screen and (max-width:600px){
     .post-body-images{
-        grid-template-columns: 120px 120px 120px;
+        grid-template-columns: 150px 150px;
     }
     .post-body-images img{
         width: 120px;
@@ -136,7 +136,7 @@
     cursor: pointer;
 }
 .post-like-comment{
-    padding: 10px 0px;
+    padding: 5px 0px;
     display: flex;
     justify-content: space-around;
     align-items: center;

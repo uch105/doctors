@@ -1,0 +1,292 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+}
+.homecontainer{
+    width: 100%;
+    height: 100vh;
+    background-color: #fcf9f4;
+    align-content: center;
+}
+.homecontainer .firstcontainer{
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+.homecontainer .firstcontainer .texts{
+    width: 400px;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.homecontainer .firstcontainer .texts a{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 7px 30px;
+    border-radius: 10px;
+}
+.homecontainer .firstcontainer img{
+    width: 350px;
+    height: auto;
+}
+.homecontainer2{
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    align-content: center;
+}
+.homecontainer2 .boxes{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.homecontainer2 .boxes .firstbox{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    border: 0.5px solid rgba(60,60,59,0.5);
+    border-radius: 10px;
+}
+.homecontainer2 .boxes .firstbox img{
+    width: 650px;
+    height: auto;
+    border: 0.5px solid rgba(60,60,59,0.5);
+    border-radius: 10px;
+}
+.homecontainer2 .boxes .firstbox .ss3{
+    width: 400px;
+    height: auto;
+}
+.homecontainer2 .boxes .firstbox .texts{
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.homecontainer2 .boxes .firstbox .texts a{
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 7px 30px;
+    border-radius: 10px;
+}
+.homecontainer .students{
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+.homecontainer .students img{
+    width: 500px;
+    height: 500px;
+}
+.homecontainer .students .texts{
+    text-align: left;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+.homecontainer .students .texts .big{
+    font-size: 20px;
+}
+.homecontainer .students .texts a{
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 0px 30px;
+    border-radius: 10px;
+}
+.homecontainer2 .offers{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.homecontainer2 .offer{
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.homecontainer .softlinks{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.homecontainer .softlinks a{
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 7px 20px;
+    border-radius: 7px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.homecontainer .softlinks a img{
+    width: 20px;
+    height: auto;
+}
+
+/* Base styles */
+.homecontainer, 
+.homecontainer2 {
+    opacity: 0; /* Hidden initially */
+    transform: translateY(50px); /* Positioned below */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Smooth transition */
+}
+
+/* Active state triggered by JavaScript */
+.homecontainer.active, 
+.homecontainer2.active {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset position */
+}
+
+@media screen and (max-width:1367px){
+    .homecontainer2 .boxes .firstbox .texts{
+        width: 375px;
+    }
+    .homecontainer2 .boxes .firstbox img{
+        width: 500px;
+        height: auto;
+    }
+}
+@media screen and (max-width:1025px){
+    .homecontainer2 .boxes .firstbox .texts{
+        width: 750px;
+    }
+    .homecontainer2 .boxes .firstbox img{
+        width: 750px;
+        height: auto;
+    }
+    .homecontainer2 .boxes .firstbox{
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+    .homecontainer2 .offers{
+        grid-template-columns: 200px 200px 200px;
+    }
+}
+@media screen and (max-width:821px){
+    .homecontainer .firstcontainer{
+        flex-direction: column;
+    }
+    .homecontainer .students{
+        flex-direction: column;
+    }
+    .homecontainer .students .texts{
+        width: 550px;
+    }
+    .homecontainer2 .boxes .firstbox .texts{
+        width: 650px;
+    }
+    .homecontainer2 .boxes .firstbox img{
+        width: 650px;
+        height: auto;
+    }
+    .homecontainer2 .boxes .firstbox{
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+    .homecontainer2 .offers{
+        grid-template-columns: 200px 200px 200px;
+    }
+}
+@media screen and (max-width:769px){
+    .homecontainer .firstcontainer{
+        flex-direction: column;
+    }
+    .homecontainer .students{
+        flex-direction: column;
+    }
+    .homecontainer .students .texts{
+        width: 550px;
+    }
+    .homecontainer2 .boxes .firstbox .texts{
+        width: 550px;
+    }
+    .homecontainer2 .boxes .firstbox img{
+        width: 550px;
+        height: auto;
+    }
+    .homecontainer2 .boxes .firstbox{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+    .homecontainer2 .offers{
+        grid-template-columns: 200px 200px 200px;
+    }
+}
+@media screen and (max-width:480px){
+    .homecontainer, .homecontainer2{
+        height:auto;
+        padding: 20px 0px;
+    }
+    .homecontainer .firstcontainer{
+        flex-direction: column;
+    }
+    .homecontainer .students{
+        flex-direction: column;
+    }
+    .homecontainer .students img{
+        width: 360px;
+        height: 360px;
+    }
+    .homecontainer .students .texts{
+        width: 350px;
+    }
+    .homecontainer2 .boxes .firstbox .texts{
+        width: 350px;
+    }
+    .homecontainer2 .boxes .firstbox img{
+        width: 350px;
+        height: auto;
+    }
+    .homecontainer2 .boxes .firstbox{
+        width: 90%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        border: none;
+    }
+    .homecontainer2 .offers{
+        grid-template-columns: 200px;
+    }
+}
