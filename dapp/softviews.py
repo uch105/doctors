@@ -303,3 +303,24 @@ def createprescription(request):
     return JsonResponse({
         "status": "success",
     })
+
+def fetchadvicetofix(request):
+    username = request.headers.get("Authorization-User-ID")
+    doctor = Doctor.objects.get(bmdc=username)
+    advices = AdviceTemplate.objects.filter(doctor=doctor)
+    if len(advices) == 0:
+        return JsonResponse(data={'advice1':'','advice2':'','advice3':'',},safe=False)
+    elif len(advices) == 1:
+        return JsonResponse(data={'advice1':f'{advices[0].advice1+"\n"+advices[0].advice2+"\n"+advices[0].advice3+"\n"+advices[0].advice4+"\n"+advices[0].advice5}','advice2':'','advice3':'',},safe=False)
+    elif len(advices) == 2:
+        return JsonResponse(data={'advice1':f'{advices[0].advice1+"\n"+advices[0].advice2+"\n"+advices[0].advice3+"\n"+advices[0].advice4+"\n"+advices[0].advice5}','advice2':f'{advices[1].advice1+"\n"+advices[1].advice2+"\n"+advices[1].advice3+"\n"+advices[1].advice4+"\n"+advices[1].advice5}','advice3':'',},safe=False)
+    elif len(advices) == 3:
+        return JsonResponse(data={'advice1':f'{advices[0].advice1+"\n"+advices[0].advice2+"\n"+advices[0].advice3+"\n"+advices[0].advice4+"\n"+advices[0].advice5}','advice2':f'{advices[1].advice1+"\n"+advices[1].advice2+"\n"+advices[1].advice3+"\n"+advices[1].advice4+"\n"+advices[1].advice5}','advice3':f'{advices[2].advice1+"\n"+advices[2].advice2+"\n"+advices[2].advice3+"\n"+advices[2].advice4+"\n"+advices[2].advice5}',},safe=False)
+    else:
+        return JsonResponse(data={'advice1':'','advice2':'','advice3':'',},safe=False)
+    
+def fetchselectedtheme(request):
+    username = request.headers.get("Authorization-User-ID")
+    doctor = Doctor.objects.get(bmdc=username)
+    themename = SelectedTheme.objects.filter(doctor=doctor)[0].theme.name
+    return JsonResponse(data={'themename':themename,},safe=False)

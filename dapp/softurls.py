@@ -15,6 +15,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'doctors.settings')
 django.setup()
 
 urlpatterns = [
+    path("fetchselectedtheme/",softviews.fetchselectedtheme,name="fetchselectedtheme"),
+    path("fetchadvicetofix/",softviews.fetchadvicetofix,name="fetchadvicetofix"),
     path("fetchdrugsbyname/<str:query>/",softviews.fetchdrugsbyname,name="fetchdrugsbyname"),
     path("fetchdrugsbygeneric/<str:query>/",softviews.fetchdrugsbygeneric,name="fetchdrugsbygeneric"),
     path("fetchdrugsbyclass/<str:query>/",softviews.fetchdrugsbyclass,name="fetchdrugsbyclass"),

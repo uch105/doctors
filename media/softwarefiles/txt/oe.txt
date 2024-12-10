@@ -1,0 +1,295 @@
+Abdominal Distension
+Abdominal Girth
+Abdominal Pain
+Abdominal Tenderness
+Abdominal auscultation
+Abdominal distension
+Abdominal examinations
+Abdominal inspection
+Abdominal palpation
+Abdominal percussion
+Abdominal tenderness
+Abnormal sounds in areas
+Acne
+Active range of motion
+Adventitious sound
+Aggravating Factors
+Alcohol
+Alignment (cover test)
+Allergies
+Anemia
+Ankle jerk
+Antalgic
+Anterior chamber
+Apex beat
+Arthritis
+Ascites
+Asthma
+Attention
+BP
+Balance tests
+Blisters
+Body Mass Index (BMI)
+Bowel sounds
+Breath sounds
+Bruises or Petechiae
+Bruits
+Bruits (Renal Arteries)
+Buccal Mucosa
+Cardiovascular Disease
+Cervical dilation
+Cervix
+Change in stool color
+Change in urine color
+Chest Pain
+Chest deformities or scars
+Chest expansion
+Chest wall movement
+Chronic Illness
+Clubbing
+Co-ordination
+Co-ordination
+Cognition
+Colorectal Disease
+Conjunctiva
+Consistency
+Cornea
+Crackles
+Crepitus
+Cyanosis (Bluish discoloration)
+DRE: Blood on gloves
+DRE: Sphincter tone
+DRE: masses
+DRE: tenderness
+Deep tendon reflexes
+Deformities
+Dehydration
+Depth of burns
+Diabetes
+Discharge
+Distant vision (Snellen chart)
+Distension
+Drug history
+Dullness
+Dullness or Hyperresonance
+Duration
+Ear canal
+Ear examination
+Ear tenderness (Auricle)
+Ear tenderness (Mastoid)
+Eczema
+Edema
+Edema (Lower limb)
+Edema Location
+Edema extent
+Edema timing
+Epilepsy
+Eschar
+External ear
+External genitalia
+External nose
+Extraocular movements
+Eye movement
+Eyelids
+Eyes (Exophthalmos)
+Face Symmetry
+Facial Sensation
+Fatigue
+Fetal heart tone
+Fever
+Fissures
+Fistulas
+Floor of mouth
+Frequency
+Frontanelles
+Function & Sensory Assessment
+Fundal height
+Fundoscopy (Optic disc, macula)
+Gait analysis
+Gallbladder Tenderness
+GCS: 15/15
+General Appearance
+Genetic Disorders
+Genital lesions
+Gingiva
+Gingival conditionHair & Nail examination
+Hands (Tremors)
+Hearing & balance
+Heart Disease
+Heart size & location
+Heart : S1 + S2 + 0
+Heart sound
+Heart sound (s1)
+Heart sound (s2)
+Hemorrhoids
+Hepatobiliary Conditions
+Hernias
+Hypertension
+Iris
+Jaundice
+JVP
+Joint deformities
+Joint exam.
+Jugular venous pressure
+Kidney Diseases
+Kidney tenderness
+Lens
+Leukemia
+Light touch
+Limb exam.
+Lips
+Liver size
+Location and extent of burns
+Loss of appetite
+Lungs
+Lung Disease
+Lung sounds
+Lymph nodes
+Lymph nodes (cervical)
+Lymph nodes (submandibular)
+Lymphadenopathy
+Lymphadenopathy
+Lymphadenopathy consistency
+Lymphadenopathy location
+Lymphadenopathy size
+Lymphoma
+Masses
+Memory
+Mental orientation
+Migraines
+Mobility
+Murmurs
+Murmurs intensity
+Murmurs location
+Murmurs type
+Muscle atrophy
+Muscle bulk
+Muscle groups (grade strength)
+Muscle strength
+Muscle tone
+Nasal cavity
+Nausea
+Near vision (Joeger chart)
+Necrosis
+Nodules
+Occlusion
+Olfaction
+Onset
+Oral cavity
+Organomegaly
+Osteoporesis
+Ovarian masses
+Ovarian size
+Ovarian tenderness
+Overall health status
+Pain touch
+Palate
+Pallor
+Palmar Erythema
+Palpable P2
+Palpation : Abnormalities
+Palpation : Masses
+Palpation : Masses
+Palpation : Tenderness
+Palpation : Tenderness
+Passive range of motion
+Passive range of motion
+Past Surgeries
+Pathological reflexes
+Pathological reflexes
+Peripheral Pulse Quality
+Peripheral Pulse Symmetry
+Peripheral pulses
+Pharynx
+Pigmentation
+Plantar response
+Pocket depth
+Polyps
+Proprioception
+Proprioception sense
+Prothrombin time
+Prurities (itching)
+Psoriasis
+Pulse
+Pupil Shape
+Pupil size
+R/R
+Reactivity to light
+Recreational Drugs
+Redness
+Redness
+Reflexes
+Reflexes
+Reflexes (Lower limb)
+Refraction
+Relieving Factors
+Respiratory pattern
+Respiratory rate
+Rhonchi
+SPO2
+Scars
+Sclera
+Sensory
+Serum Albumin
+Short/Long term memory
+Shoulder shrug
+Sign of infections
+Sign of swelling/edema
+Signs of infections
+Sinus tenderness (frontal)
+Sinus tenderness (maxillary)
+Skin Texture
+Skin change
+Skin lesions
+Sleep Disorder
+Smoking
+Speech
+Spine exam.
+Spleen size
+Splenomegaly or Hepatomegaly
+Stability
+Strength Test (Grade 0-5)
+Striae
+Surgical scars
+Sweating
+Swelling
+Swollen lymph nodes
+Symmetry and contour
+Teeth
+Temp. Change
+Temperature
+Temperature sense
+Temporomandibular Joint
+Tenderness
+Tenderness Size
+Tenderness in bone area
+Tenderness location
+Testicular examination
+Texture
+Throat examination
+Thyroid size
+Tone
+Tongue
+Tongue movements
+Tonometry
+Tonsils
+Tympanic membrane
+Tympany
+Upper border dullness
+Upper border liver dullness
+Use of accessory muscles
+Uterine size
+Uterine tenderness
+Vaginal Walls
+Vibration
+Vibration sense
+Visible peristalsis
+Visible tumors
+Vision
+Visual Field Defects
+Vital Signs
+Walking pattern
+Warmth
+Weight gain
+Weight loss
+Wheezes
