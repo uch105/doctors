@@ -1,3 +1,4 @@
+from datetime import datetime
 import os
 from django.http import HttpResponse, JsonResponse,request
 from django.views.decorators.csrf import csrf_exempt
@@ -262,7 +263,7 @@ def checkforexpirydate(request):
         subscription = StudentSubscription.objects.get(student=student)
 
     data = {
-        'expiry_date': subscription.expiry_date,
+        'expiry_date': datetime.strftime(subscription.expiry_date,"%Y-%m-%d"),
     }
     return JsonResponse(data,safe=False)
 
