@@ -102,7 +102,7 @@ class StudentSubscription(models.Model):
     subscription_type = models.CharField(max_length=255,default="trial")
     is_active = models.BooleanField(default=False)
     start_date = models.DateTimeField(default=timezone.now)
-    expiry_date = models.DateField(default=timezone.now()+timezone.timedelta(days=7))
+    expiry_date = models.DateField(default=timezone.now()+timezone.timedelta(days=90))
 
     def __str__(self):
         return f"{self.student.name} - {'Active' if self.is_active else 'Expired'}"

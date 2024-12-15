@@ -163,7 +163,11 @@ nav{
     align-items: center;
     padding: 0px 300px;
 }
-.nav-container > img{
+.nav-container > a {
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav-container > a > img{
     height: 30px;
     width: auto;
 }
@@ -172,6 +176,7 @@ nav{
     border-radius: 10px;
     background-color: var(--primary-color);
     color: var(--light-color);
+    cursor: pointer;
 }
 
 /* -------- footer ---------- */

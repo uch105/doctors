@@ -2,17 +2,40 @@
 {% load static %}
 
 {% block title %}
-prescribemate - Doctors' Prescription Software in BD
+Prescribemate - All-in-One Medical Prescription Software for Doctors
 {% endblock %}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 <meta name="description" content="Doctors' Prescribemate is a medical prescription software that you can use both online and offline. Along with medical calculators, extensive drugs database and community support it is just all-in-one product for doctors and medical students.">
-<meta name="og:title" property="og:title" content="Prescribemate - Doctors'">
-<meta name="og:description" property="og:description" content="A medical prescription software with doctors community forum and extensive set of tools and drugs database support.">
-<meta name="og:image" content="https://prescribemate.com/static/images/icons/fulllogo.png">
-<meta name="keywords" content="medical prescription software, prescription software, doctors online community, medical calculators, free prescriptions bd, prescription in bangladesh, free prescription software in bangladesh, drugs app, drugs information">
+<meta property="og:title" content="Prescribemate - Doctors'">
+<meta property="og:description" content="A medical prescription software with doctors community forum and extensive set of tools and drugs database support.">
+<meta property="og:image" content="https://prescribemate.com/static/images/icons/fulllogo.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://prescribemate.com/">
+<meta property="og:site_name" content="Prescribemate - Doctors">
+<meta property="og:locale" content="en_US">
+<meta name="author" content="Prescribemate">
+<meta name="keywords" content="Prescription management system, Drug database for doctors, Online prescription tools, Medical community platform, Healthcare technology for doctors, Medical technology for doctors, Healthcare software for doctors, AI-powered healthcare software, AI-based healthcare software, Secure patient data recording, Best software for doctors to manage patients, Best software for doctors to manage prescriptions, AI-powered prescription software for healthcare, Tools to improve medical skills, All-in-one healthcare companion for doctors, All-in-one healthcare solution for doctors, Medical discussion forum for medical students, Medical discussion forum for doctors, Doctor management software in Bangladesh, Doctor management software in bd, Healthcare solutions for doctors in Bangladesh, Best medical software in Bangladesh, Prescription software in bd, Prescription software in Bangladesh, Best Prescription software in Bangladesh">
 <meta name='robots' content='index,follow'>
+<link rel="canonical" href="https://prescribemate.com/">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Prescribemate",
+    "url": "https://prescribemate.com/",
+    "description": "A medical prescription software with tools, a drugs database, and a doctors' online community.",
+    "image": "https://prescribemate.com/static/images/icons/fulllogo.png",
+    "applicationCategory": "Medical",
+    "operatingSystem": "Windows, MacOS, Android",
+    "author": {
+    "@type": "Organization",
+    "name": "Prescribemate Inc."
+    }
+}
+</script>
 {% endblock %}
 
 {% block body %}
@@ -21,6 +44,13 @@ prescribemate - Doctors' Prescription Software in BD
     <p style="text-align: center;">{{ message }}</p>
 </div>
 {% endif %}
+
+<div class="homecontainer">
+    <div class="landingContainer">
+        <p>Empowering doctors and transforming healthcare in Bangladesh<br><span class="s1">FAST</span>   <span class="s1">LIGHT-WEIGHT</span>   <span class="s1">EXCLUSIVE</span><br>Your <span class="s2">ALL-IN-ONE</span> Companion</p>
+        <a href="#downloadButtons">Download Doctors'</a>
+    </div>
+</div>
 
 <div class="homecontainer">
     <div class="firstcontainer">
@@ -205,12 +235,12 @@ prescribemate - Doctors' Prescription Software in BD
     </div>
 </div>
 
-<div class="homecontainer">
+<div class="homecontainer" id="downloadButtons">
     <h1 style="text-align: center;">READY TO TRANSFORM YOUR PRACTICE AND LEARNING?</h1>
     <p style="text-align: center;">Join thousands of doctors and medical students who trust Doctors' for their practice management and education</p>
     <div class="softlinks">
         <a href="{% url 'login' %}">Try Web Version</a>
-        <a onclick="alert('Under developement! Will be available soon!')">Download Desktop Software &#x2193;</a>
+        <a href="https://prescribemate.com/media/softwarefiles/setupDoctors.exe" download>Download Desktop Software &#x2193;</a>
         <a onclick="alert('Under developement! Will be available soon!')"><img src="{% static 'images/icons/googleplay.png' %}" alt="">Download Android App</a>
         <a onclick="alert('Under developement! Will be available soon!')"><img src="{% static 'images/icons/appleplay.png' %}" alt="">Download Apple App</a>
     </div>

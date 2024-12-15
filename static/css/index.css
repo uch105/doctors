@@ -15,6 +15,40 @@ h1,h2,h3,h4,h5,h6,p{
     background-color: #fcf9f4;
     align-content: center;
 }
+.homecontainer > .landingContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.homecontainer > .landingContainer > p{
+    text-align: center;
+    font-size: 32px;
+}
+.homecontainer > .landingContainer > p > .s1{
+    font-size: 40px;
+    font-weight: 700;
+    padding: 0px 20px;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: 10px;
+}
+.homecontainer > .landingContainer > p > .s2{
+    font-size: 40px;
+    font-weight: 700;
+    color:var(--primary-color);
+    padding: 0px 20px;
+}
+.homecontainer > .landingContainer > a{
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 10px 30px;
+    border-radius: 10px;
+}
 .homecontainer .firstcontainer{
     display: flex;
     gap: 50px;
@@ -255,6 +289,12 @@ h1,h2,h3,h4,h5,h6,p{
     }
 }
 @media screen and (max-width:480px){
+    .homecontainer > .landingContainer > p{
+        line-height: 2.5;
+    }
+    .homecontainer > .landingContainer > p > .s1{
+        background-color: rgba(6,111,0,0.8);
+    }
     .homecontainer, .homecontainer2{
         height:auto;
         padding: 20px 0px;
