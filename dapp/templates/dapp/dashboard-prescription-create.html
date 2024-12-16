@@ -15,15 +15,15 @@ Create Prescription
         {% csrf_token %}
         <div class="person-details">
             <input type="text" class="textinput" name="fullname" placeholder="রোগীর নাম" required>
-            <input type="text" class="textinput" name="age" placeholder="বয়স" required>
-            <select name="sex" class="textinput" required>
+            <input type="text" class="textinput" name="age" placeholder="বয়স">
+            <select name="sex" class="textinput">
                 <option value="পুরুষ">পুরুষ</option>
                 <option value="মহিলা">মহিলা</option>
                 <option value="শিশু(ছেলে)">শিশু(ছেলে)</option>
                 <option value="শিশু(মেয়ে)">শিশু(মেয়ে)</option>
             </select>
-            <input type="text" class="textinput" name="address" placeholder="ঠিকানা" required>
-            <input type="text" class="textinput" name="contact" placeholder="যোগাযোগ" required>
+            <input type="text" class="textinput" name="address" placeholder="ঠিকানা">
+            <input type="text" class="textinput" name="contact" placeholder="যোগাযোগ">
             <input type="submit" value="Save & Create new" class="submit-btn">
         </div>
         <div class="symptoms-prescription">
@@ -37,7 +37,7 @@ Create Prescription
                 <div id="sgf1" class="sgf">
 
                     <div class="cc" style="position: relative;width: fit-content;">
-                    <textarea name="cc" id="cc" placeholder="Chief Complaints (C/C)" required></textarea>
+                    <textarea name="cc" id="cc" placeholder="Chief Complaints (C/C)"></textarea>
                     <div id="ccsuggestions" class="autocomplete-suggestions"></div>
                     </div>
 
@@ -52,7 +52,7 @@ Create Prescription
                     </div>
 
                     <div class="rf-dx" style="position: relative;width: fit-content;">
-                    <textarea name="dx" id="dx" placeholder="Diagnosis" required></textarea>
+                    <textarea name="dx" id="dx" placeholder="Diagnosis"></textarea>
                     <div id="dxsuggestions" class="autocomplete-suggestions"></div>
                     </div>
 

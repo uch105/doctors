@@ -15,15 +15,15 @@ Edit Prescription
         {% csrf_token %}
         <div class="person-details">
             <input type="text" class="textinput" name="fullname" placeholder="রোগীর নাম" value="{{ patient.name }}" required>
-            <input type="text" class="textinput" name="age" placeholder="বয়স" value="{{ patient.age }}" required>
-            <select name="sex" class="textinput"  value="{{ patient.sex }}" required>
+            <input type="text" class="textinput" name="age" placeholder="বয়স" value="{{ patient.age }}">
+            <select name="sex" class="textinput"  value="{{ patient.sex }}">
                 <option value="পুরুষ">পুরুষ</option>
                 <option value="মহিলা">মহিলা</option>
                 <option value="শিশু(ছেলে)">শিশু(ছেলে)</option>
                 <option value="শিশু(মেয়ে)">শিশু(মেয়ে)</option>
             </select>
-            <input type="text" class="textinput" name="address" placeholder="ঠিকানা" value="{{ patient.address }}" required>
-            <input type="text" class="textinput" name="contact" placeholder="যোগাযোগ" value="{{ patient.contact }}" required>
+            <input type="text" class="textinput" name="address" placeholder="ঠিকানা" value="{{ patient.address }}">
+            <input type="text" class="textinput" name="contact" placeholder="যোগাযোগ" value="{{ patient.contact }}">
             <input type="submit" value="Finish Editing" class="submit-btn">
         </div>
         <div class="symptoms-prescription">
@@ -37,7 +37,7 @@ Edit Prescription
                 <div id="sgf1" class="sgf">
 
                     <div class="cc" style="position: relative;width: fit-content;">
-                    <textarea name="cc" id="cc" placeholder="{{ cc_symptom.symptom }}" required>{{ cc_symptom.details }}</textarea>
+                    <textarea name="cc" id="cc" placeholder="{{ cc_symptom.symptom }}" >{{ cc_symptom.details }}</textarea>
                     <div id="ccsuggestions" class="autocomplete-suggestions"></div>
                     </div>
 
@@ -52,7 +52,7 @@ Edit Prescription
                     </div>
 
                     <div class="rf-dx" style="position: relative;width: fit-content;">
-                    <textarea name="dx" id="dx" placeholder="{{ dx_symptom.symptom }}" required>{{ dx_symptom.details }}</textarea>
+                    <textarea name="dx" id="dx" placeholder="{{ dx_symptom.symptom }}" >{{ dx_symptom.details }}</textarea>
                     <div id="dxsuggestions" class="autocomplete-suggestions"></div>
                     </div>
 

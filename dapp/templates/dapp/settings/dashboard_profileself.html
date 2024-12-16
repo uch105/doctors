@@ -14,7 +14,11 @@ Profile
 <div class="container">
     <div class="selfprofile">
         <div class="image">
+            {% if student.image %}
             <img src="{{ student.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
             <h5 class="i">Points : {{ student.points }}</h5>
         </div>
         <div class="info">
@@ -61,7 +65,11 @@ Profile
 <div class="container">
     <div class="selfprofile">
         <div class="image">
+            {% if doctor.image %}
             <img src="{{ doctor.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
             <h5 class="i">Points : {{ doctor.points }}</h5>
             <h5 class="i">Status : {% if doctor.status %}Active{% else %}Licence Expired{% endif %}</h5>
         </div>

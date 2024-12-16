@@ -14,7 +14,11 @@ Profile
 <div class="container">
     <div class="profile">
         <div class="image">
-            <img src="{{ student.image.url }}" alt="Profile picture">
+            {% if student.image %}
+            <img src="{{ student.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
         </div>
         <div class="info">
             <h1>{{ student.name }}</h1>
@@ -38,7 +42,11 @@ Profile
 <div class="container">
     <div class="profile">
         <div class="image">
-            <img src="{{ doctor.image.url }}" alt="Profile picture">
+            {% if doctor.image %}
+            <img src="{{ doctor.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
         </div>
         <div class="info">
             <h1>{{ doctor.name }}</h1>

@@ -13,9 +13,17 @@ Doctors - Forum
 <div class="container">
     <div class="self-post">
         {% if is_student %}
-        <img src="{{ student.image.url }}" alt="">
+            {% if student.image %}
+            <img src="{{ student.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
         {% else %}
-        <img src="{{ doctor.image.url }}" alt="">
+            {% if student.image %}
+            <img src="{{ student.image.url }}" alt="Profile Picture">
+            {% else %}
+            <img src="" alt="Profile Picture">
+            {% endif %}
         {% endif %}
         <a href="{% url 'createpost' %}">Share your thoughts or questions</a>
     </div>
@@ -23,7 +31,11 @@ Doctors - Forum
         {% for post in posts %}
         <div class="post">
             <div class="post-head">
-                <img src="{{ post.owner_image.url }}" alt="">
+                {% if post.owner_image %}
+                <img src="{{ post.owner_image.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="" alt="Profile Picture">
+                {% endif %}
                 <div class="name-date">
                     <a href="{% url 'profile' pk=post.owner_id %}" class="name">{{ post.owner_name }}</a>
                     <div class="date">{{ post.date_time }}</div>

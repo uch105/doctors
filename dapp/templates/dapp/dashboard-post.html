@@ -14,7 +14,11 @@
     <div class="posts">
         <div class="post">
             <div class="post-head">
-                <img src="{{ post.owner_image.url }}" alt="">
+                {% if post.owner_image %}
+                <img src="{{ post.owner_image.url }}" alt="Profile Picture">
+                {% else %}
+                <img src="" alt="Profile Picture">
+                {% endif %}
                 <div class="name-date">
                     <a href="{% url 'profile' pk=post.owner_id %}" class="name">{{ post.owner_name }}</a>
                     <div class="date">{{ post.date_time }}</div>
@@ -63,7 +67,11 @@
                 {% for comment in comments %}
                 <div class="comment">
                     <div class="info">
-                        <img src="{{ comment.owner_image.url }}" alt="">
+                        {% if comment.owner_image %}
+                        <img src="{{ comment.owner_image.url }}" alt="Profile Picture">
+                        {% else %}
+                        <img src="" alt="Profile Picture">
+                        {% endif %}
                         <p><a href="{% url 'profile' pk=comment.owner_id %}">{{ comment.owner_name }}</a> <br> <span class="blur5">{{ comment.created }}</span></p>
                     </div>
                     <p>{{ comment.text }}</p>
