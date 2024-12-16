@@ -205,7 +205,10 @@ def additional(request,pk):
             doctor.gender = request.POST.get("gender")
             doctor.job = request.POST.get("job")
             doctor.chamber = request.POST.get("chamber")
-            doctor.image = request.FILES["image"]
+            try:
+                doctor.image = request.FILES["image"]
+            except:
+                print("No image")
             doctor.save()
             send_automail(to_email=doctor.email,subject="Welcome to Prescribemate - Your Account is Ready!",body=f"Hi {doctor.name},\n\n We're excited to inform you that your Prescribemate account has been successfully created! You can now log in and begin exploring.\n\nUsername : {pk}\nPassword : {doctor.password}\n\nWe recommend to change your password ASAP! You will find that in your profile page!\nThank you for choosing Prescribemate. We're here to ensure you have the best experience possible. If you need any assistance, don't hesitate to reach out.\n\n\nBest regards,\nTeam Prescribemate")
             theme = Theme.objects.get(name="Default")
