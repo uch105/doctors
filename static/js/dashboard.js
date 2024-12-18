@@ -228,27 +228,72 @@ function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
                     data.forEach(item => {
                         const suggestion = document.createElement('div');
                         suggestion.classList.add('autocomplete-suggestion');
-                        if(apiUrl=="/api/search_drug/"){
-                            suggestion.textContent = item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')';
+                        
+                        suggestion.textContent = item.text;
 
-                            suggestion.addEventListener('click', () => {
-                                
+                        suggestion.addEventListener('click', () => {
+                            
+                            padField.value = inputField.value.substr(0,inputField.value.length - query.length) + item.text + '\n';
+                            //inputField.value = inputField.value.substr(0,inputField.value.length - query.length);
+                            suggestionsDiv.innerHTML = '';
+                            inputField.focus();
+                        });
+                        
+                        suggestionsDiv.appendChild(suggestion);
+                    });
+                    suggestionsDiv.style.display = "block";
+                });
+        } else {
+            suggestionsDiv.innerHTML = '';
+            suggestionsDiv.style.display = "none";
+        }
+    });
+
+    inputField.addEventListener('blur', function () {
+        setTimeout(() => {
+            suggestionsDiv.style.display = "none";
+        }, 200);
+    });
+
+    inputField.addEventListener('focus', function () {
+        const query = this.value.trim();
+        if (query.length > 0) {
+            suggestionsDiv.style.display = "block";
+        }
+    });
+}
+
+function setupAutocompleteDrug(inputId, padId, suggestionsId, apiUrl) {
+    const inputField = document.getElementById(inputId);
+    const padField = document.getElementById(padId);
+    const suggestionsDiv = document.getElementById(suggestionsId);
+
+    inputField.addEventListener('input', function () {
+        const query = this.value;
+
+        if (query.length > 0) {
+            fetch(`${apiUrl}?query=${query}`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsDiv.innerHTML = '';
+                    data.forEach(item => {
+                        const suggestion = document.createElement('div');
+                        suggestion.classList.add('autocomplete-suggestion');
+                        
+                        suggestion.textContent = item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')';
+
+                        suggestion.addEventListener('click', () => {
+                            
+                            if (padField.value == ''){
+                                padField.value += item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
+                            } else{
                                 padField.value += "\n\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
-                                inputField.value = "";
-                                suggestionsDiv.innerHTML = '';
-                                //inputField.focus();
-                            });
-                        } else{
-                            suggestion.textContent = item.text;
-
-                            suggestion.addEventListener('click', () => {
-                                
-                                padField.value = inputField.value.substr(0,inputField.value.length - query.length) + item.text + '\n';
-                                //inputField.value = inputField.value.substr(0,inputField.value.length - query.length);
-                                suggestionsDiv.innerHTML = '';
-                                inputField.focus();
-                            });
-                        }
+                            }
+                            inputField.value = "";
+                            suggestionsDiv.innerHTML = '';
+                            inputField.focus();
+                        });
+                        
                         suggestionsDiv.appendChild(suggestion);
                     });
                     suggestionsDiv.style.display = "block";
@@ -274,7 +319,7 @@ function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
 }
 
 
-setupAutocomplete('drug', 'prestext', 'drugsuggestions', '/api/search_drug/');
+setupAutocompleteDrug('drug', 'prestext', 'drugsuggestions', '/api/search_drug/');
 setupAutocomplete('oe', 'oe', 'oesuggestions', '/api/search_oe/');
 setupAutocomplete('ix', 'ix', 'ixsuggestions', '/api/search_ix/');
 setupAutocomplete('rf', 'rf', 'rfsuggestions', '/api/search_rf/');
