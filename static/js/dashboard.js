@@ -267,53 +267,59 @@ function setupAutocompleteDrug(inputId, padId, suggestionsId, apiUrl) {
     const inputField = document.getElementById(inputId);
     const padField = document.getElementById(padId);
     const suggestionsDiv = document.getElementById(suggestionsId);
+    let debounceTimer; // Timer for debouncing
+    let lastQuery = ''; // Track the last query
 
     inputField.addEventListener('input', function () {
-        const query = this.value;
+        const query = this.value.trim(); // Get the current input value
+        if (query === lastQuery) return; // Skip if the query hasn't changed
+        lastQuery = query; // Update the last query
 
-        if (query.length > 0) {
-            fetch(`${apiUrl}?query=${query}`)
-                .then(response => response.json())
-                .then(data => {
-                    suggestionsDiv.innerHTML = '';
-                    data.forEach(item => {
-                        const suggestion = document.createElement('div');
-                        suggestion.classList.add('autocomplete-suggestion');
-                        
-                        suggestion.textContent = item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')';
+        clearTimeout(debounceTimer); // Clear the previous debounce timer
+        debounceTimer = setTimeout(() => {
+            if (query.length > 0) {
+                fetch(`${apiUrl}?query=${query}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (query !== lastQuery) return; // Ignore outdated responses
+                        suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+                        data.forEach(item => {
+                            const suggestion = document.createElement('div');
+                            suggestion.classList.add('autocomplete-suggestion');
+                            suggestion.textContent = `${item.drugs_type} ${item.brand} (${item.drugs_dose})`;
 
-                        suggestion.addEventListener('click', () => {
-                            
-                            if (padField.value == ''){
-                                padField.value += item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
-                            } else{
-                                padField.value += "\n\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
-                            }
-                            inputField.value = "";
-                            suggestionsDiv.innerHTML = '';
-                            inputField.focus();
+                            suggestion.addEventListener('click', () => {
+                                // Append the selected drug to the textarea
+                                if (padField.value === '') {
+                                    padField.value += `${item.drugs_type} ${item.brand} (${item.drugs_dose})\n`;
+                                } else {
+                                    padField.value += `\n\n${item.drugs_type} ${item.brand} (${item.drugs_dose})\n`;
+                                }
+                                inputField.value = ''; // Clear the input field
+                                suggestionsDiv.innerHTML = ''; // Hide suggestions
+                                inputField.focus(); // Focus back on the input field
+                            });
+
+                            suggestionsDiv.appendChild(suggestion);
                         });
-                        
-                        suggestionsDiv.appendChild(suggestion);
+                        suggestionsDiv.style.display = 'block'; // Show suggestions
                     });
-                    suggestionsDiv.style.display = "block";
-                });
-        } else {
-            suggestionsDiv.innerHTML = '';
-            suggestionsDiv.style.display = "none";
-        }
+            } else {
+                suggestionsDiv.innerHTML = '';
+                suggestionsDiv.style.display = 'none';
+            }
+        }, 300); // Debounce delay (300ms)
     });
 
     inputField.addEventListener('blur', function () {
         setTimeout(() => {
-            suggestionsDiv.style.display = "none";
+            suggestionsDiv.style.display = 'none'; // Hide suggestions on blur
         }, 300);
     });
 
     inputField.addEventListener('focus', function () {
-        const query = this.value.trim();
-        if (query.length > 0) {
-            suggestionsDiv.style.display = "block";
+        if (inputField.value.trim().length > 0) {
+            suggestionsDiv.style.display = 'block'; // Show suggestions on focus
         }
     });
 }
