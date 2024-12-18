@@ -53,14 +53,17 @@ function ShowInformation(){
 
 function insertDoseText(){
     document.getElementById('prestext').value += document.getElementById("dosage").value + " ";
+    document.getElementById('dosage').selectedIndex = 0;
 }
 
 function insertDoseText2(){
     document.getElementById('prestext').value += " - " + document.getElementById("dosage2").value;
+    document.getElementById('dosage2').selectedIndex = 0;
 }
 
 function insertDoseText3(){
     document.getElementById('prestext').value += " - " + document.getElementById("dosage3").value;
+    document.getElementById('dosage3').selectedIndex = 0;
 }
 
 function showSG(s){
@@ -233,7 +236,7 @@ function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
                                 padField.value += "\n\n" + item.drugs_type + ' ' + item.brand + '(' + item.drugs_dose + ')' + "\n";
                                 inputField.value = "";
                                 suggestionsDiv.innerHTML = '';
-                                inputField.focus();
+                                //inputField.focus();
                             });
                         } else{
                             suggestion.textContent = item.text;
@@ -259,7 +262,7 @@ function setupAutocomplete(inputId, padId, suggestionsId, apiUrl) {
     inputField.addEventListener('blur', function () {
         setTimeout(() => {
             suggestionsDiv.style.display = "none";
-        }, 200);
+        }, 300);
     });
 
     inputField.addEventListener('focus', function () {

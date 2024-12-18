@@ -75,7 +75,8 @@ Create Prescription
                         <div id="drugsuggestions" class="autocomplete-suggestions"></div>
                     </div>
                     
-                    <select class="textinput" id="dosage" onchange="insertDoseText()">
+                    <select class="textinput" id="dosage" onclick="insertDoseText()">
+                        <option value="">-- Select Dose Frequency --</option>
                         <option value="০+০+১">০+০+১</option>
                         <option value="০+১+০">০+১+০</option>
                         <option value="১+০+০">১+০+০</option>
@@ -130,7 +131,8 @@ Create Prescription
                     </select>
                     
                     
-                    <select class="textinput" id="dosage2" onchange="insertDoseText2()">
+                    <select class="textinput" id="dosage2" onclick="insertDoseText2()">
+                        <option value="">-- Before/After Meal --</option>
                         <option value="খাওয়ার আগে">খাওয়ার আগে</option>
                         <option value="খাওয়ার ৩০ মিনিট আগে">খাওয়ার ৩০ মিনিট আগে</option>
                         <option value="খাওয়ার ১৫ মিনিট আগে">খাওয়ার ১৫ মিনিট আগে</option>
@@ -140,7 +142,8 @@ Create Prescription
                         <option value="ঘুমানোর ১ ঘন্টা আগে">ঘুমানোর ১ ঘন্টা আগে</option>
                     </select>
 
-                    <select class="textinput" id="dosage3" onchange="insertDoseText3()">
+                    <select class="textinput" id="dosage3" onclick="insertDoseText3()">
+                        <option value="">-- Duration --</option>
                         <option value="০১ দিন">০১ দিন</option>
                         <option value="০৩ দিন">০৩ দিন</option>
                         <option value="০৫ দিন">০৫ দিন</option>
